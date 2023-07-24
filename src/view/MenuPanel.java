@@ -20,7 +20,7 @@ public class MenuPanel extends JPanel {
 
     private MazeSolverComboBox mazeSolverComboBox;
 
-    public MenuPanel(int menuLength, int menuHeight, DisplayFrame parent)
+    public MenuPanel(int menuLength, int menuHeight, View parent)
     {
         // Panel setup
         this.setBackground(Color.BLACK);

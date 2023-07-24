@@ -5,7 +5,7 @@ import javax.swing.*;
 public class MazeSolverComboBox extends JComboBox {
 
     final static String[] mazeSolverAlgorithmChoices = {"Prim", "Aldous-Broder", "Random DFS", "Wilson"};
-    public MazeSolverComboBox(DisplayFrame parent)
+    public MazeSolverComboBox(View parent)
     {
         super(mazeSolverAlgorithmChoices);
         this.addActionListener(parent);

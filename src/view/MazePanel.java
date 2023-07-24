@@ -15,15 +15,15 @@ public class MazePanel extends JPanel{
 //        this.setBounds(menuLength, 0, mazePanelSize, mazePanelSize);
         this.setPreferredSize(new Dimension(mazePanelSize, mazePanelSize));
 
-        Cell[][] cells = new Cell[16][16];
+        Tile[][] tiles = new Tile[16][16];
 
         for (int i = 0; i < mazeLength; i++)
         {
             for (int j = 0; j < mazeLength; j++)
             {
-                Cell cell = new Cell(cellLength, i, j);
-                cells[i][j] = cell;
-                this.add(cells[i][j]);
+                Tile tile = new Tile(cellLength, i, j);
+                tiles[i][j] = tile;
+                this.add(tiles[i][j]);
             }
         }
     }

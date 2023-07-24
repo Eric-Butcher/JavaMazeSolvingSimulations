@@ -1,12 +1,11 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class MazeGeneratorComboBox extends JComboBox {
 
     final static String[] mazeGeneratorAlgorithmChoices = {"A", "B", "C", "D"};
-    public MazeGeneratorComboBox(DisplayFrame parent)
+    public MazeGeneratorComboBox(View parent)
     {
         super(mazeGeneratorAlgorithmChoices);
         this.addActionListener(parent);

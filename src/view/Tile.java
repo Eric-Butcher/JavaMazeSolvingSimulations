@@ -3,7 +3,7 @@ package view;
 import javax.swing.JPanel;
 import java.awt.*;
 
-public class Cell extends JPanel {
+public class Tile extends JPanel {
 
     private int borderThickness = 2;
 
@@ -12,19 +12,19 @@ public class Cell extends JPanel {
     private boolean hasRightBorder = true;
     private boolean hasLeftBorder = true;
 
-    private int cellLength = 30;
+    private int tileLength = 30;
 
     private int xPos;
     private int yPos;
 
-    public Cell(int cellLength, int xPos, int yPos)
+    public Tile(int tileLength, int xPos, int yPos)
     {
         this.setVisible(true);
-        this.cellLength = cellLength;
+        this.tileLength = tileLength;
         this.xPos = xPos;
         this.yPos = yPos;
-        this.setSize(this.cellLength, this.cellLength);
-        this.setBounds(this.xPos * this.cellLength, this.yPos * this.cellLength, this.cellLength, this.cellLength);
+        this.setSize(this.tileLength, this.tileLength);
+        this.setBounds(this.xPos * this.tileLength, this.yPos * this.tileLength, this.tileLength, this.tileLength);
 //        this.setBackground(Color.BLACK);
     }
 
@@ -32,25 +32,25 @@ public class Cell extends JPanel {
     public void paint(Graphics g)
     {
         g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(0, 0, this.cellLength, this.cellLength);
+        g.fillRect(0, 0, this.tileLength, this.tileLength);
 
 
         g.setColor(Color.CYAN);
         if (this.hasTopBorder)
         {
-            g.fillRect(0, 0, this.cellLength, this.borderThickness);
+            g.fillRect(0, 0, this.tileLength, this.borderThickness);
         }
         if (this.hasBottomBorder)
         {
-            g.fillRect(0, this.cellLength - this.borderThickness, this.cellLength, this.borderThickness);
+            g.fillRect(0, this.tileLength - this.borderThickness, this.tileLength, this.borderThickness);
         }
         if (this.hasLeftBorder)
         {
-            g.fillRect(0, 0, this.borderThickness, this.cellLength);
+            g.fillRect(0, 0, this.borderThickness, this.tileLength);
         }
         if (this.hasRightBorder)
         {
-            g.fillRect(this.cellLength - this.borderThickness, 0, this.borderThickness, this.cellLength);
+            g.fillRect(this.tileLength - this.borderThickness, 0, this.borderThickness, this.tileLength);
         }
 
     }

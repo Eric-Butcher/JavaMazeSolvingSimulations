@@ -1,11 +1,10 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class SolveMazeButton extends JButton {
 
-    public SolveMazeButton(DisplayFrame parent)
+    public SolveMazeButton(View parent)
     {
         this.addActionListener(parent);
         this.setText("Solve Maze");

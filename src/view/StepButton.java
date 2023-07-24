@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class StepButton extends JButton {
 
-    public StepButton(DisplayFrame parent)
+    public StepButton(View parent)
     {
         this.addActionListener(parent);
         this.setText("🐾");

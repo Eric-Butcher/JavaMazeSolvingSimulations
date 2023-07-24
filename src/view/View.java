@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class DisplayFrame extends JFrame implements ActionListener {
+public class View extends JFrame implements ActionListener {
     final static int MAZE_PANEL_SIZE = 480; // Maze GUI will be 480x480 pixels
 
     final static int MENU_PANEL_SIZE = 120;
@@ -13,13 +13,13 @@ public class DisplayFrame extends JFrame implements ActionListener {
     final static int CELL_LENGTH = MAZE_PANEL_SIZE / MAZE_LENGTH;
 
     private MenuPanel menuPanel;
-    private MazePanel mazeFrame;
+    private MazePanel mazePanel;
 
 
 
     private String currentMazeGeneratorAlgorithm = "A";
 
-    public DisplayFrame()
+    public View()
     {
         this.setResizable(false);
         this.setTitle("Maze-Solving Simulations");
@@ -30,8 +30,8 @@ public class DisplayFrame extends JFrame implements ActionListener {
 
         this.menuPanel = new MenuPanel(MENU_PANEL_SIZE, MAZE_PANEL_SIZE, this);
         this.add(this.menuPanel, BorderLayout.WEST);
-        this.mazeFrame = new MazePanel(MAZE_LENGTH, CELL_LENGTH, MENU_PANEL_SIZE, MAZE_PANEL_SIZE);
-        this.add(this.mazeFrame);
+        this.mazePanel = new MazePanel(MAZE_LENGTH, CELL_LENGTH, MENU_PANEL_SIZE, MAZE_PANEL_SIZE);
+        this.add(this.mazePanel);
 
         this.setVisible(true);
     }

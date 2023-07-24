@@ -1,11 +1,10 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class ClearButton extends JButton {
 
-    public ClearButton(DisplayFrame parent)
+    public ClearButton(View parent)
     {
         this.addActionListener(parent);
         this.setText("Clear Maze");

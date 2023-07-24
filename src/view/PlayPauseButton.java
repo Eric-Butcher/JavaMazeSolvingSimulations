@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class PlayPauseButton extends JButton {
 
-    public PlayPauseButton(DisplayFrame parent)
+    public PlayPauseButton(View parent)
     {
         this.addActionListener(parent);
         this.setText(" ⏯ ");

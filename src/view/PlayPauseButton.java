@@ -3,12 +3,12 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-public class StepButton extends JButton {
+public class PlayPauseButton extends JButton {
 
-    public StepButton(DisplayFrame parent)
+    public PlayPauseButton(DisplayFrame parent)
     {
         this.addActionListener(parent);
-        this.setText("🐾");
+        this.setText(" ⏯ ");
         this.setFont(new Font("Comic Sans", Font.PLAIN, 20));
         this.setFocusable(false);
         this.setVisible(true);

@@ -3,13 +3,12 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-public class StepButton extends JButton {
+public class SolveMazeButton extends JButton {
 
-    public StepButton(DisplayFrame parent)
+    public SolveMazeButton(DisplayFrame parent)
     {
         this.addActionListener(parent);
-        this.setText("🐾");
-        this.setFont(new Font("Comic Sans", Font.PLAIN, 20));
+        this.setText("Solve Maze");
         this.setFocusable(false);
         this.setVisible(true);
         this.setEnabled(true);

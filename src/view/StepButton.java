@@ -5,9 +5,8 @@ import java.awt.*;
 
 public class StepButton extends JButton {
 
-    public StepButton(DisplayFrame parent)
+    public StepButton()
     {
-        this.addActionListener(parent);
         this.setText("🐾");
         this.setFont(new Font("Comic Sans", Font.PLAIN, 20));
         this.setFocusable(false);

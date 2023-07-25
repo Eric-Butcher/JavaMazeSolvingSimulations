@@ -1,10 +1,13 @@
-import view.DisplayFrame;
-import view.MazePanel;
+import controller.Controller;
+import model.Model;
+import view.View;
 
 public class Main {
 
     public static void main(String[] args)
     {
-        DisplayFrame frame = new DisplayFrame();
+        View view = new View();
+        Model model = new Model();
+        Controller controller = new Controller(model,view);
     }
 }

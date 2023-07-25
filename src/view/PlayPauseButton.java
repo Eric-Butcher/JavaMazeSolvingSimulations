@@ -5,9 +5,8 @@ import java.awt.*;
 
 public class PlayPauseButton extends JButton {
 
-    public PlayPauseButton(DisplayFrame parent)
+    public PlayPauseButton()
     {
-        this.addActionListener(parent);
         this.setText(" ⏯ ");
         this.setFont(new Font("Comic Sans", Font.PLAIN, 20));
         this.setFocusable(false);

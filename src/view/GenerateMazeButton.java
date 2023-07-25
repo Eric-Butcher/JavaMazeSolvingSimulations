@@ -1,14 +1,12 @@
 package view;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class GenerateMazeButton extends JButton {
 
-    public GenerateMazeButton(DisplayFrame parent)
+    public GenerateMazeButton()
     {
 
-        this.addActionListener(parent);
         this.setText("Generate Maze");
         this.setFocusable(false);
         this.setVisible(true);

@@ -7,20 +7,14 @@ public class MenuPanel extends JPanel {
 
     private GenerateMazeButton generateMazeButton;
     private MazeGeneratorComboBox mazeGeneratorComboBox;
-
     private PlayPauseButton playPauseButton;
-
     private StepButton stepButton;
-
     private ClearButton clearButton;
-
     private ResetButton resetButton;
-
     private SolveMazeButton solveMazeButton;
-
     private MazeSolverComboBox mazeSolverComboBox;
 
-    public MenuPanel(int menuLength, int menuHeight, View parent)
+    public MenuPanel(int menuLength, int menuHeight)
     {
         // Panel setup
         this.setBackground(Color.BLACK);
@@ -30,14 +24,14 @@ public class MenuPanel extends JPanel {
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
 
         // Create components
-        this.generateMazeButton = new GenerateMazeButton(parent);
-        this.mazeGeneratorComboBox = new MazeGeneratorComboBox(parent);
-        this.solveMazeButton = new SolveMazeButton(parent);
-        this.mazeSolverComboBox = new MazeSolverComboBox(parent);
-        this.playPauseButton = new PlayPauseButton(parent);
-        this.stepButton = new StepButton(parent);
-        this.clearButton = new ClearButton(parent);
-        this.resetButton = new ResetButton(parent);
+        this.generateMazeButton = new GenerateMazeButton();
+        this.mazeGeneratorComboBox = new MazeGeneratorComboBox();
+        this.solveMazeButton = new SolveMazeButton();
+        this.mazeSolverComboBox = new MazeSolverComboBox();
+        this.playPauseButton = new PlayPauseButton();
+        this.stepButton = new StepButton();
+        this.clearButton = new ClearButton();
+        this.resetButton = new ResetButton();
 
         // Descriptive variables
         int firstColumn = 0, secondColumn = 1;
@@ -93,11 +87,35 @@ public class MenuPanel extends JPanel {
         this.setVisible(true);
 
     }
-
     public GenerateMazeButton getGenerateMazeButton() {
-        return this.generateMazeButton;
+        return generateMazeButton;
     }
+
     public MazeGeneratorComboBox getMazeGeneratorComboBox() {
-        return this.mazeGeneratorComboBox;
+        return mazeGeneratorComboBox;
+    }
+
+    public PlayPauseButton getPlayPauseButton() {
+        return playPauseButton;
+    }
+
+    public StepButton getStepButton() {
+        return stepButton;
+    }
+
+    public ClearButton getClearButton() {
+        return clearButton;
+    }
+
+    public ResetButton getResetButton() {
+        return resetButton;
+    }
+
+    public SolveMazeButton getSolveMazeButton() {
+        return solveMazeButton;
+    }
+
+    public MazeSolverComboBox getMazeSolverComboBox() {
+        return mazeSolverComboBox;
     }
 }

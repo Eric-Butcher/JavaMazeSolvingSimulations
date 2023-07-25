@@ -16,6 +16,14 @@ public class Model {
         this.modelState.resetMaze();
     }
 
+    public void changeGenerationAlgo(String s){
+        this.modelState.changeGenerationAlgo(s);
+    }
+
+    public void changeSolvingAlgo(String s){
+        this.modelState.changeSolvingAlgo(s);
+    }
+
     public void clearMaze(){
         this.modelState.clearMaze();
     }

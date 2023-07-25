@@ -3,6 +3,8 @@ package model;
 public abstract class ModelState {
 
     protected Model model;
+    protected String generationAlgo;
+    protected String solvingAlgo;
 
     public ModelState(Model model)
     {
@@ -12,6 +14,16 @@ public abstract class ModelState {
     public void resetMaze()
     {
 
+    }
+
+    public void changeGenerationAlgo(String s){
+        this.generationAlgo = s;
+        System.out.println(s);
+    }
+
+    public void changeSolvingAlgo(String s){
+        this.solvingAlgo = s;
+        System.out.println(s);
     }
 
     public abstract void clearMaze();

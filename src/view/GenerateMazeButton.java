@@ -4,10 +4,9 @@ import javax.swing.*;
 
 public class GenerateMazeButton extends JButton {
 
-    public GenerateMazeButton(View parent)
+    public GenerateMazeButton()
     {
 
-        this.addActionListener(parent);
         this.setText("Generate Maze");
         this.setFocusable(false);
         this.setVisible(true);

@@ -4,9 +4,8 @@ import javax.swing.*;
 
 public class SolveMazeButton extends JButton {
 
-    public SolveMazeButton(View parent)
+    public SolveMazeButton()
     {
-        this.addActionListener(parent);
         this.setText("Solve Maze");
         this.setFocusable(false);
         this.setVisible(true);

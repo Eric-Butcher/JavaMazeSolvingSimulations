@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class View extends JFrame implements ActionListener {
+public class View extends JFrame {
     final static int MAZE_PANEL_SIZE = 480; // Maze GUI will be 480x480 pixels
 
     final static int MENU_PANEL_SIZE = 120;
@@ -15,9 +15,15 @@ public class View extends JFrame implements ActionListener {
     private MenuPanel menuPanel;
     private MazePanel mazePanel;
 
+    public MenuPanel getMenuPanel() {
+        return menuPanel;
+    }
 
+    public MazePanel getMazePanel() {
+        return mazePanel;
+    }
 
-    private String currentMazeGeneratorAlgorithm = "A";
+//    private String currentMazeGeneratorAlgorithm = "A";
 
     public View()
     {
@@ -28,7 +34,7 @@ public class View extends JFrame implements ActionListener {
         this.setLayout(new BorderLayout());
 
 
-        this.menuPanel = new MenuPanel(MENU_PANEL_SIZE, MAZE_PANEL_SIZE, this);
+        this.menuPanel = new MenuPanel(MENU_PANEL_SIZE, MAZE_PANEL_SIZE);
         this.add(this.menuPanel, BorderLayout.WEST);
         this.mazePanel = new MazePanel(MAZE_LENGTH, CELL_LENGTH, MENU_PANEL_SIZE, MAZE_PANEL_SIZE);
         this.add(this.mazePanel);
@@ -36,36 +42,38 @@ public class View extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        if (e.getSource() == this.menuPanel.getGenerateMazeButton())
-        {
-            System.out.println("Generating a maze with the " + this.currentMazeGeneratorAlgorithm + " algorithm.");
-//            this.disableMazeGenerationUI(5000);
-        }
-        else if (e.getSource() == this.menuPanel.getMazeGeneratorComboBox())
-        {
-            this.currentMazeGeneratorAlgorithm = (String) this.menuPanel.getMazeGeneratorComboBox().getSelectedItem();
-        }
-    }
 
-    public static void pause(int milliseconds)
-    {
-        try {
-            Thread.sleep(milliseconds);
-        } catch (Exception e) {
-        };
-    }
 
-    public void disableMazeGenerationUI(int milliseconds)
-    {
-        this.menuPanel.getGenerateMazeButton().setEnabled(false);
-        this.menuPanel.getMazeGeneratorComboBox().setEnabled(false);
+//    @Override
+//    public void actionPerformed(ActionEvent e)
+//    {
+//        if (e.getSource() == this.menuPanel.getGenerateMazeButton())
+//        {
+//            System.out.println("Generating a maze with the " + this.currentMazeGeneratorAlgorithm + " algorithm.");
+////            this.disableMazeGenerationUI(5000);
+//        }
+//        else if (e.getSource() == this.menuPanel.getMazeGeneratorComboBox())
+//        {
+//            this.currentMazeGeneratorAlgorithm = (String) this.menuPanel.getMazeGeneratorComboBox().getSelectedItem();
+//        }
+//    }
 
-        pause(milliseconds);
+//    public static void pause(int milliseconds)
+//    {
+//        try {
+//            Thread.sleep(milliseconds);
+//        } catch (Exception e) {
+//        };
+//    }
 
-        this.menuPanel.getGenerateMazeButton().setEnabled(true);
-        this.menuPanel.getMazeGeneratorComboBox().setEnabled(true);
-    }
+//    public void disableMazeGenerationUI(int milliseconds)
+//    {
+//        this.menuPanel.getGenerateMazeButton().setEnabled(false);
+//        this.menuPanel.getMazeGeneratorComboBox().setEnabled(false);
+//
+//        pause(milliseconds);
+//
+//        this.menuPanel.getGenerateMazeButton().setEnabled(true);
+//        this.menuPanel.getMazeGeneratorComboBox().setEnabled(true);
+//    }
 }

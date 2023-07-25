@@ -5,32 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a5dac5d-fa58-42c6-a73e-4f120ff219b8" name="Changes" comment="First Commit. Got Cells showing up correctly.">
-      <change afterPath="$PROJECT_DIR$/src/controller/ClearAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/GenerateAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/PlayPauseAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/SolveAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/StepAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/DefaultState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/GenerateState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/ModelState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/generators/Generator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/solvers/Solver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/GenerateSelectAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/ResetAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/SolverSelectAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ModelState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ModelState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ClearButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ClearButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/DisplayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GenerateMazeButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GenerateMazeButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MazeGeneratorComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MazeGeneratorComboBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MazePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MazeSolverComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MazeSolverComboBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MenuPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/PlayPauseButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PlayPauseButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/ResetButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ResetButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/SolveMazeButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SolveMazeButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/StepButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/StepButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,13 +61,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "fixing__actionlisteners"
   }
-}</component>
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="JavaMazeSolvingSimulations" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

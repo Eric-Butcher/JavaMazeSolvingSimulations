@@ -4,9 +4,9 @@ import javax.swing.*;
 
 public class ClearButton extends JButton {
 
-    public ClearButton(View parent)
+    public ClearButton()
     {
-        this.addActionListener(parent);
+//        this.addActionListener(parent);
         this.setText("Clear Maze");
         this.setFocusable(false);
         this.setVisible(true);

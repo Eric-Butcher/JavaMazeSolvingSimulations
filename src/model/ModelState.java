@@ -1,10 +1,14 @@
 package model;
 
+import model.generators.Generator;
+import model.generators.GeneratorAlgorithms;
+import model.solvers.Solver;
+
 public abstract class ModelState {
 
     protected Model model;
-    protected String generationAlgo;
-    protected String solvingAlgo;
+    protected Class<? extends Generator> selectedGenerationAlgo;
+    protected Class<? extends Solver> selectedSolvingAlgo;
 
     public ModelState(Model model)
     {
@@ -16,14 +20,12 @@ public abstract class ModelState {
 
     }
 
-    public void changeGenerationAlgo(String s){
-        this.generationAlgo = s;
-        System.out.println(s);
+    public void changeSelectedGenerationAlgo(Class<? extends Generator> g){
+        this.selectedGenerationAlgo = g;
     }
 
-    public void changeSolvingAlgo(String s){
-        this.solvingAlgo = s;
-        System.out.println(s);
+    public void changeSelectedSolvingAlgo(Class<? extends Solver> s){
+        this.selectedSolvingAlgo = s;
     }
 
     public abstract void clearMaze();

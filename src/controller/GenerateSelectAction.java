@@ -1,6 +1,8 @@
 package controller;
 
 import model.Model;
+import model.generators.Generator;
+import model.generators.GeneratorAlgorithms;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +17,9 @@ public class GenerateSelectAction implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        String algo = ((JComboBox)e.getSource()).getSelectedItem().toString();
-        this.model.changeGenerationAlgo(algo);
+        String algoString = ((JComboBox)e.getSource()).getSelectedItem().toString();
+        GeneratorAlgorithms algoEnum = GeneratorAlgorithms.valueOf(algoString);
+        Class<Generator> algoClass = (Class<Generator>) algoEnum.getClazz();
+        this.model.changeSelectedGenerationAlgo(algoClass);
     }
 }

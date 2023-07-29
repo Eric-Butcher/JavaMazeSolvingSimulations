@@ -68,5 +68,4 @@ public class Cell {
         this.leftBorder = false;
     }
 
-
 }

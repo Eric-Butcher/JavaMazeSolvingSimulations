@@ -16,13 +16,13 @@ public class MazePanel extends JPanel{
         this.setPreferredSize(new Dimension(mazePanelSize, mazePanelSize));
 
 
-        for (int i = 0; i < mazeLength; i++)
+        for (int y = 0; y < mazeLength; y++)
         {
-            for (int j = 0; j < mazeLength; j++)
+            for (int x = 0; x < mazeLength; x++)
             {
-                Tile tile = new Tile(cellLength, i, j);
-                this.tiles[i][j] = tile;
-                this.add(tiles[i][j]);
+                Tile tile = new Tile(cellLength, x, y);
+                this.tiles[y][x] = tile;
+                this.add(tiles[y][x]);
             }
         }
     }

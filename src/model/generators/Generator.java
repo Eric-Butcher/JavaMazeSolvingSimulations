@@ -1,9 +1,11 @@
 package model.generators;
 
+import utilities.Constants;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import utilities.Constants;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Generator {
 
@@ -19,20 +21,20 @@ public abstract class Generator {
         }
     }
 
-    protected Cell getCell(int xLoc, int yLoc){
+    public Cell getCell(int xLoc, int yLoc){
         if (((xLoc < 0) || (xLoc > 16)) || ((yLoc < 0) || (yLoc > 16))){
             throw new IllegalArgumentException("Gave location(s) outside of maze bounds. ");
         };
         return this.grid[xLoc][yLoc];
     }
 
-    protected Cell getRandomGridCell() {
+    public Cell getRandomGridCell() {
 
         int from = 0;
         int to = 16;
 
-        int x = from - new Random().nextInt(Math.abs(to - from));
-        int y = from - new Random().nextInt(Math.abs(to - from));
+        int x = ThreadLocalRandom.current().nextInt(from, to);
+        int y = ThreadLocalRandom.current().nextInt(from, to);
 
         return this.getCell(x, y);
     }
@@ -44,8 +46,7 @@ public abstract class Generator {
         int toX = to.getxPos();
         int toY = to.getyPos();
 
-        // Probably need to check how JavaSwing is rendering the cells
-        if ((fromY == toY) && (fromX > toY)){
+        if ((fromY == toY) && (fromX > toX)){
             from.removeLeftBorder();
             to.removeRightBorder();
         } else if ((fromY == toY) && (fromX < toX)){
@@ -53,10 +54,10 @@ public abstract class Generator {
             to.removeLeftBorder();
         } else if ((fromX == toX) && (fromY > toY)){
             from.removeTopBorder();
-            to.removeTopBorder();
-        } else if ((fromX == toX) && (fromY < toY)){
-            from.removeTopBorder();
             to.removeBottomBorder();
+        } else if ((fromX == toX) && (fromY < toY)){
+            from.removeBottomBorder();
+            to.removeTopBorder();
         } else {
             throw new IllegalStateException("Cells provided have malformed coordinates.");
         }
@@ -64,13 +65,13 @@ public abstract class Generator {
     }
 
 
-    protected Cell getRandomCellFromList(List<Cell> list) {
+    public static Cell popRandomCellFromList(List<Cell> list) {
         Random rand = new Random();
         int randomIndex = rand.nextInt(list.size());
         return list.remove(randomIndex);
     }
 
-    protected ArrayList<Cell> getInitializedCells(List<Cell> list){
+    public static ArrayList<Cell> getInitializedCells(List<Cell> list){
         ArrayList<Cell> retVal = new ArrayList<>(4);
         for (Cell cell : list){
             if (cell.isInitialized()){
@@ -80,7 +81,7 @@ public abstract class Generator {
         return retVal;
     }
 
-    protected ArrayList<Cell> getUnInitializedCells(List<Cell> list){
+    public static ArrayList<Cell> getUnInitializedCells(List<Cell> list){
         ArrayList<Cell> retVal = new ArrayList<>(4);
         for (Cell cell : list){
             if (!cell.isInitialized()){
@@ -90,7 +91,7 @@ public abstract class Generator {
         return retVal;
     }
 
-    protected ArrayList<Cell> getAdjacentCells(Cell centerCell){
+    public ArrayList<Cell> getAdjacentCells(Cell centerCell){
         int centerX = centerCell.getxPos();
         int centerY = centerCell.getyPos();
 

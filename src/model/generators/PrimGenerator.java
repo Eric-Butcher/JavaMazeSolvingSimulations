@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class PrimGenerator extends Generator{
 
-    private ArrayList<Cell> frontier = new ArrayList<>(Constants.mazeLength * Constants.mazeLength);
+    private final ArrayList<Cell> frontier = new ArrayList<>(Constants.mazeLength * Constants.mazeLength);
 
     private boolean startStepDone = false;
 
@@ -19,29 +19,37 @@ public class PrimGenerator extends Generator{
         startCell.initializeCell();
         ArrayList<Cell> adjacentCells = this.getAdjacentCells(startCell);
         frontier.addAll(adjacentCells);
+        this.startStepDone = true;
     }
     public void iterate(){
         if (!startStepDone){
             startStep();
             return;
-        } else if (frontier.size() == 0){
+        } else if (frontier.isEmpty()){
             return;
         } else {
-            Cell chosen = this.getRandomCellFromList(frontier);
+            Cell chosen = Generator.popRandomCellFromList(frontier);
+
             ArrayList<Cell> adjacentCells = this.getAdjacentCells(chosen);
-            // make function to get list of cells that are/arenot initiailzed
-            ArrayList<Cell> initializedNeighbors = this.getInitializedCells(adjacentCells);
-            Cell initializedNeighobor = this.getRandomCellFromList(initializedNeighbors);
-            this.clearPathBetweenCells(chosen, initializedNeighobor);
+            ArrayList<Cell> initializedNeighbors = Generator.getInitializedCells(adjacentCells);
+
+            Cell initializedNeighbor = Generator.popRandomCellFromList(initializedNeighbors);
+            this.clearPathBetweenCells(chosen, initializedNeighbor);
+
             chosen.initializeCell();
+
+            ArrayList<Cell> uninitializedNeighbors = Generator.getUnInitializedCells(adjacentCells);
+            frontier.addAll(uninitializedNeighbors);
+
             return;
         }
     }
 
     public void finish(){
-        while ((frontier.size() == 0) || (!startStepDone)){
+        while ((!frontier.isEmpty()) || (!startStepDone)){
             this.iterate();
         }
+        return;
     }
 
     /*
@@ -61,6 +69,7 @@ public class PrimGenerator extends Generator{
      *      3. Pick one of these initialized cells at random.
      *      4. Form a path (delete the wall/s ) between the frontier cell and the initialized cell.
      *      5. Set the frontier cell as initialized.
+     *      6. Add the uninitialized adjacent cells to the frontier cell to the frontier list.
      *
      *
      *  When there are no more frontier cells the maze is complete.

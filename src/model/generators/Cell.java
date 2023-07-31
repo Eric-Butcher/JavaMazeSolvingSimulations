@@ -1,5 +1,7 @@
 package model.generators;
 
+import java.util.Objects;
+
 public class Cell {
 
     private final int xPos;
@@ -68,4 +70,15 @@ public class Cell {
         this.leftBorder = false;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cell cell)) return false;
+        return getxPos() == cell.getxPos() && getyPos() == cell.getyPos() && isInitialized() == cell.isInitialized() && isTopBorder() == cell.isTopBorder() && isRightBorder() == cell.isRightBorder() && isBottomBorder() == cell.isBottomBorder() && isLeftBorder() == cell.isLeftBorder() && isTraversed() == cell.isTraversed();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getxPos(), getyPos());
+    }
 }

@@ -1,6 +1,5 @@
 package model;
 
-import model.generators.Generator;
 import model.generators.GeneratorAlgorithms;
 import model.solvers.SolverAlgorithms;
 
@@ -8,7 +7,7 @@ public class DefaultState extends ModelState{
 
     public DefaultState(Model model){
         super(model);
-        this.selectedGenerationAlgo = GeneratorAlgorithms.PRIM.getClazz();
+        this.selectedGenerationAlgo = GeneratorAlgorithms.Prim.getClazz();
         this.selectedSolvingAlgo = SolverAlgorithms.BFS.getClazz();
     }
 

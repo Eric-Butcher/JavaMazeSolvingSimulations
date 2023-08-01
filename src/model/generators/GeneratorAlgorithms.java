@@ -1,7 +1,8 @@
 package model.generators;
 
 public enum GeneratorAlgorithms {
-    PRIM(PrimGenerator.class),
+    Prim(PrimGenerator.class),
+    AldousBroder(AldousBroderGenerator.class),
     DUMMY(DummyGenerator.class);
 
     private final Class<? extends Generator> clazz;

@@ -2,6 +2,8 @@ package model;
 
 import model.generators.Generator;
 
+import java.lang.reflect.InvocationTargetException;
+
 public class GenerateState extends ModelState{
 
     private Generator generatorAlgo;
@@ -11,7 +13,6 @@ public class GenerateState extends ModelState{
     }
 
     public void clearMaze(){
-
     }
 
     public void step(){
@@ -23,7 +24,12 @@ public class GenerateState extends ModelState{
     }
 
     public void generate(){
-
+        try {
+            this.generatorAlgo = this.selectedGenerationAlgo.getDeclaredConstructor().newInstance();
+            System.out.println(this.generatorAlgo);
+        } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void solve(){

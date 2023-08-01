@@ -1,6 +1,6 @@
 package view;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 
 public class Tile extends JPanel {
@@ -23,6 +23,8 @@ public class Tile extends JPanel {
         this.tileLength = tileLength;
         this.xPos = xPos;
         this.yPos = yPos;
+        String text = "" + xPos + yPos;
+        this.add(new JTextField((text)));
         this.setSize(this.tileLength, this.tileLength);
         this.setBounds(this.xPos * this.tileLength, this.yPos * this.tileLength, this.tileLength, this.tileLength);
 //        this.setBackground(Color.BLACK);

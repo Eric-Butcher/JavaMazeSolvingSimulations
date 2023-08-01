@@ -1,5 +1,8 @@
 package model;
 
+import model.generators.Generator;
+import model.solvers.Solver;
+
 public class Model {
 
     private ModelState modelState;
@@ -16,12 +19,12 @@ public class Model {
         this.modelState.resetMaze();
     }
 
-    public void changeGenerationAlgo(String s){
-        this.modelState.changeGenerationAlgo(s);
+    public void changeSelectedGenerationAlgo(Class<Generator> g){
+        this.modelState.changeSelectedGenerationAlgo(g);
     }
 
-    public void changeSolvingAlgo(String s){
-        this.modelState.changeSolvingAlgo(s);
+    public void changeSelectedSolvingAlgo(Class<Solver> s){
+        this.modelState.changeSelectedSolvingAlgo(s);
     }
 
     public void clearMaze(){

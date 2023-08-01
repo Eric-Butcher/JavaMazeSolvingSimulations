@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class MazePanel extends JPanel{
 
-
+    private Tile[][] tiles = new Tile[16][16];
 
     public MazePanel(int mazeLength, int cellLength, int menuLength, int mazePanelSize)
     {
@@ -15,16 +15,19 @@ public class MazePanel extends JPanel{
 //        this.setBounds(menuLength, 0, mazePanelSize, mazePanelSize);
         this.setPreferredSize(new Dimension(mazePanelSize, mazePanelSize));
 
-        Tile[][] tiles = new Tile[16][16];
 
-        for (int i = 0; i < mazeLength; i++)
+        for (int y = 0; y < mazeLength; y++)
         {
-            for (int j = 0; j < mazeLength; j++)
+            for (int x = 0; x < mazeLength; x++)
             {
-                Tile tile = new Tile(cellLength, i, j);
-                tiles[i][j] = tile;
-                this.add(tiles[i][j]);
+                Tile tile = new Tile(cellLength, x, y);
+                this.tiles[y][x] = tile;
+                this.add(tiles[y][x]);
             }
         }
+    }
+
+    public Tile getTile(int xPos, int yPos){
+        return this.tiles[xPos][yPos];
     }
 }

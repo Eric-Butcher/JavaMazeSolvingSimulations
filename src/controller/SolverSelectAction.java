@@ -16,6 +16,6 @@ public class SolverSelectAction implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String algo = ((JComboBox)e.getSource()).getSelectedItem().toString();
-        this.model.changeSolvingAlgo(algo);
+//        this.model.changeSelectedSolvingAlgo(algo);
     }
 }

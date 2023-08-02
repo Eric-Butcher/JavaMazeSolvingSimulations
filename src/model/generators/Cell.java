@@ -11,7 +11,7 @@ public class Cell {
     private boolean rightBorder = true;
     private boolean bottomBorder = true;
     private boolean leftBorder = true;
-    private boolean traversed = false;
+    private boolean isTraversed = false;
 
     public int getxPos() {
         return xPos;
@@ -42,7 +42,7 @@ public class Cell {
     }
 
     public boolean isTraversed() {
-        return traversed;
+        return isTraversed;
     }
 
     public Cell(int xPos, int yPos){

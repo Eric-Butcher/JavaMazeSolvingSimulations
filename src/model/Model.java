@@ -1,5 +1,6 @@
 package model;
 
+import controller.ViewUpdatePacket;
 import model.generators.Generator;
 import model.solvers.Solver;
 
@@ -13,6 +14,10 @@ public class Model {
 
     public void setState(ModelState modelState){
         this.modelState = modelState;
+    }
+
+    public ViewUpdatePacket updateView(){
+        return this.modelState.updateView();
     }
 
     public void resetMaze() {

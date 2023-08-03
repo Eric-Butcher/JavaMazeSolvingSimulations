@@ -57,6 +57,7 @@ public class View extends JFrame {
         tile.setInitialized(update.initialized());
         tile.setTraversed(update.traversed());
         tile.setHighlighted(update.highlighted());
+        tile.setCurrent(update.current());
         tile.repaint();
     }
 

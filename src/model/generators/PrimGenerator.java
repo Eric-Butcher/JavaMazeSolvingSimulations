@@ -1,8 +1,11 @@
 package model.generators;
 
+import controller.TileUpdate;
+import controller.ViewUpdatePacket;
 import utilities.Constants;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class PrimGenerator extends Generator{
 
@@ -14,21 +17,44 @@ public class PrimGenerator extends Generator{
         super();
     };
 
+    public ArrayList<Cell> getFrontier() {
+        return frontier;
+    }
+
+    public boolean isStartStepDone() {
+        return startStepDone;
+    }
+
+    public void setStartStepDone(boolean startStepDone) {
+        this.startStepDone = startStepDone;
+    }
+
+    @Override
+    public ViewUpdatePacket makeViewUpdatePacket() {
+        ViewUpdatePacket updatePacket = new ViewUpdatePacket(new LinkedList<>());
+
+        for (Cell frontierCell : this.getFrontier()){
+            TileUpdate tileUpdate = makeTileUpdateFromCell(frontierCell, false, true);
+            updatePacket.addTileUpdate(tileUpdate);
+        }
+        return updatePacket;
+    }
+
     private void startStep(){
         Cell startCell = this.getRandomGridCell();
         startCell.initializeCell();
         ArrayList<Cell> adjacentCells = this.getAdjacentCells(startCell);
-        frontier.addAll(adjacentCells);
-        this.startStepDone = true;
+        this.getFrontier().addAll(adjacentCells);
+        this.setStartStepDone(true);
     }
     public void iterate(){
-        if (!startStepDone){
+        if (!this.isStartStepDone()){
             startStep();
             return;
-        } else if (frontier.isEmpty()){
+        } else if (this.getFrontier().isEmpty()){
             return;
         } else {
-            Cell chosen = Generator.popRandomCellFromList(frontier);
+            Cell chosen = Generator.popRandomCellFromList(this.getFrontier());
 
             ArrayList<Cell> adjacentCells = this.getAdjacentCells(chosen);
             ArrayList<Cell> initializedNeighbors = Generator.getInitializedCells(adjacentCells);
@@ -39,14 +65,14 @@ public class PrimGenerator extends Generator{
             chosen.initializeCell();
 
             ArrayList<Cell> uninitializedNeighbors = Generator.getUnInitializedCells(adjacentCells);
-            frontier.addAll(uninitializedNeighbors);
+            this.getFrontier().addAll(uninitializedNeighbors);
 
             return;
         }
     }
 
     public void finish(){
-        while ((!frontier.isEmpty()) || (!startStepDone)){
+        while ((!this.getFrontier().isEmpty()) || (!this.isStartStepDone())){
             this.iterate();
         }
         return;

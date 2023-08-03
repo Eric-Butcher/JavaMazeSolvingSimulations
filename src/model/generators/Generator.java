@@ -1,5 +1,7 @@
 package model.generators;
 
+import controller.TileUpdate;
+import controller.ViewUpdatePacket;
 import utilities.Constants;
 
 import java.util.ArrayList;
@@ -122,7 +124,12 @@ public abstract class Generator {
         return adjacentCells;
     }
 
+    public static TileUpdate makeTileUpdateFromCell(Cell cell, boolean isCurrent, boolean toHighlight){
+        TileUpdate retVal = new TileUpdate(cell.getxPos(), cell.getyPos(), cell.isTopBorder(), cell.isRightBorder(), cell.isBottomBorder(), cell.isLeftBorder(), false, cell.isInitialized(), false, isCurrent, toHighlight);
+        return retVal;
+    }
 
+    public abstract ViewUpdatePacket makeViewUpdatePacket();
     public abstract void iterate();
 
     public abstract void finish();

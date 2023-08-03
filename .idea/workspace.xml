@@ -5,12 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a5dac5d-fa58-42c6-a73e-4f120ff219b8" name="Changes" comment="First Commit. Got Cells showing up correctly.">
-      <change afterPath="$PROJECT_DIR$/src/controller/TileUpdate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/ViewUpdatePacket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/ViewTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/generators/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/generators/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MazePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ClearAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ClearAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GenerateAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GenerateAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/GenerateSelectAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/GenerateSelectAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/PlayPauseAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayPauseAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ResetAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ResetAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SolveAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SolveAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SolverSelectAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SolverSelectAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/StepAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/StepAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/TileUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/TileUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DefaultState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DefaultState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/GenerateState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GenerateState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ModelState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ModelState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/generators/AldousBroderGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/generators/AldousBroderGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/generators/DummyGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/generators/DummyGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/generators/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/generators/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/generators/PrimGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/generators/PrimGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/GeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/GeneratorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tests/ViewTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/ViewTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utilities/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/View.java" afterDir="false" />
     </list>
@@ -59,25 +75,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "create__visual__animations",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;create__visual__animations&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.ViewTest">
-    <configuration name="ViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+}</component>
+  <component name="RunManager" selected="JUnit.GeneratorTest.testMakeTileUpdateFromCell">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="JavaMazeSolvingSimulations" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AldousBroderGeneratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaMazeSolvingSimulations" />
       <extension name="coverage">
         <pattern>
@@ -86,13 +109,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ViewTest" />
+      <option name="MAIN_CLASS_NAME" value="tests.AldousBroderGeneratorTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ViewTest.testDefaultViewState" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GeneratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaMazeSolvingSimulations" />
       <extension name="coverage">
         <pattern>
@@ -101,14 +124,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ViewTest" />
-      <option name="METHOD_NAME" value="testDefaultViewState" />
+      <option name="MAIN_CLASS_NAME" value="tests.GeneratorTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeneratorTest.testMakeTileUpdateFromCell" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaMazeSolvingSimulations" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.GeneratorTest" />
+      <option name="METHOD_NAME" value="testMakeTileUpdateFromCell" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ViewTest.testSpeed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PrimGeneratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaMazeSolvingSimulations" />
       <extension name="coverage">
         <pattern>
@@ -117,52 +155,19 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ViewTest" />
-      <option name="METHOD_NAME" value="testSpeed" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ViewTest.testUpdateView_multipleLines" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaMazeSolvingSimulations" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ViewTest" />
-      <option name="METHOD_NAME" value="testUpdateView_multipleLines" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ViewTest.testUpdateView_singleChange" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaMazeSolvingSimulations" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ViewTest" />
-      <option name="METHOD_NAME" value="testUpdateView_singleChange" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="tests.PrimGeneratorTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ViewTest" />
-        <item itemvalue="JUnit.ViewTest.testUpdateView_multipleLines" />
-        <item itemvalue="JUnit.ViewTest.testSpeed" />
-        <item itemvalue="JUnit.ViewTest.testUpdateView_singleChange" />
-        <item itemvalue="JUnit.ViewTest.testDefaultViewState" />
+        <item itemvalue="JUnit.GeneratorTest.testMakeTileUpdateFromCell" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.PrimGeneratorTest" />
+        <item itemvalue="JUnit.GeneratorTest" />
+        <item itemvalue="JUnit.AldousBroderGeneratorTest" />
       </list>
     </recent_temporary>
   </component>

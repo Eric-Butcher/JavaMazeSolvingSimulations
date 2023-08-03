@@ -1,7 +1,7 @@
 package model;
 
+import controller.ViewUpdatePacket;
 import model.generators.Generator;
-import model.generators.GeneratorAlgorithms;
 import model.solvers.Solver;
 
 public abstract class ModelState {
@@ -10,23 +10,24 @@ public abstract class ModelState {
     protected Class<? extends Generator> selectedGenerationAlgo;
     protected Class<? extends Solver> selectedSolvingAlgo;
 
-    public ModelState(Model model)
-    {
+    public ModelState(Model model) {
         this.model = model;
     }
 
-    public void resetMaze()
-    {
+
+    public void resetMaze() {
 
     }
 
-    public void changeSelectedGenerationAlgo(Class<? extends Generator> g){
+    public void changeSelectedGenerationAlgo(Class<? extends Generator> g) {
         this.selectedGenerationAlgo = g;
     }
 
-    public void changeSelectedSolvingAlgo(Class<? extends Solver> s){
+    public void changeSelectedSolvingAlgo(Class<? extends Solver> s) {
         this.selectedSolvingAlgo = s;
     }
+
+    public abstract ViewUpdatePacket updateView();
 
     public abstract void clearMaze();
 

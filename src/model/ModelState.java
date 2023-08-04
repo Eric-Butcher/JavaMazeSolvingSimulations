@@ -15,7 +15,7 @@ public abstract class ModelState {
     }
 
 
-    public void resetMaze() {
+    public void regenerateMaze() {
 
     }
 

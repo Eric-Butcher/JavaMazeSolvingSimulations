@@ -8,39 +8,43 @@ public class Model {
 
     private ModelState modelState;
 
-    public Model(){
-        this.modelState = new DefaultState(this);
+    public Model() {
+        this.modelState = new GenerateState(this);
     }
 
-    public void setState(ModelState modelState){
+    public void setState(ModelState modelState) {
         this.modelState = modelState;
     }
 
-    public ViewUpdatePacket updateView(){
+    public ViewUpdatePacket updateView() {
         return this.modelState.updateView();
     }
 
-    public void resetMaze() {
-        this.modelState.resetMaze();
+    public ModelState getModelState() {
+        return modelState;
     }
 
-    public void changeSelectedGenerationAlgo(Class<Generator> g){
+    public void regenerateMaze() {
+        this.modelState.regenerateMaze();
+    }
+
+    public void changeSelectedGenerationAlgo(Class<Generator> g) {
         this.modelState.changeSelectedGenerationAlgo(g);
     }
 
-    public void changeSelectedSolvingAlgo(Class<Solver> s){
+    public void changeSelectedSolvingAlgo(Class<Solver> s) {
         this.modelState.changeSelectedSolvingAlgo(s);
     }
 
-    public void clearMaze(){
+    public void clearMaze() {
         this.modelState.clearMaze();
     }
 
-    public void step(){
+    public void step() {
         this.modelState.step();
     }
 
-    public void playPause(){
+    public void playPause() {
         this.modelState.playPause();
     }
 
@@ -48,7 +52,7 @@ public class Model {
         this.modelState.generate();
     }
 
-    public void solve(){
+    public void solve() {
         this.modelState.solve();
     }
 

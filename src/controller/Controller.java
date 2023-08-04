@@ -15,11 +15,18 @@ public class Controller {
 
         this.view.getMenuPanel().getGenerateMazeButton().addActionListener(new GenerateAction(this.model, this.view));
         this.view.getMenuPanel().getMazeGeneratorComboBox().addActionListener(new GenerateSelectAction(this.model, this.view));
-        this.view.getMenuPanel().getClearButton().addActionListener(new ClearAction(this.model, this.view));
-        this.view.getMenuPanel().getResetButton().addActionListener(new ResetAction(this.model, this.view));
-        this.view.getMenuPanel().getPlayPauseButton().addActionListener(new PlayPauseAction(this.model, this.view));
-        this.view.getMenuPanel().getMazeSolverComboBox().addActionListener(new SolverSelectAction(this.model, this.view));
+
         this.view.getMenuPanel().getSolveMazeButton().addActionListener(new SolveAction(this.model, this.view));
+        this.view.getMenuPanel().getMazeSolverComboBox().addActionListener(new SolverSelectAction(this.model, this.view));
+
+        this.view.getMenuPanel().getPlayPauseButton().addActionListener(new PlayPauseAction(this.model, this.view));
+        this.view.getMenuPanel().getStepButton().addActionListener(new StepAction(this.model, this.view));
+
+        this.view.getMenuPanel().getRegenerateButton().addActionListener(new RegenerateAction(this.model, this.view));
+        this.view.getMenuPanel().getClearButton().addActionListener(new ClearAction(this.model, this.view));
+
+
+
 
     }
 

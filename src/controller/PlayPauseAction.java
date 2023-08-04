@@ -17,6 +17,9 @@ public class PlayPauseAction implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println("PlayPause pressed.");
         this.model.playPause();
+        // TODO
+        this.view.updateView(this.model.updateView());
     }
 }

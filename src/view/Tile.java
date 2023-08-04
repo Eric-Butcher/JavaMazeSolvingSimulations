@@ -44,7 +44,7 @@ public class Tile extends JPanel {
     }
 
     public void setHighlighted(boolean highlighted) {
-        isHighlighted = highlighted;
+        this.isHighlighted = highlighted;
     }
 
     public void setTileBorders(boolean hasTopBorder, boolean hasRightBorder, boolean hasBottomBorder, boolean hasLeftBorder) {
@@ -116,21 +116,23 @@ public class Tile extends JPanel {
         // in case tile gets bumped out of those states
         // This way we don't have to return an entire maze worth of info each time
         if (this.isCurrent()){
-            graphics.setColor(Color.WHITE);
+            graphics.setColor(Color.BLUE);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
             this.setCurrent(false);
-        } else if (this.isHighlighted()){
-            graphics.setColor(Color.RED);
-            graphics.fillRect(0, 0, this.tileLength, this.tileLength);
-            this.setHighlighted(false);
+
         } else if (this.isTraversed()){
             graphics.setColor(Color.YELLOW);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
         } else if (this.isInitialized()){
-            graphics.setColor(Color.WHITE);
-            graphics.fillRect(0, 0, this.tileLength, this.tileLength);
-        } else {
             graphics.setColor(Color.LIGHT_GRAY);
+            graphics.fillRect(0, 0, this.tileLength, this.tileLength);
+        } else if (this.isHighlighted()){
+            graphics.setColor(Color.RED);
+            graphics.fillRect(0, 0, this.tileLength, this.tileLength);
+            this.setHighlighted(false);
+
+        } else {
+            graphics.setColor(Color.DARK_GRAY);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
         }
 

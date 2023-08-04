@@ -48,6 +48,7 @@ public class View extends JFrame {
             updateTile(subPacket);
         }
         this.getMazePanel().revalidate();
+        this.getMazePanel().repaint();
     }
 
     public void updateTile(TileUpdate update){

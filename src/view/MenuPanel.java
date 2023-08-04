@@ -10,7 +10,7 @@ public class MenuPanel extends JPanel {
     private PlayPauseButton playPauseButton;
     private StepButton stepButton;
     private ClearButton clearButton;
-    private ResetButton resetButton;
+    private RegenerateButton regenerateButton;
     private SolveMazeButton solveMazeButton;
     private MazeSolverComboBox mazeSolverComboBox;
 
@@ -30,8 +30,9 @@ public class MenuPanel extends JPanel {
         this.mazeSolverComboBox = new MazeSolverComboBox();
         this.playPauseButton = new PlayPauseButton();
         this.stepButton = new StepButton();
+        this.regenerateButton = new RegenerateButton();
         this.clearButton = new ClearButton();
-        this.resetButton = new ResetButton();
+
 
         // Descriptive variables
         int firstColumn = 0, secondColumn = 1;
@@ -76,13 +77,13 @@ public class MenuPanel extends JPanel {
         gridBagConstraints.gridx = firstColumn;
         gridBagConstraints.gridy = sixthRow;
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        this.add(this.clearButton, gridBagConstraints);
+        this.add(this.regenerateButton, gridBagConstraints);
+
 
         gridBagConstraints.gridx = firstColumn;
         gridBagConstraints.gridy = seventhRow;
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        this.add(this.resetButton, gridBagConstraints);
-
+        this.add(this.clearButton, gridBagConstraints);
 
         this.setVisible(true);
 
@@ -107,8 +108,8 @@ public class MenuPanel extends JPanel {
         return clearButton;
     }
 
-    public ResetButton getResetButton() {
-        return resetButton;
+    public RegenerateButton getRegenerateButton() {
+        return regenerateButton;
     }
 
     public SolveMazeButton getSolveMazeButton() {

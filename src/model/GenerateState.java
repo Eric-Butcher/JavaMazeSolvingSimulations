@@ -2,6 +2,9 @@ package model;
 
 import controller.ViewUpdatePacket;
 import model.generators.Generator;
+import model.generators.GeneratorAlgorithms;
+import model.solvers.Solver;
+import model.solvers.SolverAlgorithms;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -19,6 +22,14 @@ public class GenerateState extends ModelState{
 
     public GenerateState(Model model){
         super(model);
+        this.selectedGenerationAlgo = GeneratorAlgorithms.Prim.getClazz();
+        this.selectedSolvingAlgo = SolverAlgorithms.BFS.getClazz();
+    }
+
+    public GenerateState(Model model, Class<? extends Generator> selectedGenerationAlgo, Class<? extends Solver> selectedSolvingAlgo){
+        super(model);
+        this.selectedGenerationAlgo = selectedGenerationAlgo;
+        this.selectedSolvingAlgo = selectedSolvingAlgo;
     }
 
     public ViewUpdatePacket updateView(){
@@ -26,15 +37,17 @@ public class GenerateState extends ModelState{
     }
 
     public void clearMaze(){
+        return;
     }
 
     public void step(){
-        System.out.println("stepped");
         this.getGeneratorAlgo().iterate();
     }
 
     public void playPause(){
-
+        //TODO
+        this.getGeneratorAlgo().finish();
+        return;
     }
 
     public void generate(){
@@ -46,6 +59,7 @@ public class GenerateState extends ModelState{
     }
 
     public void solve(){
-
+        // TODO
+        return;
     }
 }

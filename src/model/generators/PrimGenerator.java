@@ -74,6 +74,7 @@ public class PrimGenerator extends Generator{
     public void finish(){
         while ((!this.getFrontier().isEmpty()) || (!this.isStartStepDone())){
             this.iterate();
+            System.out.println("Printing");
         }
         return;
     }

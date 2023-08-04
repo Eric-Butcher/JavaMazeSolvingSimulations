@@ -1,5 +1,7 @@
 package model.generators;
 
+import controller.ViewUpdatePacket;
+
 public class DummyGenerator extends Generator{
 
     public void iterate(){
@@ -8,5 +10,10 @@ public class DummyGenerator extends Generator{
 
     public void finish(){
         return;
+    }
+
+    @Override
+    public ViewUpdatePacket makeViewUpdatePacket() {
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package tests;
 
+import controller.TileUpdate;
 import model.generators.Cell;
 import model.generators.Generator;
 import model.generators.PrimGenerator;
@@ -272,6 +273,42 @@ public class GeneratorTest {
         assertTrue(j.contains(primGenerator.getCell(middleCord, otherMiddleCord-1)));
         assertTrue(j.contains(primGenerator.getCell(middleCord+1, otherMiddleCord)));
         assertTrue(j.contains(primGenerator.getCell(middleCord, otherMiddleCord+1)));
+    }
+
+    @Test
+    public void testMakeTileUpdateFromCell() {
+        // Create a test Cell object
+        Cell cell = new Cell(1, 2);
+        cell.removeRightBorder();
+        cell.removeLeftBorder();
+        cell.initializeCell();
+
+        // Test when isCurrent and toHighlight are both false
+        boolean isCurrent = false;
+        boolean toHighlight = false;
+        TileUpdate tileUpdate1 = Generator.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
+        TileUpdate expected1 = new TileUpdate(1, 2, true, false, true,
+                false, false, true, false,
+                false, false);
+        assertEquals(expected1, tileUpdate1);
+
+        // Test when isCurrent is true and toHighlight is false
+        isCurrent = true;
+        toHighlight = false;
+        TileUpdate tileUpdate2 = Generator.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
+        TileUpdate expected2 = new TileUpdate(1, 2, true, false, true,
+                false, false, true, false,
+                false, true);
+        assertEquals(expected2, tileUpdate2);
+
+        // Test when isCurrent is false and toHighlight is true
+        isCurrent = false;
+        toHighlight = true;
+        TileUpdate tileUpdate3 = Generator.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
+        TileUpdate expected3 = new TileUpdate(1, 2, true, false, true,
+                false, false, true, false,
+                true, false);
+        assertEquals(expected3, tileUpdate3);
     }
 
 

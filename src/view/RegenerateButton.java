@@ -2,11 +2,11 @@ package view;
 
 import javax.swing.*;
 
-public class ResetButton extends JButton {
+public class RegenerateButton extends JButton {
 
-    public ResetButton()
+    public RegenerateButton()
     {
-        this.setText("Reset All");
+        this.setText("Regenerate");
         this.setFocusable(false);
         this.setVisible(true);
         this.setEnabled(true);

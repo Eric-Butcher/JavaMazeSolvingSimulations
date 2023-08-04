@@ -7,7 +7,7 @@ public class ClearButton extends JButton {
     public ClearButton()
     {
 //        this.addActionListener(parent);
-        this.setText("Clear Maze");
+        this.setText("Clear");
         this.setFocusable(false);
         this.setVisible(true);
         this.setEnabled(true);

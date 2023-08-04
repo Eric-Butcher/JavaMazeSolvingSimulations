@@ -28,6 +28,6 @@ public class MazePanel extends JPanel{
     }
 
     public Tile getTile(int xPos, int yPos){
-        return this.tiles[xPos][yPos];
+        return this.tiles[yPos][xPos];
     }
 }

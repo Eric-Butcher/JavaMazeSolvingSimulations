@@ -1,8 +1,11 @@
 package model.generators;
 
+import controller.TileUpdate;
+import controller.ViewUpdatePacket;
 import utilities.Constants;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class PrimGenerator extends Generator{
 
@@ -14,39 +17,78 @@ public class PrimGenerator extends Generator{
         super();
     };
 
+    public ArrayList<Cell> getFrontier() {
+        return frontier;
+    }
+
+    public boolean isStartStepDone() {
+        return startStepDone;
+    }
+
+    public void setStartStepDone(boolean startStepDone) {
+        this.startStepDone = startStepDone;
+    }
+
+    @Override
+    public ViewUpdatePacket makeViewUpdatePacket() {
+        ViewUpdatePacket updatePacket = new ViewUpdatePacket(new LinkedList<>());
+        boolean inFrontier;
+
+        for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++){
+            for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++){
+
+                Cell cell = this.getCell(x, y);
+                inFrontier = frontier.contains(cell);
+
+                TileUpdate tileUpdate = makeTileUpdateFromCell(cell, false, inFrontier);
+                updatePacket.addTileUpdate(tileUpdate);
+            }
+        }
+        return updatePacket;
+    }
+
     private void startStep(){
         Cell startCell = this.getRandomGridCell();
         startCell.initializeCell();
         ArrayList<Cell> adjacentCells = this.getAdjacentCells(startCell);
-        frontier.addAll(adjacentCells);
-        this.startStepDone = true;
+        this.getFrontier().addAll(adjacentCells);
+        this.setStartStepDone(true);
     }
     public void iterate(){
-        if (!startStepDone){
+        if (!this.isStartStepDone()){
             startStep();
             return;
-        } else if (frontier.isEmpty()){
+        } else if (this.getFrontier().isEmpty()){
             return;
         } else {
-            Cell chosen = Generator.popRandomCellFromList(frontier);
+//            1. Pop a cell from the frontier list randomly.
+            Cell chosen = Generator.popRandomCellFromList(this.getFrontier());
 
+//            2. Generate a list of all adjacent cells that are initialized.
             ArrayList<Cell> adjacentCells = this.getAdjacentCells(chosen);
             ArrayList<Cell> initializedNeighbors = Generator.getInitializedCells(adjacentCells);
 
+//          3. Pick one of these initialized cells at random.
             Cell initializedNeighbor = Generator.popRandomCellFromList(initializedNeighbors);
+
+//          4. Form a path (delete the wall/s ) between the frontier cell and the initialized cell.
             this.clearPathBetweenCells(chosen, initializedNeighbor);
 
+//          5. Set the frontier cell as initialized.
             chosen.initializeCell();
 
             ArrayList<Cell> uninitializedNeighbors = Generator.getUnInitializedCells(adjacentCells);
-            frontier.addAll(uninitializedNeighbors);
-
+            for (Cell uninitialized : uninitializedNeighbors){
+                if (!this.getFrontier().contains(uninitialized)){
+                    this.getFrontier().add(uninitialized);
+                }
+            }
             return;
         }
     }
 
     public void finish(){
-        while ((!frontier.isEmpty()) || (!startStepDone)){
+        while ((!this.getFrontier().isEmpty()) || (!this.isStartStepDone())){
             this.iterate();
         }
         return;
@@ -69,7 +111,7 @@ public class PrimGenerator extends Generator{
      *      3. Pick one of these initialized cells at random.
      *      4. Form a path (delete the wall/s ) between the frontier cell and the initialized cell.
      *      5. Set the frontier cell as initialized.
-     *      6. Add the uninitialized adjacent cells to the frontier cell to the frontier list.
+     *      6. Add cells to the frontier list that are adjacent to the chosen frontier cell and not yet in frontier.
      *
      *
      *  When there are no more frontier cells the maze is complete.

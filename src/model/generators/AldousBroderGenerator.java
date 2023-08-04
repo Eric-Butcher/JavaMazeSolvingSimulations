@@ -1,8 +1,11 @@
 package model.generators;
 
+import controller.TileUpdate;
+import controller.ViewUpdatePacket;
 import utilities.Constants;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class AldousBroderGenerator extends Generator{
 
@@ -15,12 +18,40 @@ public class AldousBroderGenerator extends Generator{
         super();
     }
 
+    public Cell getCurrentCell() {
+        return currentCell;
+    }
+
+    public void setCurrentCell(Cell currentCell) {
+        this.currentCell = currentCell;
+    }
+
+    @Override
+    public ViewUpdatePacket makeViewUpdatePacket() {
+        ViewUpdatePacket updatePacket = new ViewUpdatePacket(new LinkedList<>());
+
+        for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++){
+            for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++){
+
+                Cell cell = this.getCell(x, y);
+                TileUpdate tileUpdate = makeTileUpdateFromCell(cell, false, false);
+                updatePacket.addTileUpdate(tileUpdate);
+            }
+        }
+
+        // Add the current cell at the end, will override its earlier addition
+        TileUpdate tileUpdate = makeTileUpdateFromCell(this.getCurrentCell(), true, false);
+        updatePacket.addTileUpdate(tileUpdate);
+        return updatePacket;
+    }
+
     private void startStep(){
         currentCell = this.getRandomGridCell();
         currentCell.initializeCell();
         cellsInitialized++;
     }
 
+    @Override
     public void iterate(){
         if (this.cellsInitialized >= (maxInitialized)){
             return;
@@ -42,6 +73,7 @@ public class AldousBroderGenerator extends Generator{
         }
     }
 
+    @Override
     public void finish(){
         while (this.cellsInitialized < this.maxInitialized){
             this.iterate();

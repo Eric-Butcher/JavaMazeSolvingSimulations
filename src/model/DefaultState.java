@@ -1,7 +1,9 @@
 package model;
 
+import controller.ViewUpdatePacket;
 import model.generators.GeneratorAlgorithms;
 import model.solvers.SolverAlgorithms;
+import utilities.Constants;
 
 public class DefaultState extends ModelState{
 
@@ -9,6 +11,10 @@ public class DefaultState extends ModelState{
         super(model);
         this.selectedGenerationAlgo = GeneratorAlgorithms.Prim.getClazz();
         this.selectedSolvingAlgo = SolverAlgorithms.BFS.getClazz();
+    }
+
+    public ViewUpdatePacket updateView(){
+        return Constants.emptyViewUpdatePacket;
     }
 
     public void clearMaze(){

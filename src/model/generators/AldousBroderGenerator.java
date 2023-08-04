@@ -29,6 +29,17 @@ public class AldousBroderGenerator extends Generator{
     @Override
     public ViewUpdatePacket makeViewUpdatePacket() {
         ViewUpdatePacket updatePacket = new ViewUpdatePacket(new LinkedList<>());
+
+        for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++){
+            for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++){
+
+                Cell cell = this.getCell(x, y);
+                TileUpdate tileUpdate = makeTileUpdateFromCell(cell, false, false);
+                updatePacket.addTileUpdate(tileUpdate);
+            }
+        }
+
+        // Add the current cell at the end, will override its earlier addition
         TileUpdate tileUpdate = makeTileUpdateFromCell(this.getCurrentCell(), true, false);
         updatePacket.addTileUpdate(tileUpdate);
         return updatePacket;

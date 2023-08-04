@@ -298,7 +298,7 @@ public class GeneratorTest {
         TileUpdate tileUpdate2 = Generator.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
         TileUpdate expected2 = new TileUpdate(1, 2, true, false, true,
                 false, false, true, false,
-                true, false);
+                false, true);
         assertEquals(expected2, tileUpdate2);
 
         // Test when isCurrent is false and toHighlight is true
@@ -307,7 +307,7 @@ public class GeneratorTest {
         TileUpdate tileUpdate3 = Generator.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
         TileUpdate expected3 = new TileUpdate(1, 2, true, false, true,
                 false, false, true, false,
-                false, true);
+                true, false);
         assertEquals(expected3, tileUpdate3);
     }
 

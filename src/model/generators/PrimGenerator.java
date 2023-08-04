@@ -32,10 +32,17 @@ public class PrimGenerator extends Generator{
     @Override
     public ViewUpdatePacket makeViewUpdatePacket() {
         ViewUpdatePacket updatePacket = new ViewUpdatePacket(new LinkedList<>());
+        boolean inFrontier;
 
-        for (Cell frontierCell : this.getFrontier()){
-            TileUpdate tileUpdate = makeTileUpdateFromCell(frontierCell, false, true);
-            updatePacket.addTileUpdate(tileUpdate);
+        for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++){
+            for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++){
+
+                Cell cell = this.getCell(x, y);
+                inFrontier = frontier.contains(cell);
+
+                TileUpdate tileUpdate = makeTileUpdateFromCell(cell, false, inFrontier);
+                updatePacket.addTileUpdate(tileUpdate);
+            }
         }
         return updatePacket;
     }
@@ -54,19 +61,28 @@ public class PrimGenerator extends Generator{
         } else if (this.getFrontier().isEmpty()){
             return;
         } else {
+//            1. Pop a cell from the frontier list randomly.
             Cell chosen = Generator.popRandomCellFromList(this.getFrontier());
 
+//            2. Generate a list of all adjacent cells that are initialized.
             ArrayList<Cell> adjacentCells = this.getAdjacentCells(chosen);
             ArrayList<Cell> initializedNeighbors = Generator.getInitializedCells(adjacentCells);
 
+//          3. Pick one of these initialized cells at random.
             Cell initializedNeighbor = Generator.popRandomCellFromList(initializedNeighbors);
+
+//          4. Form a path (delete the wall/s ) between the frontier cell and the initialized cell.
             this.clearPathBetweenCells(chosen, initializedNeighbor);
 
+//          5. Set the frontier cell as initialized.
             chosen.initializeCell();
 
             ArrayList<Cell> uninitializedNeighbors = Generator.getUnInitializedCells(adjacentCells);
-            this.getFrontier().addAll(uninitializedNeighbors);
-
+            for (Cell uninitialized : uninitializedNeighbors){
+                if (!this.getFrontier().contains(uninitialized)){
+                    this.getFrontier().add(uninitialized);
+                }
+            }
             return;
         }
     }
@@ -74,7 +90,6 @@ public class PrimGenerator extends Generator{
     public void finish(){
         while ((!this.getFrontier().isEmpty()) || (!this.isStartStepDone())){
             this.iterate();
-            System.out.println("Printing");
         }
         return;
     }
@@ -96,7 +111,7 @@ public class PrimGenerator extends Generator{
      *      3. Pick one of these initialized cells at random.
      *      4. Form a path (delete the wall/s ) between the frontier cell and the initialized cell.
      *      5. Set the frontier cell as initialized.
-     *      6. Add the uninitialized adjacent cells to the frontier cell to the frontier list.
+     *      6. Add cells to the frontier list that are adjacent to the chosen frontier cell and not yet in frontier.
      *
      *
      *  When there are no more frontier cells the maze is complete.

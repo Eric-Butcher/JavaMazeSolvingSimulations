@@ -2,6 +2,7 @@ package model.generators;
 
 import controller.TileUpdate;
 import controller.ViewUpdatePacket;
+import model.Cell;
 import utilities.Constants;
 
 import java.util.ArrayList;

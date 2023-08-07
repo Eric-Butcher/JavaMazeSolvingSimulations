@@ -1,7 +1,7 @@
 package tests;
 
 import model.generators.AldousBroderGenerator;
-import model.generators.Cell;
+import model.Cell;
 import org.junit.jupiter.api.Test;
 import utilities.Constants;
 

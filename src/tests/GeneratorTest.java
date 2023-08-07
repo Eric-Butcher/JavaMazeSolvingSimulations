@@ -1,7 +1,7 @@
 package tests;
 
 import controller.TileUpdate;
-import model.generators.Cell;
+import model.Cell;
 import model.generators.Generator;
 import model.generators.PrimGenerator;
 import org.junit.jupiter.api.Test;

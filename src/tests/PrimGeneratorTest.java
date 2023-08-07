@@ -1,6 +1,6 @@
 package tests;
 
-import model.generators.Cell;
+import model.Cell;
 import model.generators.PrimGenerator;
 import org.junit.jupiter.api.Test;
 import utilities.Constants;

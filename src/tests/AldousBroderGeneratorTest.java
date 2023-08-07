@@ -25,6 +25,7 @@ public class AldousBroderGeneratorTest {
     public void testAllCellsInitializedAtEnd() {
         AldousBroderGenerator aldousBroderGenerator = new AldousBroderGenerator();
         aldousBroderGenerator.finish();
+        assertTrue(aldousBroderGenerator.getDoneGenerating());
 
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {
@@ -39,6 +40,7 @@ public class AldousBroderGeneratorTest {
     public void testNoCellsBlockedAtEnd() {
         AldousBroderGenerator aldousBroderGenerator = new AldousBroderGenerator();
         aldousBroderGenerator.finish();
+        assertTrue(aldousBroderGenerator.getDoneGenerating());
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {
             for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++) {
@@ -57,6 +59,8 @@ public class AldousBroderGeneratorTest {
 
         AldousBroderGenerator aldousBroderGenerator = new AldousBroderGenerator();
         aldousBroderGenerator.finish();
+        assertTrue(aldousBroderGenerator.getDoneGenerating());
+
         Set<Cell> visited = new HashSet<>();
         Queue<Cell> queue = new LinkedList<>();
         Cell start = aldousBroderGenerator.getCell(Constants.minCellIndex, Constants.minCellIndex);

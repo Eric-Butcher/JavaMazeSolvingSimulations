@@ -18,5 +18,6 @@ public class GenerateAction implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         this.model.generate();
+        this.view.updateView(this.model.updateView());
     }
 }

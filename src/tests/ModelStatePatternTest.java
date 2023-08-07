@@ -1,8 +1,8 @@
 package tests;
 
-import model.GenerateState;
+import model.states.GenerateState;
 import model.Model;
-import model.SolveState;
+import model.states.SolveState;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -59,10 +59,20 @@ public class ModelStatePatternTest {
 
     @Test
     public void ModelState_GenerateState_Solve(){
+
+        // Maze not done
         Model model = new Model();
         model.setState(new GenerateState(model));
 
         assertTrue(model.getModelState() instanceof GenerateState);
+
+        model.solve();
+
+        assertTrue(model.getModelState() instanceof GenerateState);
+
+        model.generate();
+
+        ((GenerateState) model.getModelState()).getGeneratorAlgo().finish();
 
         model.solve();
 
@@ -150,6 +160,6 @@ public class ModelStatePatternTest {
 
         model.clearMaze();
 
-        assertTrue(model.getModelState() instanceof GenerateState);
+        assertTrue(model.getModelState() instanceof SolveState);
     }
 }

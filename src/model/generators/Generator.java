@@ -13,6 +13,12 @@ public abstract class Generator {
 
     private Cell[][] grid = new Cell[16][16];
 
+    private boolean done = false;
+
+    protected void doneGenerating(){
+        this.done = true;
+    }
+
     public Generator(){
 
         for (int i = 0; i < 16; i++){
@@ -21,6 +27,14 @@ public abstract class Generator {
                 this.grid[i][j] = cell;
             }
         }
+    }
+
+    public boolean getDoneGenerating(){
+        return this.done;
+    }
+
+    public void setDone(){
+        this.done = true;
     }
 
     public Cell getCell(int xLoc, int yLoc){

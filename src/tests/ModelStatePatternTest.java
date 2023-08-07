@@ -46,13 +46,13 @@ public class ModelStatePatternTest {
     }
 
     @Test
-    public void ModelState_GenerateState_PlayPause(){
+    public void ModelState_GenerateState_Finish(){
         Model model = new Model();
         model.setState(new GenerateState(model));
 
         assertTrue(model.getModelState() instanceof GenerateState);
 
-        model.playPause();
+        model.finish();
 
         assertTrue(model.getModelState() instanceof GenerateState);
     }
@@ -128,13 +128,13 @@ public class ModelStatePatternTest {
     }
 
     @Test
-    public void ModelState_SolveState_PlayPause(){
+    public void ModelState_SolveState_Finish(){
         Model model = new Model();
         model.setState(new SolveState(model));
 
         assertTrue(model.getModelState() instanceof SolveState);
 
-        model.playPause();
+        model.finish();
 
         assertTrue(model.getModelState() instanceof SolveState);
     }

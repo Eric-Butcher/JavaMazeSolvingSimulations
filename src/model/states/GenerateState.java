@@ -47,7 +47,7 @@ public class GenerateState extends ModelState {
         this.getGeneratorAlgo().iterate();
     }
 
-    public void playPause(){
+    public void finish(){
         //TODO
         this.getGeneratorAlgo().finish();
         return;

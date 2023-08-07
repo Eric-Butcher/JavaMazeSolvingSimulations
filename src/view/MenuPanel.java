@@ -7,15 +7,16 @@ public class MenuPanel extends JPanel {
 
     private GenerateMazeButton generateMazeButton;
     private MazeGeneratorComboBox mazeGeneratorComboBox;
-    private PlayPauseButton playPauseButton;
+//    private PlayPauseButton playPauseButton;
+
+    private FinishButton finishButton;
     private StepButton stepButton;
     private ClearButton clearButton;
     private RegenerateButton regenerateButton;
     private SolveMazeButton solveMazeButton;
     private MazeSolverComboBox mazeSolverComboBox;
 
-    public MenuPanel(int menuLength, int menuHeight)
-    {
+    public MenuPanel(int menuLength, int menuHeight) {
         // Panel setup
         this.setBackground(Color.BLACK);
         this.setPreferredSize(new Dimension(menuLength, menuHeight));
@@ -28,7 +29,8 @@ public class MenuPanel extends JPanel {
         this.mazeGeneratorComboBox = new MazeGeneratorComboBox();
         this.solveMazeButton = new SolveMazeButton();
         this.mazeSolverComboBox = new MazeSolverComboBox();
-        this.playPauseButton = new PlayPauseButton();
+//        this.playPauseButton = new PlayPauseButton();
+        this.finishButton = new FinishButton();
         this.stepButton = new StepButton();
         this.regenerateButton = new RegenerateButton();
         this.clearButton = new ClearButton();
@@ -66,7 +68,8 @@ public class MenuPanel extends JPanel {
         gridBagConstraints.gridwidth = 1;
         gridBagConstraints.gridx = firstColumn;
         gridBagConstraints.gridy = fifthRow;
-        this.add(this.playPauseButton, gridBagConstraints);
+//        this.add(this.playPauseButton, gridBagConstraints);
+        this.add(this.finishButton, gridBagConstraints);
 
         gridBagConstraints.gridwidth = 1;
         gridBagConstraints.gridx = secondColumn;
@@ -88,6 +91,7 @@ public class MenuPanel extends JPanel {
         this.setVisible(true);
 
     }
+
     public GenerateMazeButton getGenerateMazeButton() {
         return generateMazeButton;
     }
@@ -96,8 +100,12 @@ public class MenuPanel extends JPanel {
         return mazeGeneratorComboBox;
     }
 
-    public PlayPauseButton getPlayPauseButton() {
-        return playPauseButton;
+//    public PlayPauseButton getPlayPauseButton() {
+//        return playPauseButton;
+//    }
+
+    public FinishButton getFinishButton() {
+        return finishButton;
     }
 
     public StepButton getStepButton() {

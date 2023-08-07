@@ -34,7 +34,7 @@ public abstract class ModelState {
 
     public abstract void step();
 
-    public abstract void playPause();
+    public abstract void finish();
 
     public abstract void generate();
 

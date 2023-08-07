@@ -47,7 +47,7 @@ public class SolveState extends ModelState {
         System.out.println("I stepped!");
     }
 
-    public void playPause(){
+    public void finish(){
         System.out.println("Should be soled!");
     }
 

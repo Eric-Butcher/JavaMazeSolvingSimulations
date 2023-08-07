@@ -46,8 +46,8 @@ public class Model {
         this.modelState.step();
     }
 
-    public void playPause() {
-        this.modelState.playPause();
+    public void finish() {
+        this.modelState.finish();
     }
 
     public void generate() {

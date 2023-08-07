@@ -25,6 +25,7 @@ public class PrimGeneratorTest {
     public void testAllCellsInitializedAtEnd() {
         PrimGenerator primGenerator = new PrimGenerator();
         primGenerator.finish();
+        assertTrue(primGenerator.getDoneGenerating());
 
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {
@@ -39,6 +40,7 @@ public class PrimGeneratorTest {
     public void testNoCellsBlockedAtEnd() {
         PrimGenerator primGenerator = new PrimGenerator();
         primGenerator.finish();
+        assertTrue(primGenerator.getDoneGenerating());
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {
             for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++) {
@@ -57,6 +59,8 @@ public class PrimGeneratorTest {
 
         PrimGenerator primGenerator = new PrimGenerator();
         primGenerator.finish();
+        assertTrue(primGenerator.getDoneGenerating());
+
         Set<Cell> visited = new HashSet<>();
         Queue<Cell> queue = new LinkedList<>();
         Cell start = primGenerator.getCell(Constants.minCellIndex, Constants.minCellIndex);

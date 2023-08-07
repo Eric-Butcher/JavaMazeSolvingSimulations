@@ -17,7 +17,8 @@ public class RegenerateAction implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Testing Resetting Button!");
-//        this.model.resetMaze();
+
+        this.model.regenerateMaze();
+        this.view.updateView(this.model.updateView());
     }
 }

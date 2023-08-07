@@ -3,6 +3,8 @@ package model;
 import controller.ViewUpdatePacket;
 import model.generators.Generator;
 import model.solvers.Solver;
+import model.states.GenerateState;
+import model.states.ModelState;
 
 public class Model {
 

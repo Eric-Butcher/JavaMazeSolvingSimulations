@@ -1,6 +1,7 @@
-package model;
+package model.states;
 
 import controller.ViewUpdatePacket;
+import model.Model;
 import model.generators.Generator;
 import model.solvers.Solver;
 
@@ -16,7 +17,7 @@ public abstract class ModelState {
 
 
     public void regenerateMaze() {
-
+        this.model.setState(new GenerateState(this.model, this.selectedGenerationAlgo, this.selectedSolvingAlgo));
     }
 
     public void changeSelectedGenerationAlgo(Class<? extends Generator> g) {

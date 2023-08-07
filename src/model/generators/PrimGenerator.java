@@ -59,6 +59,7 @@ public class PrimGenerator extends Generator{
             startStep();
             return;
         } else if (this.getFrontier().isEmpty()){
+            this.setDone();
             return;
         } else {
 //            1. Pop a cell from the frontier list randomly.
@@ -88,7 +89,10 @@ public class PrimGenerator extends Generator{
     }
 
     public void finish(){
-        while ((!this.getFrontier().isEmpty()) || (!this.isStartStepDone())){
+//        while ((!this.getFrontier().isEmpty()) || (!this.isStartStepDone())){
+//            this.iterate();
+//        }
+        while(!this.getDoneGenerating()){
             this.iterate();
         }
         return;

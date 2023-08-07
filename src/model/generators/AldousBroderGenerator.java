@@ -40,8 +40,11 @@ public class AldousBroderGenerator extends Generator{
         }
 
         // Add the current cell at the end, will override its earlier addition
-        TileUpdate tileUpdate = makeTileUpdateFromCell(this.getCurrentCell(), true, false);
-        updatePacket.addTileUpdate(tileUpdate);
+        if (currentCell != null){
+            TileUpdate tileUpdate = makeTileUpdateFromCell(this.getCurrentCell(), true, false);
+            updatePacket.addTileUpdate(tileUpdate);
+        }
+
         return updatePacket;
     }
 
@@ -54,6 +57,8 @@ public class AldousBroderGenerator extends Generator{
     @Override
     public void iterate(){
         if (this.cellsInitialized >= (maxInitialized)){
+            this.currentCell = null;
+            this.setDone();
             return;
         } else if (cellsInitialized == 0){
             this.startStep();
@@ -75,7 +80,11 @@ public class AldousBroderGenerator extends Generator{
 
     @Override
     public void finish(){
-        while (this.cellsInitialized < this.maxInitialized){
+//        while (this.cellsInitialized < this.maxInitialized){
+//            this.iterate();
+//        }
+//        this.iterate();
+        while (!this.getDoneGenerating()){
             this.iterate();
         }
         return;

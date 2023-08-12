@@ -1,6 +1,5 @@
 package tests;
 
-import controller.TileUpdate;
 import model.Cell;
 import model.generators.Generator;
 import model.generators.PrimGenerator;
@@ -9,7 +8,8 @@ import utilities.Constants;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GeneratorTest {
 
@@ -17,113 +17,18 @@ public class GeneratorTest {
     public void testGeneratorConstructor(){
         PrimGenerator primGenerator = new PrimGenerator();
 
-
         for (int x = Constants.minCellIndex; x < Constants.mazeLength; x++){
             for (int y = Constants.minCellIndex; y < Constants.mazeLength; y++){
 
-                assertTrue(primGenerator.getCell(x, y).isBottomBorder());
-                assertTrue(primGenerator.getCell(x, y).isLeftBorder());
-                assertTrue(primGenerator.getCell(x, y).isTopBorder());
-                assertTrue(primGenerator.getCell(x, y).isRightBorder());
+                assertTrue(primGenerator.getGrid().getCell(x, y).isBottomBorder());
+                assertTrue(primGenerator.getGrid().getCell(x, y).isLeftBorder());
+                assertTrue(primGenerator.getGrid().getCell(x, y).isTopBorder());
+                assertTrue(primGenerator.getGrid().getCell(x, y).isRightBorder());
 
             }
         }
 
     }
-
-    @Test
-    public void testGetRandomGridCell(){
-        PrimGenerator primGenerator = new PrimGenerator();
-
-        for (int i = 0; i < 300; i++){
-            Cell cell = primGenerator.getRandomGridCell();
-            assertTrue(cell.getxPos() >= Constants.minCellIndex);
-            assertTrue(cell.getxPos() <= Constants.maxCellIndex);
-            assertTrue(cell.getyPos() >= Constants.minCellIndex);
-            assertTrue(cell.getyPos() <= Constants.maxCellIndex);
-        }
-    }
-
-    @Test
-    public void testClearPathBetweenCells(){
-        PrimGenerator primGenerator = new PrimGenerator();
-
-        Cell center = primGenerator.getCell(5, 5);
-        assertTrue(center.isBottomBorder());
-        assertTrue(center.isLeftBorder());
-        assertTrue(center.isTopBorder());
-        assertTrue(center.isRightBorder());
-
-        Cell top = primGenerator.getCell(5, 4);
-        assertTrue(top.isBottomBorder());
-        assertTrue(top.isLeftBorder());
-        assertTrue(top.isTopBorder());
-        assertTrue(top.isRightBorder());
-
-        Cell right = primGenerator.getCell(6, 5);
-        assertTrue(right.isBottomBorder());
-        assertTrue(right.isLeftBorder());
-        assertTrue(right.isTopBorder());
-        assertTrue(right.isRightBorder());
-
-        Cell under = primGenerator.getCell(5, 6);
-        assertTrue(under.isBottomBorder());
-        assertTrue(under.isLeftBorder());
-        assertTrue(under.isTopBorder());
-        assertTrue(under.isRightBorder());
-
-        Cell left = primGenerator.getCell(4, 5);
-        assertTrue(left.isBottomBorder());
-        assertTrue(left.isLeftBorder());
-        assertTrue(left.isTopBorder());
-        assertTrue(left.isRightBorder());
-
-        primGenerator.createPathBetweenCells(center, top);
-
-        assertTrue(center.isBottomBorder());
-        assertTrue(center.isLeftBorder());
-        assertFalse(center.isTopBorder());
-        assertTrue(center.isRightBorder());
-        assertFalse(top.isBottomBorder());
-        assertTrue(top.isLeftBorder());
-        assertTrue(top.isTopBorder());
-        assertTrue(top.isRightBorder());
-
-        primGenerator.createPathBetweenCells(center, right);
-
-        assertTrue(center.isBottomBorder());
-        assertTrue(center.isLeftBorder());
-        assertFalse(center.isTopBorder());
-        assertFalse(center.isRightBorder());
-        assertTrue(right.isBottomBorder());
-        assertFalse(right.isLeftBorder());
-        assertTrue(right.isTopBorder());
-        assertTrue(right.isRightBorder());
-
-        primGenerator.createPathBetweenCells(center, under);
-
-        assertFalse(center.isBottomBorder());
-        assertTrue(center.isLeftBorder());
-        assertFalse(center.isTopBorder());
-        assertFalse(center.isRightBorder());
-        assertTrue(under.isBottomBorder());
-        assertTrue(under.isLeftBorder());
-        assertFalse(under.isTopBorder());
-        assertTrue(under.isRightBorder());
-
-        primGenerator.createPathBetweenCells(center, left);
-
-        assertFalse(center.isBottomBorder());
-        assertFalse(center.isLeftBorder());
-        assertFalse(center.isTopBorder());
-        assertFalse(center.isRightBorder());
-        assertTrue(left.isBottomBorder());
-        assertTrue(left.isLeftBorder());
-        assertTrue(left.isTopBorder());
-        assertFalse(left.isRightBorder());
-
-    }
-
     @Test
     public void testPopRandomCellFromList(){
         ArrayList<Cell> cells = new ArrayList<>();
@@ -190,126 +95,4 @@ public class GeneratorTest {
         assertEquals(keyB2, Generator.getUnInitializedCells(allCells));
 
     }
-
-    @Test
-    public void testGetAdjacentCells(){
-        PrimGenerator primGenerator = new PrimGenerator();
-
-        int cornerSize = 2;
-        int sideSize = 3;
-        int middleSize = 4;
-
-        //Top left corner
-        ArrayList<Cell> a = primGenerator.getAdjacentCells(primGenerator.getCell(Constants.minCellIndex, Constants.minCellIndex));
-        assertEquals(cornerSize, a.size());
-        assertTrue(a.contains(primGenerator.getCell(Constants.minCellIndex, Constants.minCellIndex+1)));
-        assertTrue(a.contains(primGenerator.getCell(Constants.minCellIndex+1, Constants.minCellIndex)));
-
-        //Top right corner
-        ArrayList<Cell> b = primGenerator.getAdjacentCells(primGenerator.getCell(Constants.maxCellIndex, Constants.minCellIndex));
-        assertEquals(cornerSize, b.size());
-        assertTrue(b.contains(primGenerator.getCell(Constants.maxCellIndex-1, Constants.minCellIndex)));
-        assertTrue(b.contains(primGenerator.getCell(Constants.maxCellIndex, Constants.minCellIndex+1)));
-
-        //Bottom left corner
-        ArrayList<Cell> c = primGenerator.getAdjacentCells(primGenerator.getCell(Constants.minCellIndex, Constants.maxCellIndex));
-        assertEquals(cornerSize, c.size());
-        assertTrue(c.contains(primGenerator.getCell(Constants.minCellIndex+1, Constants.maxCellIndex)));
-        assertTrue(c.contains(primGenerator.getCell(Constants.minCellIndex, Constants.maxCellIndex-1)));
-
-        //Bottom right corner
-        ArrayList<Cell> d = primGenerator.getAdjacentCells(primGenerator.getCell(Constants.maxCellIndex, Constants.maxCellIndex));
-        assertEquals(cornerSize, d.size());
-        assertTrue(d.contains(primGenerator.getCell(Constants.maxCellIndex-1, Constants.maxCellIndex)));
-        assertTrue(d.contains(primGenerator.getCell(Constants.maxCellIndex, Constants.maxCellIndex-1)));
-
-        //Top side
-        int middleCord = 7;
-        ArrayList<Cell> e = primGenerator.getAdjacentCells(primGenerator.getCell(middleCord, Constants.minCellIndex));
-        assertEquals(sideSize, e.size());
-        assertTrue(e.contains(primGenerator.getCell(middleCord-1, Constants.minCellIndex)));
-        assertTrue(e.contains(primGenerator.getCell(middleCord+1, Constants.minCellIndex)));
-        assertTrue(e.contains(primGenerator.getCell(middleCord, Constants.minCellIndex+1)));
-
-        //Right side
-        middleCord = 9;
-        ArrayList<Cell> f = primGenerator.getAdjacentCells(primGenerator.getCell(Constants.maxCellIndex, middleCord));
-        assertEquals(sideSize, f.size());
-        assertTrue(f.contains(primGenerator.getCell(Constants.maxCellIndex-1, middleCord)));
-        assertTrue(f.contains(primGenerator.getCell(Constants.maxCellIndex, middleCord+1)));
-        assertTrue(f.contains(primGenerator.getCell(Constants.maxCellIndex, middleCord-1)));
-
-        //Bottom side
-        middleCord = 4;
-        ArrayList<Cell> g = primGenerator.getAdjacentCells(primGenerator.getCell(middleCord, Constants.maxCellIndex));
-        assertEquals(sideSize, g.size());
-        assertTrue(g.contains(primGenerator.getCell(middleCord-1, Constants.maxCellIndex)));
-        assertTrue(g.contains(primGenerator.getCell(middleCord+1, Constants.maxCellIndex)));
-        assertTrue(g.contains(primGenerator.getCell(middleCord, Constants.maxCellIndex-1)));
-
-        //Left side
-        middleCord = 12;
-        ArrayList<Cell> h = primGenerator.getAdjacentCells(primGenerator.getCell(Constants.minCellIndex, middleCord));
-        assertEquals(sideSize, h.size());
-        assertTrue(h.contains(primGenerator.getCell(Constants.minCellIndex+1, middleCord)));
-        assertTrue(h.contains(primGenerator.getCell(Constants.minCellIndex, middleCord-1)));
-        assertTrue(h.contains(primGenerator.getCell(Constants.minCellIndex, middleCord+1)));
-
-        // Somewhere in the middle
-        middleCord = 3;
-        ArrayList<Cell> i = primGenerator.getAdjacentCells(primGenerator.getCell(middleCord, middleCord));
-        assertEquals(middleSize, i.size());
-        assertTrue(i.contains(primGenerator.getCell(middleCord+1, middleCord)));
-        assertTrue(i.contains(primGenerator.getCell(middleCord, middleCord+1)));
-        assertTrue(i.contains(primGenerator.getCell(middleCord-1, middleCord)));
-        assertTrue(i.contains(primGenerator.getCell(middleCord, middleCord-1)));
-
-        // Somewhere else in the middle
-        middleCord = 9;
-        int otherMiddleCord = 14;
-        ArrayList<Cell> j = primGenerator.getAdjacentCells(primGenerator.getCell(middleCord, otherMiddleCord));
-        assertEquals(middleSize, j.size());
-        assertTrue(j.contains(primGenerator.getCell(middleCord-1, otherMiddleCord)));
-        assertTrue(j.contains(primGenerator.getCell(middleCord, otherMiddleCord-1)));
-        assertTrue(j.contains(primGenerator.getCell(middleCord+1, otherMiddleCord)));
-        assertTrue(j.contains(primGenerator.getCell(middleCord, otherMiddleCord+1)));
-    }
-
-    @Test
-    public void testMakeTileUpdateFromCell() {
-        // Create a test Cell object
-        Cell cell = new Cell(1, 2);
-        cell.removeRightBorder();
-        cell.removeLeftBorder();
-        cell.initializeCell();
-
-        // Test when isCurrent and toHighlight are both false
-        boolean isCurrent = false;
-        boolean toHighlight = false;
-        TileUpdate tileUpdate1 = Generator.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
-        TileUpdate expected1 = new TileUpdate(1, 2, true, false, true,
-                false, false, true, false,
-                false, false);
-        assertEquals(expected1, tileUpdate1);
-
-        // Test when isCurrent is true and toHighlight is false
-        isCurrent = true;
-        toHighlight = false;
-        TileUpdate tileUpdate2 = Generator.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
-        TileUpdate expected2 = new TileUpdate(1, 2, true, false, true,
-                false, false, true, false,
-                false, true);
-        assertEquals(expected2, tileUpdate2);
-
-        // Test when isCurrent is false and toHighlight is true
-        isCurrent = false;
-        toHighlight = true;
-        TileUpdate tileUpdate3 = Generator.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
-        TileUpdate expected3 = new TileUpdate(1, 2, true, false, true,
-                false, false, true, false,
-                true, false);
-        assertEquals(expected3, tileUpdate3);
-    }
-
-
 }

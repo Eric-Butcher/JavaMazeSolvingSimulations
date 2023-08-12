@@ -30,7 +30,7 @@ public class AldousBroderGeneratorTest {
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {
             for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++) {
-                assertTrue(aldousBroderGenerator.getCell(x, y).isInitialized());
+                assertTrue(aldousBroderGenerator.getGrid().getCell(x, y).isInitialized());
             }
         }
 
@@ -44,7 +44,7 @@ public class AldousBroderGeneratorTest {
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {
             for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++) {
-                Cell cell = aldousBroderGenerator.getCell(x, y);
+                Cell cell = aldousBroderGenerator.getGrid().getCell(x, y);
                 boolean isBlockedOff = cell.isBottomBorder() && cell.isTopBorder() && cell.isRightBorder() && cell.isLeftBorder();
                 assertFalse(isBlockedOff);
             }
@@ -63,14 +63,14 @@ public class AldousBroderGeneratorTest {
 
         Set<Cell> visited = new HashSet<>();
         Queue<Cell> queue = new LinkedList<>();
-        Cell start = aldousBroderGenerator.getCell(Constants.minCellIndex, Constants.minCellIndex);
+        Cell start = aldousBroderGenerator.getGrid().getCell(Constants.minCellIndex, Constants.minCellIndex);
 
         queue.add(start);
         visited.add(start);
         while (!queue.isEmpty()){
             // Find all reachable neighbors
             Cell current = queue.remove();
-            ArrayList<Cell> neighbors = aldousBroderGenerator.getAdjacentCells(current);
+            ArrayList<Cell> neighbors = aldousBroderGenerator.getGrid().getAdjacentCells(current);
             for (Cell neighbor : neighbors){
                 if (cellsMutuallyReachable(current, neighbor) && !(visited.contains(neighbor))){
                     queue.add(neighbor);

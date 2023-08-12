@@ -1,6 +1,7 @@
 package model.solvers;
 
 import model.Cell;
+import model.Grid;
 import utilities.Constants;
 
 import java.util.ArrayList;
@@ -16,11 +17,11 @@ public class GreedyBestFirstSearchSolver extends Solver{
     private boolean startStepDone = false;
 
     private Cell currentCell;
-    public GreedyBestFirstSearchSolver(Cell[][] grid){
+    public GreedyBestFirstSearchSolver(Grid grid){
         super(grid);
     }
 
-    public GreedyBestFirstSearchSolver(Cell[][] grid, Cell startPoint, ArrayList<Cell> endPoints){
+    public GreedyBestFirstSearchSolver(Grid grid, Cell startPoint, ArrayList<Cell> endPoints){
         super(grid, startPoint, endPoints);
     }
 
@@ -65,7 +66,7 @@ public class GreedyBestFirstSearchSolver extends Solver{
         }
 
         Cell targetCell = stack.pop();
-        if (isTherePathBetweenCells(currentCell, targetCell)){
+        if (Grid.isTherePathBetweenCells(currentCell, targetCell)){
 //            a. Assign the parentage of the target cell as current cell
             parentCells.put(targetCell, currentCell);
 //            b. Make current cell the target cell

@@ -70,6 +70,10 @@ public class Cell {
         this.leftBorder = false;
     }
 
+    public void setTraversed(boolean traversed){
+        this.isTraversed = traversed;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

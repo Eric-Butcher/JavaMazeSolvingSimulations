@@ -74,7 +74,7 @@ public class PrimGenerator extends Generator{
             Cell initializedNeighbor = Generator.popRandomCellFromList(initializedNeighbors);
 
 //          4. Form a path (delete the wall/s ) between the frontier cell and the initialized cell.
-            this.clearPathBetweenCells(chosen, initializedNeighbor);
+            this.createPathBetweenCells(chosen, initializedNeighbor);
 
 //          5. Set the frontier cell as initialized.
             chosen.initializeCell();

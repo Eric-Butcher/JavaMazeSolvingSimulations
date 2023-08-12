@@ -78,7 +78,7 @@ public class GeneratorTest {
         assertTrue(left.isTopBorder());
         assertTrue(left.isRightBorder());
 
-        primGenerator.clearPathBetweenCells(center, top);
+        primGenerator.createPathBetweenCells(center, top);
 
         assertTrue(center.isBottomBorder());
         assertTrue(center.isLeftBorder());
@@ -89,7 +89,7 @@ public class GeneratorTest {
         assertTrue(top.isTopBorder());
         assertTrue(top.isRightBorder());
 
-        primGenerator.clearPathBetweenCells(center, right);
+        primGenerator.createPathBetweenCells(center, right);
 
         assertTrue(center.isBottomBorder());
         assertTrue(center.isLeftBorder());
@@ -100,7 +100,7 @@ public class GeneratorTest {
         assertTrue(right.isTopBorder());
         assertTrue(right.isRightBorder());
 
-        primGenerator.clearPathBetweenCells(center, under);
+        primGenerator.createPathBetweenCells(center, under);
 
         assertFalse(center.isBottomBorder());
         assertTrue(center.isLeftBorder());
@@ -111,7 +111,7 @@ public class GeneratorTest {
         assertFalse(under.isTopBorder());
         assertTrue(under.isRightBorder());
 
-        primGenerator.clearPathBetweenCells(center, left);
+        primGenerator.createPathBetweenCells(center, left);
 
         assertFalse(center.isBottomBorder());
         assertFalse(center.isLeftBorder());

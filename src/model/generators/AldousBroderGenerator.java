@@ -68,7 +68,7 @@ public class AldousBroderGenerator extends Generator{
             ArrayList<Cell> neighbors = this.getAdjacentCells(currentCell);
             Cell chosen = popRandomCellFromList(neighbors);
             if (!chosen.isInitialized()){
-                this.clearPathBetweenCells(currentCell, chosen);
+                this.createPathBetweenCells(currentCell, chosen);
                 chosen.initializeCell();
 
                 cellsInitialized++;

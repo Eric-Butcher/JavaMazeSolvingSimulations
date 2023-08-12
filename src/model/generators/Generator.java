@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Generator {
 
-    private Cell[][] grid = new Cell[16][16];
+    private Cell[][] grid = new Cell[Constants.mazeLength][Constants.mazeLength];
 
     private boolean done = false;
 
@@ -28,6 +28,10 @@ public abstract class Generator {
                 this.grid[i][j] = cell;
             }
         }
+    }
+
+    public Cell[][] getGrid() {
+        return grid;
     }
 
     public boolean getDoneGenerating(){
@@ -56,7 +60,7 @@ public abstract class Generator {
         return this.getCell(x, y);
     }
 
-    public void clearPathBetweenCells(Cell from, Cell to){
+    public void createPathBetweenCells(Cell from, Cell to){
 
         int fromX = from.getxPos();
         int fromY = from.getyPos();

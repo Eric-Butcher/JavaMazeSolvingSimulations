@@ -3,7 +3,7 @@ package model.solvers;
 public enum SolverAlgorithms {
 
 
-    BFS(BFSSolver.class);
+    BFS(GreedyBestFirstSearchSolver.class);
 
     private final Class<? extends Solver> clazz;
 

@@ -4,10 +4,7 @@ import model.Cell;
 import model.Grid;
 import utilities.Constants;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Stack;
+import java.util.*;
 
 public class GreedyBestFirstSearchSolver extends Solver{
 
@@ -25,38 +22,46 @@ public class GreedyBestFirstSearchSolver extends Solver{
         super(grid, startPoint, endPoints);
     }
 
-    public int manhattenDistance(Cell current, Cell target){
+    private final Comparator<Cell> hueristicComparator = new Comparator<Cell>() {
+        @Override
+        public int compare(Cell o1, Cell o2) {
+            return Integer.compare(heuristic(o1), heuristic(o2));
+        }
+    };
+
+    //Used for testing
+    public Comparator<Cell> getHueristicComparator() {
+        return hueristicComparator;
+    }
+
+    public int manhattanDistance(Cell current, Cell target){
         int dx = Math.abs(current.getxPos() - target.getxPos());
-        int dy = Math.abs(current.getyPos()) - target.getyPos();
+        int dy = Math.abs(current.getyPos() - target.getyPos());
         int retVal = dx + dy;
         return retVal;
     }
 
     public int heuristic(Cell cell){
-        int minDistance = 0;
+        int minDistance = Integer.MAX_VALUE;
         int calculatedDistance = 0;
         for (Cell target : this.endPoints){
-            calculatedDistance = manhattenDistance(cell, target);
+            calculatedDistance = manhattanDistance(cell, target);
             minDistance = Math.min(minDistance, calculatedDistance);
         }
         return minDistance;
     }
 
-    private final Comparator<Cell> hueristicComparator = new Comparator<Cell>() {
-        @Override
-        public int compare(Cell o1, Cell o2) {
-            return heuristic(o2) - heuristic(o1);
-        }
-    };
-
-
+    public ArrayList<Cell> generateOrderedStackAppendList(Cell currentCell){
+        ArrayList<Cell> neighbors = getUntraversedReachableNeighbors(currentCell);
+        neighbors.sort(Collections.reverseOrder(hueristicComparator)); // We want the closest to be ontop of the stack
+        return neighbors;
+    }
 
     public void iterate(){
         if (!startStepDone){
             currentCell = startPoint;
             this.currentCell.setTraversed(true);
-            ArrayList<Cell> neighbors = getUntraversedReachableNeighbors(currentCell);
-            neighbors.sort(hueristicComparator);
+            List<Cell> neighbors = generateOrderedStackAppendList(currentCell);
             stack.addAll(neighbors);
             return;
         }

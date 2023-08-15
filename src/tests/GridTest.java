@@ -41,7 +41,7 @@ public class GridTest {
     }
 
     @Test
-    public void testClearPathBetweenCells(){
+    public void testCreatePathBetweenCells(){
         Grid grid = new Grid();
 
         Cell center = grid.getCell(5, 5);

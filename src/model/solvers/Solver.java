@@ -87,7 +87,7 @@ public abstract class Solver {
             }
         }
 
-        return untraversed;
+        return retVal;
     }
 
     public boolean atDestination(Cell current){

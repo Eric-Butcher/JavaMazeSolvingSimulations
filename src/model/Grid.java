@@ -97,16 +97,25 @@ public class Grid {
         int toX = to.getxPos();
         int toY = to.getyPos();
 
-        if (((fromY == toY) && (fromX > toX)) && ((!from.isLeftBorder()) && (!to.isRightBorder()))){
+        if (((fromY == toY) && (fromX == toX + 1)) && ((!from.isLeftBorder()) && (!to.isRightBorder()))){
             return true;
-        } else if (((fromY == toY) && (fromX < toX)) && ((!from.isRightBorder()) && (!to.isLeftBorder()))){
+        } else if (((fromY == toY) && (fromX + 1 == toX)) && ((!from.isRightBorder()) && (!to.isLeftBorder()))){
             return true;
-        } else if (((fromX == toX) && (fromY > toY)) && ((!from.isTopBorder()) && (!to.isBottomBorder()))){
+        } else if (((fromX == toX) && (fromY == toY + 1)) && ((!from.isTopBorder()) && (!to.isBottomBorder()))){
             return true;
-        } else if (((fromX == toX) && (fromY < toY)) && ((!from.isBottomBorder()) && (!to.isTopBorder()))){
+        } else if (((fromX == toX) && (fromY + 1 == toY)) && ((!from.isBottomBorder()) && (!to.isTopBorder()))){
             return true;
         }
         return false;
+    }
+
+    public void unSolveGrid(){
+        for (int i = 0; i < Constants.mazeLength; i++){
+            for (int j = 0; j < Constants.mazeLength; j++){
+                this.cellGrid[i][j].setTraversed(false);
+            }
+        }
+
     }
 
 }

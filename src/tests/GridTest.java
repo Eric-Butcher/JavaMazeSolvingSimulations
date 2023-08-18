@@ -226,5 +226,24 @@ public class GridTest {
         c2.removeTopBorder();
         assertTrue(Grid.isTherePathBetweenCells(c1, c2));
         assertTrue(Grid.isTherePathBetweenCells(c2, c1));
+
+        // If cells are too far apart
+        Cell d1 = new Cell(0, 0);
+        d1.removeBottomBorder();
+        Cell d2 = new Cell(0, 2);
+        d2.removeTopBorder();
+        assertFalse(Grid.isTherePathBetweenCells(d1, d2));
+        assertFalse(Grid.isTherePathBetweenCells(d2, d1));
+
+        // If cells are on a diagonal
+        Cell e1 = new Cell(4, 4);
+        e1.removeBottomBorder();
+        e1.removeRightBorder();
+        Cell e2 = new Cell(5, 5);
+        e2.removeTopBorder();
+        e2.removeLeftBorder();
+        assertFalse(Grid.isTherePathBetweenCells(e1, e2));
+        assertFalse(Grid.isTherePathBetweenCells(e2, e1));
+
     }
 }

@@ -77,7 +77,7 @@ public class Cell {
     }
 
     public static TileUpdate makeTileUpdateFromCell(Cell cell, boolean isCurrent, boolean toHighlight){
-        TileUpdate retVal = new TileUpdate(cell.getxPos(), cell.getyPos(), cell.isTopBorder(), cell.isRightBorder(), cell.isBottomBorder(), cell.isLeftBorder(), false, cell.isInitialized(), false, toHighlight, isCurrent);
+        TileUpdate retVal = new TileUpdate(cell.getxPos(), cell.getyPos(), cell.isTopBorder(), cell.isRightBorder(), cell.isBottomBorder(), cell.isLeftBorder(), false, cell.isInitialized(), cell.isTraversed(), toHighlight, isCurrent);
         return retVal;
     }
 

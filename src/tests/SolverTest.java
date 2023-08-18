@@ -3,7 +3,7 @@ package tests;
 import model.Cell;
 import model.generators.Generator;
 import model.generators.PrimGenerator;
-import model.solvers.GreedyBestFirstSearchSolver;
+import model.solvers.HeuristicDepthFirstSearchSolver;
 import model.solvers.Solver;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +16,7 @@ public class SolverTest {
     @Test
     public void testImplicitConstructor(){
         Generator generator = new PrimGenerator();
-        Solver solver =  new GreedyBestFirstSearchSolver(generator.getGrid());
+        Solver solver =  new HeuristicDepthFirstSearchSolver(generator.getGrid());
 
         ArrayList<Cell> actualEndpoints = solver.getEndPoints();
         Cell actualStartPoint = solver.getStartPoint();
@@ -45,7 +45,7 @@ public class SolverTest {
 
         Cell startPoint = new Cell(5, 10);
 
-        Solver solver =  new GreedyBestFirstSearchSolver(generator.getGrid(), startPoint, endpoints);
+        Solver solver =  new HeuristicDepthFirstSearchSolver(generator.getGrid(), startPoint, endpoints);
 
         assertEquals(startPoint, solver.getStartPoint());
         assertEquals(endpoints, solver.getEndPoints());
@@ -89,7 +89,7 @@ public class SolverTest {
     @Test
     public void testGetUnTraversedReachableNeighbors(){
         PrimGenerator primGenerator = new PrimGenerator();
-        Solver solver = new GreedyBestFirstSearchSolver(primGenerator.getGrid());
+        Solver solver = new HeuristicDepthFirstSearchSolver(primGenerator.getGrid());
 
         int ax = 5;
         int ay = 5;
@@ -174,7 +174,7 @@ public class SolverTest {
     @Test
     public void testAtDestination(){
         Generator generator = new PrimGenerator();
-        Solver solver =  new GreedyBestFirstSearchSolver(generator.getGrid());
+        Solver solver =  new HeuristicDepthFirstSearchSolver(generator.getGrid());
 
         ArrayList<Cell> destinations = new ArrayList<>();
         destinations.add(new Cell(7, 7));
@@ -207,7 +207,7 @@ public class SolverTest {
         endPoints.add(generatorB.getGrid().getCell(11, 13));
         endPoints.add(generatorB.getGrid().getCell(7, 7));
         Cell startPoint = generatorB.getGrid().getCell(3, 4);
-        Solver explicitSolver = new GreedyBestFirstSearchSolver(generatorB.getGrid(), startPoint, endPoints);
+        Solver explicitSolver = new HeuristicDepthFirstSearchSolver(generatorB.getGrid(), startPoint, endPoints);
 
         destinations = new ArrayList<>();
         destinations.add(generatorB.getGrid().getCell(4, 5));

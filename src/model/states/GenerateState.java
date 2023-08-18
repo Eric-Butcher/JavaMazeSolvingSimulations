@@ -24,7 +24,7 @@ public class GenerateState extends ModelState {
     public GenerateState(Model model){
         super(model);
         this.selectedGenerationAlgo = GeneratorAlgorithms.Prim.getClazz();
-        this.selectedSolvingAlgo = SolverAlgorithms.BFS.getClazz();
+        this.selectedSolvingAlgo = SolverAlgorithms.HeuristicDepthFirstSearch.getClazz();
         this.generate();
     }
 
@@ -63,7 +63,7 @@ public class GenerateState extends ModelState {
 
     public void solve(){
         if (this.getGeneratorAlgo().getDoneGenerating()){
-            this.model.setState(new SolveState(this.model, this.selectedGenerationAlgo, this.selectedSolvingAlgo));
+            this.model.setState(new SolveState(this.model, this.selectedGenerationAlgo, this.selectedSolvingAlgo, this.getGeneratorAlgo().getGrid()));
         }
         return;
     }

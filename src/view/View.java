@@ -9,7 +9,7 @@ import java.awt.*;
 public class View extends JFrame {
     final static int MAZE_PANEL_SIZE = 480; // Maze GUI will be 480x480 pixels
 
-    final static int MENU_PANEL_SIZE = 120;
+    final static int MENU_PANEL_SIZE = 180;
     final static int MAZE_LENGTH = 16; // Number of cells in a row in the square maze
     final static int CELL_LENGTH = MAZE_PANEL_SIZE / MAZE_LENGTH;
 

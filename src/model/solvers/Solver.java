@@ -1,5 +1,6 @@
 package model.solvers;
 
+import controller.ViewUpdatePacket;
 import model.Cell;
 import model.Grid;
 import utilities.Constants;
@@ -98,6 +99,8 @@ public abstract class Solver {
         }
         return false;
     }
+
+    public abstract ViewUpdatePacket makeViewUpdatePacket();
     public abstract void iterate();
 
     public abstract void finish();

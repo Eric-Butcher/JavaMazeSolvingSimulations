@@ -18,5 +18,6 @@ public class SolveAction implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         this.model.solve();
+        this.view.updateView(this.model.updateView());
     }
 }

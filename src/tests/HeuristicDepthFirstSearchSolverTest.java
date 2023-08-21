@@ -26,6 +26,7 @@ public class HeuristicDepthFirstSearchSolverTest {
         PrimGenerator primGenerator = new PrimGenerator();
         primGenerator.finish();
         HeuristicDepthFirstSearchSolver heuristicDepthFirstSearchSolver = new HeuristicDepthFirstSearchSolver(primGenerator.getGrid());
+        heuristicDepthFirstSearchSolver.iterate();
         Cell previousCell = heuristicDepthFirstSearchSolver.getCurrentCell();
         Cell currentCell = null;
         while (!heuristicDepthFirstSearchSolver.isDone()) {

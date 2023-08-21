@@ -27,12 +27,10 @@ public class GreedyBestFirstSearchSolver extends Solver {
 
     public GreedyBestFirstSearchSolver(Grid grid) {
         super(grid);
-        this.currentCell = startPoint;
     }
 
     public GreedyBestFirstSearchSolver(Grid grid, Cell startPoint, ArrayList<Cell> endPoints) {
         super(grid, startPoint, endPoints);
-        this.currentCell = startPoint;
     }
 
     public Cell getCurrentCell() {
@@ -151,6 +149,7 @@ public class GreedyBestFirstSearchSolver extends Solver {
         if (this.isDone()) {
             return;
         } else if (!startStepDone) {
+            this.currentCell = startPoint;
             this.currentCell.setTraversed(true);
             List<Cell> neighbors = getUntraversedReachableNeighbors(currentCell);
             this.queue.addAll(neighbors);
@@ -158,6 +157,7 @@ public class GreedyBestFirstSearchSolver extends Solver {
             this.setStartStepDone(true);
             return;
         } else if (atDestination(currentCell)) {
+            this.targetCell = null;
             this.setDone(true);
             return;
         } else if (Grid.isTherePathBetweenCells(currentCell, targetCell)) {

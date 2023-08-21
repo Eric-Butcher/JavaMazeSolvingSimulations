@@ -19,12 +19,10 @@ public class HeuristicDepthFirstSearchSolver extends Solver {
 
     public HeuristicDepthFirstSearchSolver(Grid grid) {
         super(grid);
-        this.currentCell = startPoint;
     }
 
     public HeuristicDepthFirstSearchSolver(Grid grid, Cell startPoint, ArrayList<Cell> endPoints) {
         super(grid, startPoint, endPoints);
-        this.currentCell = startPoint;
     }
 
     public Cell getCurrentCell() {
@@ -109,6 +107,7 @@ public class HeuristicDepthFirstSearchSolver extends Solver {
         if (this.isDone()) {
             return;
         } else if (!startStepDone) {
+            this.currentCell = startPoint;
             this.currentCell.setTraversed(true);
             List<Cell> neighbors = generateOrderedStackAppendList(currentCell);
             this.stack.addAll(neighbors);
@@ -116,6 +115,7 @@ public class HeuristicDepthFirstSearchSolver extends Solver {
             this.setStartStepDone(true);
             return;
         } else if (atDestination(currentCell)) {
+            this.targetCell = null;
             this.setDone(true);
             return;
         } else if (Grid.isTherePathBetweenCells(currentCell, targetCell)) {

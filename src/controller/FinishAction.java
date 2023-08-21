@@ -17,9 +17,7 @@ public class FinishAction implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Finish pressed.");
         this.model.finish();
-        // TODO
         this.view.updateView(this.model.updateView());
     }
 }

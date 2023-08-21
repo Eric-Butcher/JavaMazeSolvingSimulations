@@ -6,27 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1a5dac5d-fa58-42c6-a73e-4f120ff219b8" name="Changes" comment="First Commit. Got Cells showing up correctly.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ClearAction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/RegenerateAction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Grid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Grid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/generators/AldousBroderGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/generators/AldousBroderGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/generators/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/generators/Generator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/generators/PrimGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/generators/PrimGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/FinishAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/FinishAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/solvers/GreedyBestFirstSearchSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/solvers/GreedyBestFirstSearchSolver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/solvers/Solver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/solvers/Solver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/solvers/SolverAlgorithms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/solvers/SolverAlgorithms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/states/GenerateState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/states/GenerateState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/states/ModelState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/states/ModelState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/states/SolveState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/states/SolveState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/AldousBroderGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/AldousBroderGeneratorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/GeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/GeneratorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/GreedyBestFirstSearchSolverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/GreedyBestFirstSearchSolverTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/GridTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/GridTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/HeuristicDepthFirstSearchSolverTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/HeuristicDepthFirstSearchSolverTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/ModelStatePatternTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tests/ModelStatePatternTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/solvers/HeuristicDepthFirstSearchSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/solvers/HeuristicDepthFirstSearchSolver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,10 +77,18 @@
       <recent name="view" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+  <component name="RunManager" selected="JUnit.ViewTest">
+    <configuration name="GridTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaMazeSolvingSimulations" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tests" />
+      <option name="MAIN_CLASS_NAME" value="tests.GridTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -118,7 +108,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ModelStatePatternTest.ModelState_SolveState_Finish" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PrimGeneratorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaMazeSolvingSimulations" />
       <extension name="coverage">
         <pattern>
@@ -127,14 +117,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ModelStatePatternTest" />
-      <option name="METHOD_NAME" value="ModelState_SolveState_Finish" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="tests.PrimGeneratorTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ModelStatePatternTest.ModelState_SolveState_Solve" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SolverTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaMazeSolvingSimulations" />
       <extension name="coverage">
         <pattern>
@@ -143,14 +132,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ModelStatePatternTest" />
-      <option name="METHOD_NAME" value="ModelState_SolveState_Solve" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="tests.SolverTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ModelStatePatternTest.ModelState_SolveState_Step" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ViewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaMazeSolvingSimulations" />
       <extension name="coverage">
         <pattern>
@@ -159,20 +147,19 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tests" />
-      <option name="MAIN_CLASS_NAME" value="tests.ModelStatePatternTest" />
-      <option name="METHOD_NAME" value="ModelState_SolveState_Step" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="tests.ViewTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ViewTest" />
+        <item itemvalue="JUnit.SolverTest" />
+        <item itemvalue="JUnit.PrimGeneratorTest" />
         <item itemvalue="JUnit.ModelStatePatternTest" />
-        <item itemvalue="JUnit.ModelStatePatternTest.ModelState_SolveState_Solve" />
-        <item itemvalue="JUnit.ModelStatePatternTest.ModelState_SolveState_Finish" />
-        <item itemvalue="JUnit.ModelStatePatternTest.ModelState_SolveState_Step" />
+        <item itemvalue="JUnit.GridTest" />
       </list>
     </recent_temporary>
   </component>

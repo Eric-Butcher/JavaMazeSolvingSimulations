@@ -29,6 +29,7 @@ public class GreedyBestFirstSearchSolverTest {
         PrimGenerator primGenerator = new PrimGenerator();
         primGenerator.finish();
         GreedyBestFirstSearchSolver greedyBestFirstSearchSolver = new GreedyBestFirstSearchSolver(primGenerator.getGrid());
+        greedyBestFirstSearchSolver.iterate();
         Cell previousCell = greedyBestFirstSearchSolver.getCurrentCell();
         Cell currentCell = null;
         while (!greedyBestFirstSearchSolver.isDone()) {

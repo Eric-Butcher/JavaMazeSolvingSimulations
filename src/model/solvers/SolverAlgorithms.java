@@ -3,7 +3,8 @@ package model.solvers;
 public enum SolverAlgorithms {
 
 
-    HeuristicDepthFirstSearch(HeuristicDepthFirstSearchSolver.class);
+    HeuristicDepthFirstSearch(HeuristicDepthFirstSearchSolver.class)
+    ,GreedyBestFirstSearch(GreedyBestFirstSearchSolver.class);
 
     private final Class<? extends Solver> clazz;
 

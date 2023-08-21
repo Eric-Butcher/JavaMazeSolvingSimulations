@@ -40,6 +40,16 @@ public class HeuristicDepthFirstSearchSolverTest {
     }
 
     @Test
+    public void testGetsToDestination(){
+        Generator generator = new PrimGenerator();
+        generator.finish();
+        HeuristicDepthFirstSearchSolver heuristicDepthFirstSearchSolver = new HeuristicDepthFirstSearchSolver(generator.getGrid());
+        heuristicDepthFirstSearchSolver.finish();
+        assertTrue(heuristicDepthFirstSearchSolver.isDone());
+        assertTrue(heuristicDepthFirstSearchSolver.getEndPoints().contains(heuristicDepthFirstSearchSolver.getCurrentCell()));
+    }
+
+    @Test
     public void testManhattanDistance(){
         Generator generator = new PrimGenerator();
         HeuristicDepthFirstSearchSolver solver = new HeuristicDepthFirstSearchSolver(generator.getGrid());

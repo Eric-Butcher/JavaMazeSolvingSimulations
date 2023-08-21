@@ -78,11 +78,34 @@ public abstract class Solver {
         return retVal;
     }
 
+    public static ArrayList<Cell> getTraversedCells(List<Cell> list){
+        ArrayList<Cell> retVal = new ArrayList<>(4);
+        for (Cell cell : list){
+            if (cell.isTraversed()){
+                retVal.add(cell);
+            }
+        }
+        return retVal;
+    }
+
     public ArrayList<Cell> getUntraversedReachableNeighbors(Cell center){
         ArrayList<Cell> adjacents = this.grid.getAdjacentCells(center);
         ArrayList<Cell> untraversed = getUnTraversedCells(adjacents);
         ArrayList<Cell> retVal = new ArrayList<>();
         for (Cell cell : untraversed){
+            if (Grid.isTherePathBetweenCells(center, cell)){
+                retVal.add(cell);
+            }
+        }
+
+        return retVal;
+    }
+
+    public ArrayList<Cell> getTraversedReachableNeighbors(Cell center){
+        ArrayList<Cell> adjacents = this.grid.getAdjacentCells(center);
+        ArrayList<Cell> traversedCells = getTraversedCells(adjacents);
+        ArrayList<Cell> retVal = new ArrayList<>();
+        for (Cell cell : traversedCells){
             if (Grid.isTherePathBetweenCells(center, cell)){
                 retVal.add(cell);
             }

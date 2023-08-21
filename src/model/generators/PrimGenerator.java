@@ -2,6 +2,7 @@ package model.generators;
 
 import controller.TileUpdate;
 import controller.ViewUpdatePacket;
+import model.Cell;
 import utilities.Constants;
 
 import java.util.ArrayList;
@@ -37,10 +38,10 @@ public class PrimGenerator extends Generator{
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++){
             for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++){
 
-                Cell cell = this.getCell(x, y);
+                Cell cell = this.getGrid().getCell(x, y);
                 inFrontier = frontier.contains(cell);
 
-                TileUpdate tileUpdate = makeTileUpdateFromCell(cell, false, inFrontier);
+                TileUpdate tileUpdate = Cell.makeTileUpdateFromCell(cell, false, inFrontier);
                 updatePacket.addTileUpdate(tileUpdate);
             }
         }
@@ -48,9 +49,9 @@ public class PrimGenerator extends Generator{
     }
 
     private void startStep(){
-        Cell startCell = this.getRandomGridCell();
+        Cell startCell = this.getGrid().getRandomGridCell();
         startCell.initializeCell();
-        ArrayList<Cell> adjacentCells = this.getAdjacentCells(startCell);
+        ArrayList<Cell> adjacentCells = this.getGrid().getAdjacentCells(startCell);
         this.getFrontier().addAll(adjacentCells);
         this.setStartStepDone(true);
     }
@@ -66,14 +67,14 @@ public class PrimGenerator extends Generator{
             Cell chosen = Generator.popRandomCellFromList(this.getFrontier());
 
 //            2. Generate a list of all adjacent cells that are initialized.
-            ArrayList<Cell> adjacentCells = this.getAdjacentCells(chosen);
+            ArrayList<Cell> adjacentCells = this.getGrid().getAdjacentCells(chosen);
             ArrayList<Cell> initializedNeighbors = Generator.getInitializedCells(adjacentCells);
 
 //          3. Pick one of these initialized cells at random.
             Cell initializedNeighbor = Generator.popRandomCellFromList(initializedNeighbors);
 
 //          4. Form a path (delete the wall/s ) between the frontier cell and the initialized cell.
-            this.clearPathBetweenCells(chosen, initializedNeighbor);
+            this.getGrid().createPathBetweenCells(chosen, initializedNeighbor);
 
 //          5. Set the frontier cell as initialized.
             chosen.initializeCell();

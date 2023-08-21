@@ -120,17 +120,17 @@ public class Tile extends JPanel {
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
             this.setCurrent(false);
 
+        } else if (this.isHighlighted()){
+            graphics.setColor(Color.RED);
+            graphics.fillRect(0, 0, this.tileLength, this.tileLength);
+            this.setHighlighted(false);
+
         } else if (this.isTraversed()){
             graphics.setColor(Color.YELLOW);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
         } else if (this.isInitialized()){
             graphics.setColor(Color.LIGHT_GRAY);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
-        } else if (this.isHighlighted()){
-            graphics.setColor(Color.RED);
-            graphics.fillRect(0, 0, this.tileLength, this.tileLength);
-            this.setHighlighted(false);
-
         } else {
             graphics.setColor(Color.DARK_GRAY);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);

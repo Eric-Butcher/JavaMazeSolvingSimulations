@@ -39,7 +39,7 @@ public class MenuPanel extends JPanel {
         // Descriptive variables
         int firstColumn = 0, secondColumn = 1;
 
-        int firstRow = 0, secondRow = 1, thirdRow = 2, fourthRow = 3, fifthRow = 4, sixthRow = 5, seventhRow = 6;
+        int firstRow = 0, secondRow = 1, thirdRow = 2, fourthRow = 3, fifthRow = 4, sixthRow = 5, seventhRow = 6, eighthRow = 7;
 
         // Add components and place them in correct positions with gridBagConstraints
 
@@ -65,26 +65,26 @@ public class MenuPanel extends JPanel {
         this.add(this.mazeSolverComboBox, gridBagConstraints);
 
 
-        gridBagConstraints.gridwidth = 1;
+        gridBagConstraints.gridwidth = 0;
         gridBagConstraints.gridx = firstColumn;
         gridBagConstraints.gridy = fifthRow;
 //        this.add(this.playPauseButton, gridBagConstraints);
         this.add(this.finishButton, gridBagConstraints);
 
-        gridBagConstraints.gridwidth = 1;
-        gridBagConstraints.gridx = secondColumn;
-        gridBagConstraints.gridy = fifthRow;
+        gridBagConstraints.gridwidth = 0;
+        gridBagConstraints.gridx = firstColumn;
+        gridBagConstraints.gridy = sixthRow;
         this.add(this.stepButton, gridBagConstraints);
 
         gridBagConstraints.gridwidth = 0;
         gridBagConstraints.gridx = firstColumn;
-        gridBagConstraints.gridy = sixthRow;
+        gridBagConstraints.gridy = seventhRow;
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         this.add(this.regenerateButton, gridBagConstraints);
 
 
         gridBagConstraints.gridx = firstColumn;
-        gridBagConstraints.gridy = seventhRow;
+        gridBagConstraints.gridy = eighthRow;
         gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
         this.add(this.clearButton, gridBagConstraints);
 

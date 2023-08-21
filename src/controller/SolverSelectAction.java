@@ -1,6 +1,8 @@
 package controller;
 
 import model.Model;
+import model.solvers.Solver;
+import model.solvers.SolverAlgorithms;
 import view.View;
 
 import javax.swing.*;
@@ -18,7 +20,9 @@ public class SolverSelectAction implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        String algo = ((JComboBox)e.getSource()).getSelectedItem().toString();
-//        this.model.changeSelectedSolvingAlgo(algo);
+        String algoString = ((JComboBox)e.getSource()).getSelectedItem().toString();
+        SolverAlgorithms algoEnum = SolverAlgorithms.valueOf(algoString);
+        Class<Solver> algoClass = (Class<Solver>) algoEnum.getClazz();
+        this.model.changeSelectedSolvingAlgo(algoClass);
     }
 }

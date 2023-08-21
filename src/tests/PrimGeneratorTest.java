@@ -1,6 +1,6 @@
 package tests;
 
-import model.generators.Cell;
+import model.Cell;
 import model.generators.PrimGenerator;
 import org.junit.jupiter.api.Test;
 import utilities.Constants;
@@ -30,7 +30,7 @@ public class PrimGeneratorTest {
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {
             for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++) {
-                assertTrue(primGenerator.getCell(x, y).isInitialized());
+                assertTrue(primGenerator.getGrid().getCell(x, y).isInitialized());
             }
         }
 
@@ -44,7 +44,7 @@ public class PrimGeneratorTest {
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {
             for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++) {
-                Cell cell = primGenerator.getCell(x, y);
+                Cell cell = primGenerator.getGrid().getCell(x, y);
                 boolean isBlockedOff = cell.isBottomBorder() && cell.isTopBorder() && cell.isRightBorder() && cell.isLeftBorder();
                 assertFalse(isBlockedOff);
             }
@@ -63,14 +63,14 @@ public class PrimGeneratorTest {
 
         Set<Cell> visited = new HashSet<>();
         Queue<Cell> queue = new LinkedList<>();
-        Cell start = primGenerator.getCell(Constants.minCellIndex, Constants.minCellIndex);
+        Cell start = primGenerator.getGrid().getCell(Constants.minCellIndex, Constants.minCellIndex);
 
         queue.add(start);
         visited.add(start);
         while (!queue.isEmpty()){
             // Find all reachable neighbors
             Cell current = queue.remove();
-            ArrayList<Cell> neighbors = primGenerator.getAdjacentCells(current);
+            ArrayList<Cell> neighbors = primGenerator.getGrid().getAdjacentCells(current);
             for (Cell neighbor : neighbors){
                 if (cellsMutuallyReachable(current, neighbor) && !(visited.contains(neighbor))){
                     queue.add(neighbor);

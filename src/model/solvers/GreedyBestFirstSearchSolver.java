@@ -79,7 +79,6 @@ public class GreedyBestFirstSearchSolver extends Solver {
     }
 
 
-
     //Used for testing
     public Comparator<Cell> getHueristicComparator() {
         return hueristicComparator;
@@ -121,15 +120,15 @@ public class GreedyBestFirstSearchSolver extends Solver {
         HashMap<Cell, Cell> sources = new HashMap<>(Constants.mazeLength * Constants.mazeLength);
 
         boolean searchComplete = false;
-        while(!queue.isEmpty() && !searchComplete){
+        while (!queue.isEmpty() && !searchComplete) {
             Cell current = queue.poll();
-            for (Cell neighbor : getTraversedReachableNeighbors(current)){
-                if (!visited.contains(neighbor)){
+            for (Cell neighbor : getTraversedReachableNeighbors(current)) {
+                if (!visited.contains(neighbor)) {
                     visited.add(neighbor);
                     sources.putIfAbsent(neighbor, current);
                     queue.add(neighbor);
 
-                    if (Grid.isTherePathBetweenCells(neighbor, endingCell)){
+                    if (Grid.isTherePathBetweenCells(neighbor, endingCell)) {
                         sources.putIfAbsent(endingCell, neighbor);
                         searchComplete = true;
                         break;
@@ -140,15 +139,12 @@ public class GreedyBestFirstSearchSolver extends Solver {
 
         Stack<Cell> retVal = new Stack<>();
         Cell appendee = sources.get(endingCell);
-        while (!appendee.equals(startingCell)){
+        while (!appendee.equals(startingCell)) {
             retVal.add(appendee);
             appendee = sources.get(appendee);
         }
         return retVal;
     }
-
-
-
 
 
     public void iterate() {
@@ -171,7 +167,7 @@ public class GreedyBestFirstSearchSolver extends Solver {
             ArrayList<Cell> neighbors = getUntraversedReachableNeighbors(currentCell);
             queue.addAll(neighbors);
             targetCell = queue.poll();
-        } else if (!backtrace.isEmpty()){
+        } else if (!backtrace.isEmpty()) {
             // Pop the next move off of backtrace and move there
             currentCell = backtrace.pop();
         } else {
@@ -182,8 +178,6 @@ public class GreedyBestFirstSearchSolver extends Solver {
             currentCell = backtrace.pop();
         }
     }
-
-
 
 
     public void finish() {
@@ -210,7 +204,6 @@ public class GreedyBestFirstSearchSolver extends Solver {
      *       a. Make current cell equal to the parent of current cell
      *
      */
-
 
 
 }

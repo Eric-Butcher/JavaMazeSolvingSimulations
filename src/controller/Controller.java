@@ -21,13 +21,6 @@ public class Controller {
 
         this.view.getMenuPanel().getFinishButton().addActionListener(new FinishAction(this.model, this.view));
         this.view.getMenuPanel().getStepButton().addActionListener(new StepAction(this.model, this.view));
-
-//        this.view.getMenuPanel().getRegenerateButton().addActionListener(new RegenerateAction(this.model, this.view));
-//        this.view.getMenuPanel().getClearButton().addActionListener(new ClearAction(this.model, this.view));
-
-
-
-
     }
 
 }

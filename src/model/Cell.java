@@ -47,36 +47,36 @@ public class Cell {
         return isTraversed;
     }
 
-    public Cell(int xPos, int yPos){
+    public Cell(int xPos, int yPos) {
         this.xPos = xPos;
         this.yPos = yPos;
     }
 
-    public void initializeCell(){
+    public void initializeCell() {
         this.isInitialized = true;
     }
 
-    public void removeTopBorder(){
+    public void removeTopBorder() {
         this.topBorder = false;
     }
 
-    public void removeRightBorder(){
+    public void removeRightBorder() {
         this.rightBorder = false;
     }
 
-    public void removeBottomBorder(){
+    public void removeBottomBorder() {
         this.bottomBorder = false;
     }
 
-    public void removeLeftBorder(){
+    public void removeLeftBorder() {
         this.leftBorder = false;
     }
 
-    public void setTraversed(boolean traversed){
+    public void setTraversed(boolean traversed) {
         this.isTraversed = traversed;
     }
 
-    public static TileUpdate makeTileUpdateFromCell(Cell cell, boolean isCurrent, boolean toHighlight){
+    public static TileUpdate makeTileUpdateFromCell(Cell cell, boolean isCurrent, boolean toHighlight) {
         TileUpdate retVal = new TileUpdate(cell.getxPos(), cell.getyPos(), cell.isTopBorder(), cell.isRightBorder(), cell.isBottomBorder(), cell.isLeftBorder(), false, cell.isInitialized(), cell.isTraversed(), toHighlight, isCurrent);
         return retVal;
     }

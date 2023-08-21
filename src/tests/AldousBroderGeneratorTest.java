@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AldousBroderGeneratorTest {
 
     @Test
-    public void testAllTestsMultipleTimes(){
+    public void testAllTestsMultipleTimes() {
         int numberOfTimes = 1000;
-        for (int i = 0; i < numberOfTimes; i++){
+        for (int i = 0; i < numberOfTimes; i++) {
             testAllCellsInitializedAtEnd();
             testNoCellsBlockedAtEnd();
             testAllCellsReachable();
@@ -67,12 +67,12 @@ public class AldousBroderGeneratorTest {
 
         queue.add(start);
         visited.add(start);
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             // Find all reachable neighbors
             Cell current = queue.remove();
             ArrayList<Cell> neighbors = aldousBroderGenerator.getGrid().getAdjacentCells(current);
-            for (Cell neighbor : neighbors){
-                if (cellsMutuallyReachable(current, neighbor) && !(visited.contains(neighbor))){
+            for (Cell neighbor : neighbors) {
+                if (cellsMutuallyReachable(current, neighbor) && !(visited.contains(neighbor))) {
                     queue.add(neighbor);
                     visited.add(neighbor);
                 }

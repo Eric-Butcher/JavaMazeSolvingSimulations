@@ -12,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GridTest {
 
     @Test
-    public void testGridConstrcutor(){
+    public void testGridConstrcutor() {
         Grid grid = new Grid();
 
-        for (int x = Constants.minCellIndex; x < Constants.mazeLength; x++){
-            for (int y = Constants.minCellIndex; y < Constants.mazeLength; y++){
+        for (int x = Constants.minCellIndex; x < Constants.mazeLength; x++) {
+            for (int y = Constants.minCellIndex; y < Constants.mazeLength; y++) {
 
                 assertTrue(grid.getCell(x, y).isBottomBorder());
                 assertTrue(grid.getCell(x, y).isLeftBorder());
@@ -28,10 +28,10 @@ public class GridTest {
     }
 
     @Test
-    public void testGetRandomGridCell(){
+    public void testGetRandomGridCell() {
         Grid grid = new Grid();
 
-        for (int i = 0; i < 300; i++){
+        for (int i = 0; i < 300; i++) {
             Cell cell = grid.getRandomGridCell();
             assertTrue(cell.getxPos() >= Constants.minCellIndex);
             assertTrue(cell.getxPos() <= Constants.maxCellIndex);
@@ -41,7 +41,7 @@ public class GridTest {
     }
 
     @Test
-    public void testCreatePathBetweenCells(){
+    public void testCreatePathBetweenCells() {
         Grid grid = new Grid();
 
         Cell center = grid.getCell(5, 5);
@@ -121,7 +121,7 @@ public class GridTest {
     }
 
     @Test
-    public void testGetAdjacentCells(){
+    public void testGetAdjacentCells() {
         Grid grid = new Grid();
 
         int cornerSize = 2;
@@ -131,81 +131,81 @@ public class GridTest {
         //Top left corner
         ArrayList<Cell> a = grid.getAdjacentCells(grid.getCell(Constants.minCellIndex, Constants.minCellIndex));
         assertEquals(cornerSize, a.size());
-        assertTrue(a.contains(grid.getCell(Constants.minCellIndex, Constants.minCellIndex+1)));
-        assertTrue(a.contains(grid.getCell(Constants.minCellIndex+1, Constants.minCellIndex)));
+        assertTrue(a.contains(grid.getCell(Constants.minCellIndex, Constants.minCellIndex + 1)));
+        assertTrue(a.contains(grid.getCell(Constants.minCellIndex + 1, Constants.minCellIndex)));
 
         //Top right corner
         ArrayList<Cell> b = grid.getAdjacentCells(grid.getCell(Constants.maxCellIndex, Constants.minCellIndex));
         assertEquals(cornerSize, b.size());
-        assertTrue(b.contains(grid.getCell(Constants.maxCellIndex-1, Constants.minCellIndex)));
-        assertTrue(b.contains(grid.getCell(Constants.maxCellIndex, Constants.minCellIndex+1)));
+        assertTrue(b.contains(grid.getCell(Constants.maxCellIndex - 1, Constants.minCellIndex)));
+        assertTrue(b.contains(grid.getCell(Constants.maxCellIndex, Constants.minCellIndex + 1)));
 
         //Bottom left corner
         ArrayList<Cell> c = grid.getAdjacentCells(grid.getCell(Constants.minCellIndex, Constants.maxCellIndex));
         assertEquals(cornerSize, c.size());
-        assertTrue(c.contains(grid.getCell(Constants.minCellIndex+1, Constants.maxCellIndex)));
-        assertTrue(c.contains(grid.getCell(Constants.minCellIndex, Constants.maxCellIndex-1)));
+        assertTrue(c.contains(grid.getCell(Constants.minCellIndex + 1, Constants.maxCellIndex)));
+        assertTrue(c.contains(grid.getCell(Constants.minCellIndex, Constants.maxCellIndex - 1)));
 
         //Bottom right corner
         ArrayList<Cell> d = grid.getAdjacentCells(grid.getCell(Constants.maxCellIndex, Constants.maxCellIndex));
         assertEquals(cornerSize, d.size());
-        assertTrue(d.contains(grid.getCell(Constants.maxCellIndex-1, Constants.maxCellIndex)));
-        assertTrue(d.contains(grid.getCell(Constants.maxCellIndex, Constants.maxCellIndex-1)));
+        assertTrue(d.contains(grid.getCell(Constants.maxCellIndex - 1, Constants.maxCellIndex)));
+        assertTrue(d.contains(grid.getCell(Constants.maxCellIndex, Constants.maxCellIndex - 1)));
 
         //Top side
         int middleCord = 7;
         ArrayList<Cell> e = grid.getAdjacentCells(grid.getCell(middleCord, Constants.minCellIndex));
         assertEquals(sideSize, e.size());
-        assertTrue(e.contains(grid.getCell(middleCord-1, Constants.minCellIndex)));
-        assertTrue(e.contains(grid.getCell(middleCord+1, Constants.minCellIndex)));
-        assertTrue(e.contains(grid.getCell(middleCord, Constants.minCellIndex+1)));
+        assertTrue(e.contains(grid.getCell(middleCord - 1, Constants.minCellIndex)));
+        assertTrue(e.contains(grid.getCell(middleCord + 1, Constants.minCellIndex)));
+        assertTrue(e.contains(grid.getCell(middleCord, Constants.minCellIndex + 1)));
 
         //Right side
         middleCord = 9;
         ArrayList<Cell> f = grid.getAdjacentCells(grid.getCell(Constants.maxCellIndex, middleCord));
         assertEquals(sideSize, f.size());
-        assertTrue(f.contains(grid.getCell(Constants.maxCellIndex-1, middleCord)));
-        assertTrue(f.contains(grid.getCell(Constants.maxCellIndex, middleCord+1)));
-        assertTrue(f.contains(grid.getCell(Constants.maxCellIndex, middleCord-1)));
+        assertTrue(f.contains(grid.getCell(Constants.maxCellIndex - 1, middleCord)));
+        assertTrue(f.contains(grid.getCell(Constants.maxCellIndex, middleCord + 1)));
+        assertTrue(f.contains(grid.getCell(Constants.maxCellIndex, middleCord - 1)));
 
         //Bottom side
         middleCord = 4;
         ArrayList<Cell> g = grid.getAdjacentCells(grid.getCell(middleCord, Constants.maxCellIndex));
         assertEquals(sideSize, g.size());
-        assertTrue(g.contains(grid.getCell(middleCord-1, Constants.maxCellIndex)));
-        assertTrue(g.contains(grid.getCell(middleCord+1, Constants.maxCellIndex)));
-        assertTrue(g.contains(grid.getCell(middleCord, Constants.maxCellIndex-1)));
+        assertTrue(g.contains(grid.getCell(middleCord - 1, Constants.maxCellIndex)));
+        assertTrue(g.contains(grid.getCell(middleCord + 1, Constants.maxCellIndex)));
+        assertTrue(g.contains(grid.getCell(middleCord, Constants.maxCellIndex - 1)));
 
         //Left side
         middleCord = 12;
         ArrayList<Cell> h = grid.getAdjacentCells(grid.getCell(Constants.minCellIndex, middleCord));
         assertEquals(sideSize, h.size());
-        assertTrue(h.contains(grid.getCell(Constants.minCellIndex+1, middleCord)));
-        assertTrue(h.contains(grid.getCell(Constants.minCellIndex, middleCord-1)));
-        assertTrue(h.contains(grid.getCell(Constants.minCellIndex, middleCord+1)));
+        assertTrue(h.contains(grid.getCell(Constants.minCellIndex + 1, middleCord)));
+        assertTrue(h.contains(grid.getCell(Constants.minCellIndex, middleCord - 1)));
+        assertTrue(h.contains(grid.getCell(Constants.minCellIndex, middleCord + 1)));
 
         // Somewhere in the middle
         middleCord = 3;
         ArrayList<Cell> i = grid.getAdjacentCells(grid.getCell(middleCord, middleCord));
         assertEquals(middleSize, i.size());
-        assertTrue(i.contains(grid.getCell(middleCord+1, middleCord)));
-        assertTrue(i.contains(grid.getCell(middleCord, middleCord+1)));
-        assertTrue(i.contains(grid.getCell(middleCord-1, middleCord)));
-        assertTrue(i.contains(grid.getCell(middleCord, middleCord-1)));
+        assertTrue(i.contains(grid.getCell(middleCord + 1, middleCord)));
+        assertTrue(i.contains(grid.getCell(middleCord, middleCord + 1)));
+        assertTrue(i.contains(grid.getCell(middleCord - 1, middleCord)));
+        assertTrue(i.contains(grid.getCell(middleCord, middleCord - 1)));
 
         // Somewhere else in the middle
         middleCord = 9;
         int otherMiddleCord = 14;
         ArrayList<Cell> j = grid.getAdjacentCells(grid.getCell(middleCord, otherMiddleCord));
         assertEquals(middleSize, j.size());
-        assertTrue(j.contains(grid.getCell(middleCord-1, otherMiddleCord)));
-        assertTrue(j.contains(grid.getCell(middleCord, otherMiddleCord-1)));
-        assertTrue(j.contains(grid.getCell(middleCord+1, otherMiddleCord)));
-        assertTrue(j.contains(grid.getCell(middleCord, otherMiddleCord+1)));
+        assertTrue(j.contains(grid.getCell(middleCord - 1, otherMiddleCord)));
+        assertTrue(j.contains(grid.getCell(middleCord, otherMiddleCord - 1)));
+        assertTrue(j.contains(grid.getCell(middleCord + 1, otherMiddleCord)));
+        assertTrue(j.contains(grid.getCell(middleCord, otherMiddleCord + 1)));
     }
 
     @Test
-    public void testIsTherePathBetweenCells(){
+    public void testIsTherePathBetweenCells() {
         Cell a1 = new Cell(0, 1);
         Cell a2 = new Cell(1, 1);
         assertFalse(Grid.isTherePathBetweenCells(a1, a2));

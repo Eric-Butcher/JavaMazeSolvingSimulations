@@ -14,11 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class GeneratorTest {
 
     @Test
-    public void testGeneratorConstructor(){
+    public void testGeneratorConstructor() {
         PrimGenerator primGenerator = new PrimGenerator();
 
-        for (int x = Constants.minCellIndex; x < Constants.mazeLength; x++){
-            for (int y = Constants.minCellIndex; y < Constants.mazeLength; y++){
+        for (int x = Constants.minCellIndex; x < Constants.mazeLength; x++) {
+            for (int y = Constants.minCellIndex; y < Constants.mazeLength; y++) {
 
                 assertTrue(primGenerator.getGrid().getCell(x, y).isBottomBorder());
                 assertTrue(primGenerator.getGrid().getCell(x, y).isLeftBorder());
@@ -29,8 +29,9 @@ public class GeneratorTest {
         }
 
     }
+
     @Test
-    public void testPopRandomCellFromList(){
+    public void testPopRandomCellFromList() {
         ArrayList<Cell> cells = new ArrayList<>();
         Cell myCell = new Cell(1, 1);
         cells.add(myCell);
@@ -41,23 +42,23 @@ public class GeneratorTest {
         ArrayList<Cell> someCells = new ArrayList<>();
         ArrayList<Cell> keyCells = new ArrayList<>();
         int initSize = 20;
-        for (int i = 0; i < initSize; i++){
+        for (int i = 0; i < initSize; i++) {
             Cell cell = new Cell(i, i);
             someCells.add(cell);
             keyCells.add(cell);
         }
 
         int numRemoved = 0;
-        while (someCells.size() != 0){
+        while (someCells.size() != 0) {
             Cell retCell = Generator.popRandomCellFromList(someCells);
             assertTrue(keyCells.contains(retCell));
             numRemoved++;
-            assertEquals(initSize-numRemoved, someCells.size());
+            assertEquals(initSize - numRemoved, someCells.size());
         }
     }
 
     @Test
-    public void testGetInitializedCells(){
+    public void testGetInitializedCells() {
         ArrayList<Cell> allCells = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             allCells.add(new Cell(i, i));

@@ -22,7 +22,7 @@ public class CellTest {
         TileUpdate tileUpdate1 = Cell.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
         TileUpdate expected1 = new TileUpdate(1, 2, true, false, true,
                 false, false, true, false,
-                false, false);
+                false, false, false);
         assertEquals(expected1, tileUpdate1);
 
         // Test when isCurrent is true and toHighlight is false
@@ -31,7 +31,7 @@ public class CellTest {
         TileUpdate tileUpdate2 = Cell.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
         TileUpdate expected2 = new TileUpdate(1, 2, true, false, true,
                 false, false, true, false,
-                false, true);
+                false, true, false);
         assertEquals(expected2, tileUpdate2);
 
         // Test when isCurrent is false and toHighlight is true
@@ -40,7 +40,7 @@ public class CellTest {
         TileUpdate tileUpdate3 = Cell.makeTileUpdateFromCell(cell, isCurrent, toHighlight);
         TileUpdate expected3 = new TileUpdate(1, 2, true, false, true,
                 false, false, true, false,
-                true, false);
+                true, false, false);
         assertEquals(expected3, tileUpdate3);
     }
 }

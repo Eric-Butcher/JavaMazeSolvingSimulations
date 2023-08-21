@@ -11,10 +11,11 @@ public class StepAction implements ActionListener {
     private final Model model;
     private final View view;
 
-    public StepAction(Model model, View view){
+    public StepAction(Model model, View view) {
         this.model = model;
         this.view = view;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         this.model.step();

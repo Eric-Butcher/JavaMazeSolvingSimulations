@@ -15,6 +15,18 @@ public class Cell {
     private boolean leftBorder = true;
     private boolean isTraversed = false;
 
+    private boolean isGoal = false;
+
+    public Cell(int xPos, int yPos) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+    }
+
+    public static TileUpdate makeTileUpdateFromCell(Cell cell, boolean isCurrent, boolean toHighlight) {
+        TileUpdate retVal = new TileUpdate(cell.getxPos(), cell.getyPos(), cell.isTopBorder(), cell.isRightBorder(), cell.isBottomBorder(), cell.isLeftBorder(), false, cell.isInitialized(), cell.isTraversed(), toHighlight, isCurrent, cell.isGoal());
+        return retVal;
+    }
+
     public int getxPos() {
         return xPos;
     }
@@ -47,38 +59,36 @@ public class Cell {
         return isTraversed;
     }
 
-    public Cell(int xPos, int yPos){
-        this.xPos = xPos;
-        this.yPos = yPos;
-    }
-
-    public void initializeCell(){
-        this.isInitialized = true;
-    }
-
-    public void removeTopBorder(){
-        this.topBorder = false;
-    }
-
-    public void removeRightBorder(){
-        this.rightBorder = false;
-    }
-
-    public void removeBottomBorder(){
-        this.bottomBorder = false;
-    }
-
-    public void removeLeftBorder(){
-        this.leftBorder = false;
-    }
-
-    public void setTraversed(boolean traversed){
+    public void setTraversed(boolean traversed) {
         this.isTraversed = traversed;
     }
 
-    public static TileUpdate makeTileUpdateFromCell(Cell cell, boolean isCurrent, boolean toHighlight){
-        TileUpdate retVal = new TileUpdate(cell.getxPos(), cell.getyPos(), cell.isTopBorder(), cell.isRightBorder(), cell.isBottomBorder(), cell.isLeftBorder(), false, cell.isInitialized(), cell.isTraversed(), toHighlight, isCurrent);
-        return retVal;
+    public boolean isGoal() {
+        return isGoal;
+    }
+
+    public void setGoal(boolean goal) {
+        isGoal = goal;
+    }
+
+    public void initializeCell() {
+        this.isInitialized = true;
+    }
+
+    public void removeTopBorder() {
+        this.topBorder = false;
+    }
+
+    public void removeRightBorder() {
+        this.rightBorder = false;
+    }
+
+    public void removeBottomBorder() {
+        this.bottomBorder = false;
+    }
+
+    public void removeLeftBorder() {
+        this.leftBorder = false;
     }
 
     @Override

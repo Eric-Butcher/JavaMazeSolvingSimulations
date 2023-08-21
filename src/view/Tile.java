@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class Tile extends JPanel {
 
-    private int borderThickness = 2;
+    private final int borderThickness = 2;
     private boolean hasTopBorder = true;
     private boolean hasBottomBorder = true;
     private boolean hasRightBorder = true;
@@ -15,20 +15,22 @@ public class Tile extends JPanel {
     private boolean isTraversed = false;
     private boolean isHighlighted = false;
     private boolean isCurrent = false;
+
+    private boolean isGoal = false;
     private int tileLength = 30;
-    private int xPos;
-    private int yPos;
+    private final int xPos;
+    private final int yPos;
 
     public Tile(int tileLength, int xPos, int yPos) {
         this.setVisible(true);
         this.tileLength = tileLength;
         this.xPos = xPos;
         this.yPos = yPos;
-        String text = "" + xPos + yPos;
-        this.add(new JTextField((text)));
+        // For testing
+//        String text = "" + xPos + yPos;
+//        this.add(new JTextField((text)));
         this.setSize(this.tileLength, this.tileLength);
         this.setBounds(this.xPos * this.tileLength, this.yPos * this.tileLength, this.tileLength, this.tileLength);
-//        this.setBackground(Color.BLACK);
     }
 
     public boolean isCurrent() {
@@ -94,6 +96,14 @@ public class Tile extends JPanel {
         isTraversed = traversed;
     }
 
+    public boolean isGoal() {
+        return isGoal;
+    }
+
+    public void setGoal(boolean goal) {
+        isGoal = goal;
+    }
+
     public int getxPos() {
         return xPos;
     }
@@ -115,20 +125,23 @@ public class Tile extends JPanel {
         // We will reset highlighting and isCurrent after each iteration
         // in case tile gets bumped out of those states
         // This way we don't have to return an entire maze worth of info each time
-        if (this.isCurrent()){
+        if (this.isCurrent()) {
             graphics.setColor(Color.BLUE);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
             this.setCurrent(false);
 
-        } else if (this.isHighlighted()){
+        } else if (this.isHighlighted()) {
             graphics.setColor(Color.RED);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
             this.setHighlighted(false);
 
-        } else if (this.isTraversed()){
+        } else if (this.isGoal()) {
+            graphics.setColor(Color.PINK);
+            graphics.fillRect(0, 0, this.tileLength, this.tileLength);
+        } else if (this.isTraversed()) {
             graphics.setColor(Color.YELLOW);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
-        } else if (this.isInitialized()){
+        } else if (this.isInitialized()) {
             graphics.setColor(Color.LIGHT_GRAY);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
         } else {

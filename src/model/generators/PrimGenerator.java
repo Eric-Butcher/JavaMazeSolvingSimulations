@@ -8,15 +8,15 @@ import utilities.Constants;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class PrimGenerator extends Generator{
+public class PrimGenerator extends Generator {
 
     private final ArrayList<Cell> frontier = new ArrayList<>(Constants.mazeLength * Constants.mazeLength);
 
     private boolean startStepDone = false;
 
-    public PrimGenerator(){
+    public PrimGenerator() {
         super();
-    };
+    }
 
     public ArrayList<Cell> getFrontier() {
         return frontier;
@@ -35,8 +35,8 @@ public class PrimGenerator extends Generator{
         ViewUpdatePacket updatePacket = new ViewUpdatePacket(new LinkedList<>());
         boolean inFrontier;
 
-        for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++){
-            for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++){
+        for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {
+            for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++) {
 
                 Cell cell = this.getGrid().getCell(x, y);
                 inFrontier = frontier.contains(cell);
@@ -48,20 +48,19 @@ public class PrimGenerator extends Generator{
         return updatePacket;
     }
 
-    private void startStep(){
+    private void startStep() {
         Cell startCell = this.getGrid().getRandomGridCell();
         startCell.initializeCell();
         ArrayList<Cell> adjacentCells = this.getGrid().getAdjacentCells(startCell);
         this.getFrontier().addAll(adjacentCells);
         this.setStartStepDone(true);
     }
-    public void iterate(){
-        if (!this.isStartStepDone()){
+
+    public void iterate() {
+        if (!this.isStartStepDone()) {
             startStep();
-            return;
-        } else if (this.getFrontier().isEmpty()){
+        } else if (this.getFrontier().isEmpty()) {
             this.setDone();
-            return;
         } else {
 //            1. Pop a cell from the frontier list randomly.
             Cell chosen = Generator.popRandomCellFromList(this.getFrontier());
@@ -80,23 +79,21 @@ public class PrimGenerator extends Generator{
             chosen.initializeCell();
 
             ArrayList<Cell> uninitializedNeighbors = Generator.getUnInitializedCells(adjacentCells);
-            for (Cell uninitialized : uninitializedNeighbors){
-                if (!this.getFrontier().contains(uninitialized)){
+            for (Cell uninitialized : uninitializedNeighbors) {
+                if (!this.getFrontier().contains(uninitialized)) {
                     this.getFrontier().add(uninitialized);
                 }
             }
-            return;
         }
     }
 
-    public void finish(){
+    public void finish() {
 //        while ((!this.getFrontier().isEmpty()) || (!this.isStartStepDone())){
 //            this.iterate();
 //        }
-        while(!this.getDoneGenerating()){
+        while (!this.getDoneGenerating()) {
             this.iterate();
         }
-        return;
     }
 
     /*

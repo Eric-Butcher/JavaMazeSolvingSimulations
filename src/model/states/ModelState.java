@@ -15,11 +15,6 @@ public abstract class ModelState {
         this.model = model;
     }
 
-
-    public void regenerateMaze() {
-        this.model.setState(new GenerateState(this.model, this.selectedGenerationAlgo, this.selectedSolvingAlgo));
-    }
-
     public void changeSelectedGenerationAlgo(Class<? extends Generator> g) {
         this.selectedGenerationAlgo = g;
     }
@@ -29,8 +24,6 @@ public abstract class ModelState {
     }
 
     public abstract ViewUpdatePacket updateView();
-
-    public abstract void clearMaze();
 
     public abstract void step();
 

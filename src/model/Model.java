@@ -26,20 +26,12 @@ public class Model {
         return modelState;
     }
 
-    public void regenerateMaze() {
-        this.modelState.regenerateMaze();
-    }
-
     public void changeSelectedGenerationAlgo(Class<Generator> g) {
         this.modelState.changeSelectedGenerationAlgo(g);
     }
 
     public void changeSelectedSolvingAlgo(Class<Solver> s) {
         this.modelState.changeSelectedSolvingAlgo(s);
-    }
-
-    public void clearMaze() {
-        this.modelState.clearMaze();
     }
 
     public void step() {

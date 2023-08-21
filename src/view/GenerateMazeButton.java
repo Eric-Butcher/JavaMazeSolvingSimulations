@@ -4,8 +4,7 @@ import javax.swing.*;
 
 public class GenerateMazeButton extends JButton {
 
-    public GenerateMazeButton()
-    {
+    public GenerateMazeButton() {
 
         this.setText("Generate Maze");
         this.setFocusable(false);

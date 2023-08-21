@@ -14,9 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SolverTest {
 
     @Test
-    public void testImplicitConstructor(){
+    public void testImplicitConstructor() {
         Generator generator = new PrimGenerator();
-        Solver solver =  new HeuristicDepthFirstSearchSolver(generator.getGrid());
+        Solver solver = new HeuristicDepthFirstSearchSolver(generator.getGrid());
 
         ArrayList<Cell> actualEndpoints = solver.getEndPoints();
         Cell actualStartPoint = solver.getStartPoint();
@@ -34,7 +34,7 @@ public class SolverTest {
     }
 
     @Test
-    public void testExplicitConstructor(){
+    public void testExplicitConstructor() {
         Generator generator = new PrimGenerator();
 
         ArrayList<Cell> endpoints = new ArrayList<>();
@@ -45,7 +45,7 @@ public class SolverTest {
 
         Cell startPoint = new Cell(5, 10);
 
-        Solver solver =  new HeuristicDepthFirstSearchSolver(generator.getGrid(), startPoint, endpoints);
+        Solver solver = new HeuristicDepthFirstSearchSolver(generator.getGrid(), startPoint, endpoints);
 
         assertEquals(startPoint, solver.getStartPoint());
         assertEquals(endpoints, solver.getEndPoints());
@@ -53,7 +53,7 @@ public class SolverTest {
     }
 
     @Test
-    public void testGetUnTraversedCells(){
+    public void testGetUnTraversedCells() {
         ArrayList<Cell> input = new ArrayList<>();
 
         // Create cells
@@ -85,19 +85,18 @@ public class SolverTest {
     }
 
 
-
     @Test
-    public void testGetUnTraversedReachableNeighbors(){
+    public void testGetUnTraversedReachableNeighbors() {
         PrimGenerator primGenerator = new PrimGenerator();
         Solver solver = new HeuristicDepthFirstSearchSolver(primGenerator.getGrid());
 
         int ax = 5;
         int ay = 5;
         Cell centerA = solver.getGrid().getCell(ax, ay);
-        Cell topA = solver.getGrid().getCell(ax, ay-1);
-        Cell rightA = solver.getGrid().getCell(ax+1, ay);
-        Cell bottomA = solver.getGrid().getCell(ax, ay+1);
-        Cell leftA = solver.getGrid().getCell(ax-1, ay);
+        Cell topA = solver.getGrid().getCell(ax, ay - 1);
+        Cell rightA = solver.getGrid().getCell(ax + 1, ay);
+        Cell bottomA = solver.getGrid().getCell(ax, ay + 1);
+        Cell leftA = solver.getGrid().getCell(ax - 1, ay);
         solver.getGrid().createPathBetweenCells(centerA, topA);
         solver.getGrid().createPathBetweenCells(centerA, bottomA);
         solver.getGrid().createPathBetweenCells(centerA, leftA);
@@ -115,10 +114,10 @@ public class SolverTest {
         int bx = 7;
         int by = 10;
         Cell centerB = solver.getGrid().getCell(bx, by);
-        Cell topB = solver.getGrid().getCell(bx, by-1);
-        Cell rightB = solver.getGrid().getCell(bx+1, by);
-        Cell bottomB = solver.getGrid().getCell(bx, by+1);
-        Cell leftB = solver.getGrid().getCell(bx-1, by);
+        Cell topB = solver.getGrid().getCell(bx, by - 1);
+        Cell rightB = solver.getGrid().getCell(bx + 1, by);
+        Cell bottomB = solver.getGrid().getCell(bx, by + 1);
+        Cell leftB = solver.getGrid().getCell(bx - 1, by);
         solver.getGrid().createPathBetweenCells(centerB, topB);
         solver.getGrid().createPathBetweenCells(centerB, bottomB);
         ArrayList<Cell> expected2 = new ArrayList<>();
@@ -131,10 +130,10 @@ public class SolverTest {
         int cx = 3;
         int cy = 2;
         Cell centerC = solver.getGrid().getCell(cx, cy);
-        Cell topC = solver.getGrid().getCell(cx, cy-1);
-        Cell rightC = solver.getGrid().getCell(cx+1, cy);
-        Cell bottomC = solver.getGrid().getCell(cx, cy+1);
-        Cell leftC = solver.getGrid().getCell(cx-1, cy);
+        Cell topC = solver.getGrid().getCell(cx, cy - 1);
+        Cell rightC = solver.getGrid().getCell(cx + 1, cy);
+        Cell bottomC = solver.getGrid().getCell(cx, cy + 1);
+        Cell leftC = solver.getGrid().getCell(cx - 1, cy);
         solver.getGrid().createPathBetweenCells(centerC, rightC);
         solver.getGrid().createPathBetweenCells(centerC, leftC);
         ArrayList<Cell> expected3 = new ArrayList<>();
@@ -147,10 +146,10 @@ public class SolverTest {
         int dx = 14;
         int dy = 14;
         Cell centerD = solver.getGrid().getCell(dx, dy);
-        Cell topD = solver.getGrid().getCell(dx, dy-1);
-        Cell rightD = solver.getGrid().getCell(dx+1, dy);
-        Cell bottomD = solver.getGrid().getCell(dx, dy+1);
-        Cell leftD = solver.getGrid().getCell(dx-1, dy);
+        Cell topD = solver.getGrid().getCell(dx, dy - 1);
+        Cell rightD = solver.getGrid().getCell(dx + 1, dy);
+        Cell bottomD = solver.getGrid().getCell(dx, dy + 1);
+        Cell leftD = solver.getGrid().getCell(dx - 1, dy);
         solver.getGrid().createPathBetweenCells(centerD, topD);
         ArrayList<Cell> expected4 = new ArrayList<>();
         expected4.add(topD);
@@ -161,10 +160,10 @@ public class SolverTest {
         int ex = 9;
         int ey = 1;
         Cell centerE = solver.getGrid().getCell(ex, ey);
-        Cell topE = solver.getGrid().getCell(ex, ey-1);
-        Cell rightE = solver.getGrid().getCell(ex+1, ey);
-        Cell bottomE = solver.getGrid().getCell(ex, ey+1);
-        Cell leftE = solver.getGrid().getCell(ex-1, ey);
+        Cell topE = solver.getGrid().getCell(ex, ey - 1);
+        Cell rightE = solver.getGrid().getCell(ex + 1, ey);
+        Cell bottomE = solver.getGrid().getCell(ex, ey + 1);
+        Cell leftE = solver.getGrid().getCell(ex - 1, ey);
         ArrayList<Cell> expected5 = new ArrayList<>();
         ArrayList<Cell> actual5 = solver.getUntraversedReachableNeighbors(centerE);
         assertEquals(0, actual5.size());
@@ -172,16 +171,16 @@ public class SolverTest {
     }
 
     @Test
-    public void testAtDestination(){
+    public void testAtDestination() {
         Generator generator = new PrimGenerator();
-        Solver solver =  new HeuristicDepthFirstSearchSolver(generator.getGrid());
+        Solver solver = new HeuristicDepthFirstSearchSolver(generator.getGrid());
 
         ArrayList<Cell> destinations = new ArrayList<>();
         destinations.add(new Cell(7, 7));
         destinations.add(new Cell(7, 8));
         destinations.add(new Cell(8, 7));
         destinations.add(new Cell(8, 8));
-        for (Cell destination : destinations){
+        for (Cell destination : destinations) {
             assertTrue(solver.atDestination(destination));
         }
 
@@ -195,7 +194,7 @@ public class SolverTest {
         notDestinations.add(new Cell(6, 6));
         notDestinations.add(new Cell(7, 10));
         notDestinations.add(new Cell(8, 9));
-        for (Cell notDestination : notDestinations){
+        for (Cell notDestination : notDestinations) {
             assertFalse(solver.atDestination(notDestination));
         }
 
@@ -232,11 +231,11 @@ public class SolverTest {
         notDestinations.add(new Cell(8, 7));
         notDestinations.add(new Cell(7, 8));
 
-        for (Cell destination : destinations){
+        for (Cell destination : destinations) {
             assertTrue(explicitSolver.atDestination(destination));
         }
 
-        for (Cell notDestination : notDestinations){
+        for (Cell notDestination : notDestinations) {
             assertFalse(explicitSolver.atDestination(notDestination));
         }
 

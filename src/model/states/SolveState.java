@@ -5,6 +5,7 @@ import model.Grid;
 import model.Model;
 import model.generators.Generator;
 import model.generators.GeneratorAlgorithms;
+import model.generators.PrimGenerator;
 import model.solvers.Solver;
 import model.solvers.SolverAlgorithms;
 
@@ -15,7 +16,31 @@ public class SolveState extends ModelState {
     private Generator generatorAlgo;
     private Solver solverAlgo;
 
-    private Grid blankGeneratedGrid;
+    private final Grid blankGeneratedGrid;
+
+    /**
+     * @deprecated This constructor should only be used for testing.
+     */
+    @Deprecated
+    public SolveState(Model model) {
+        super(model);
+        this.selectedGenerationAlgo = GeneratorAlgorithms.Prim.getClazz();
+        this.selectedSolvingAlgo = SolverAlgorithms.HeuristicDepthFirstSearch.getClazz();
+        Generator tempGenerator = new PrimGenerator();
+        tempGenerator.finish();
+        this.blankGeneratedGrid = tempGenerator.getGrid();
+        this.solve();
+
+    }
+
+    public SolveState(Model model, Class<? extends Generator> selectedGenerationAlgo, Class<? extends Solver> selectedSolvingAlgo, Grid blankGeneratedGrid) {
+        super(model);
+        this.selectedGenerationAlgo = selectedGenerationAlgo;
+        this.selectedSolvingAlgo = selectedSolvingAlgo;
+        this.blankGeneratedGrid = blankGeneratedGrid;
+        this.solve();
+
+    }
 
     public Generator getGeneratorAlgo() {
         return generatorAlgo;
@@ -33,49 +58,28 @@ public class SolveState extends ModelState {
         this.solverAlgo = solverAlgo;
     }
 
-    //This constructor should only be used for testing
-    public SolveState(Model model){
-        super(model);
-        this.selectedGenerationAlgo = GeneratorAlgorithms.Prim.getClazz();
-        this.selectedSolvingAlgo = SolverAlgorithms.HeuristicDepthFirstSearch.getClazz();
-
-    }
-
-    public SolveState(Model model, Class<? extends Generator> selectedGenerationAlgo, Class<? extends Solver> selectedSolvingAlgo, Grid blankGeneratedGrid){
-        super(model);
-        this.selectedGenerationAlgo = selectedGenerationAlgo;
-        this.selectedSolvingAlgo = selectedSolvingAlgo;
-        this.blankGeneratedGrid = blankGeneratedGrid;
-        this.solve();
-
-    }
-
-    public ViewUpdatePacket updateView(){
+    public ViewUpdatePacket updateView() {
         return this.getSolverAlgo().makeViewUpdatePacket();
     }
 
-    public void clearMaze(){
-        System.out.println("New solver algorithm put in!");
-    }
-
-    public void step(){
+    public void step() {
         this.getSolverAlgo().iterate();
     }
 
-    public void finish(){
+    public void finish() {
         this.getSolverAlgo().finish();
     }
 
-    public void generate(){
+    public void generate() {
         this.model.setState(new GenerateState(this.model, this.selectedGenerationAlgo, this.selectedSolvingAlgo));
-        return;
     }
 
-    public void solve(){
+    public void solve() {
         try {
             this.blankGeneratedGrid.unSolveGrid();
             this.setSolverAlgo(this.selectedSolvingAlgo.getDeclaredConstructor(Grid.class).newInstance(this.blankGeneratedGrid));
-        } catch (InstantiationException | InvocationTargetException | NoSuchMethodException | IllegalAccessException e) {
+        } catch (InstantiationException | InvocationTargetException | NoSuchMethodException |
+                 IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

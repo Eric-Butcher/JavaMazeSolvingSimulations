@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class GreedyBestFirstSearchSolverTest {
 
     @Test
-    public void testGetsPastStartStep(){
+    public void testGetsPastStartStep() {
         PrimGenerator primGenerator = new PrimGenerator();
         primGenerator.finish();
         GreedyBestFirstSearchSolver greedyBestFirstSearchSolver = new GreedyBestFirstSearchSolver(primGenerator.getGrid());
@@ -25,13 +25,14 @@ public class GreedyBestFirstSearchSolverTest {
     }
 
     @Test
-    public void testNoTeleportingMouse(){
+    public void testNoTeleportingMouse() {
         PrimGenerator primGenerator = new PrimGenerator();
         primGenerator.finish();
         GreedyBestFirstSearchSolver greedyBestFirstSearchSolver = new GreedyBestFirstSearchSolver(primGenerator.getGrid());
+        greedyBestFirstSearchSolver.iterate();
         Cell previousCell = greedyBestFirstSearchSolver.getCurrentCell();
         Cell currentCell = null;
-        while (!greedyBestFirstSearchSolver.isDone()){
+        while (!greedyBestFirstSearchSolver.isDone()) {
             greedyBestFirstSearchSolver.iterate();
             currentCell = greedyBestFirstSearchSolver.getCurrentCell();
 
@@ -43,7 +44,7 @@ public class GreedyBestFirstSearchSolverTest {
     }
 
     @Test
-    public void testGetsToDestination(){
+    public void testGetsToDestination() {
         Generator generator = new PrimGenerator();
         generator.finish();
         GreedyBestFirstSearchSolver greedyBestFirstSearchSolver = new GreedyBestFirstSearchSolver(generator.getGrid());
@@ -53,7 +54,7 @@ public class GreedyBestFirstSearchSolverTest {
     }
 
     @Test
-    public void testManhattanDistance(){
+    public void testManhattanDistance() {
         Generator generator = new PrimGenerator();
         GreedyBestFirstSearchSolver greedyBestFirstSearchSolver = new GreedyBestFirstSearchSolver(generator.getGrid());
         Cell a1 = new Cell(0, 0);
@@ -86,7 +87,7 @@ public class GreedyBestFirstSearchSolverTest {
     }
 
     @Test
-    public void testHeuristicImplicitConstructor(){
+    public void testHeuristicImplicitConstructor() {
         PrimGenerator generator = new PrimGenerator();
         GreedyBestFirstSearchSolver greedyBestFirstSearchSolver = new GreedyBestFirstSearchSolver(generator.getGrid());
         int heuristicValue;
@@ -141,7 +142,7 @@ public class GreedyBestFirstSearchSolverTest {
     }
 
     @Test
-    public void testHeuristicWithExplicitConstructor(){
+    public void testHeuristicWithExplicitConstructor() {
         PrimGenerator generator = new PrimGenerator();
         Cell startCell = generator.getGrid().getCell(0, 0);
         ArrayList<Cell> endPoints = new ArrayList<>();
@@ -200,7 +201,7 @@ public class GreedyBestFirstSearchSolverTest {
     }
 
     @Test
-    public void testHeuristicComparator(){
+    public void testHeuristicComparator() {
         PrimGenerator primGenerator = new PrimGenerator();
         GreedyBestFirstSearchSolver greedyBestFirstSearchSolver = new GreedyBestFirstSearchSolver(primGenerator.getGrid());
 
@@ -214,14 +215,14 @@ public class GreedyBestFirstSearchSolverTest {
         int resultB = greedyBestFirstSearchSolver.getHueristicComparator().compare(smallerB, biggerB);
         assertTrue(resultB < 0);
 
-        Cell biggerC = new Cell(4,4);
+        Cell biggerC = new Cell(4, 4);
         Cell smallerC = new Cell(4, 4);
         int resultC = greedyBestFirstSearchSolver.getHueristicComparator().compare(smallerC, biggerC);
         assertEquals(0, resultC);
     }
 
     @Test
-    public void testGenerateBacktrace(){
+    public void testGenerateBacktrace() {
         /*
          Path is just one cell
          XXXX
@@ -274,7 +275,7 @@ public class GreedyBestFirstSearchSolverTest {
     }
 
     @Test
-    public void testGenerateBacktraceComplicated(){
+    public void testGenerateBacktraceComplicated() {
         /*
          * XXXllXXX
          * XXXXlXXX

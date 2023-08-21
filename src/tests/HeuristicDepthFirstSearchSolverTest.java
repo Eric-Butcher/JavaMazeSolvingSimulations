@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class HeuristicDepthFirstSearchSolverTest {
 
     @Test
-    public void testGetsPastStartStep(){
+    public void testGetsPastStartStep() {
         PrimGenerator primGenerator = new PrimGenerator();
         primGenerator.finish();
         HeuristicDepthFirstSearchSolver heuristicDepthFirstSearchSolver = new HeuristicDepthFirstSearchSolver(primGenerator.getGrid());
@@ -22,13 +22,14 @@ public class HeuristicDepthFirstSearchSolverTest {
     }
 
     @Test
-    public void testNoTeleportingMouse(){
+    public void testNoTeleportingMouse() {
         PrimGenerator primGenerator = new PrimGenerator();
         primGenerator.finish();
         HeuristicDepthFirstSearchSolver heuristicDepthFirstSearchSolver = new HeuristicDepthFirstSearchSolver(primGenerator.getGrid());
+        heuristicDepthFirstSearchSolver.iterate();
         Cell previousCell = heuristicDepthFirstSearchSolver.getCurrentCell();
         Cell currentCell = null;
-        while (!heuristicDepthFirstSearchSolver.isDone()){
+        while (!heuristicDepthFirstSearchSolver.isDone()) {
             heuristicDepthFirstSearchSolver.iterate();
             currentCell = heuristicDepthFirstSearchSolver.getCurrentCell();
 
@@ -40,7 +41,7 @@ public class HeuristicDepthFirstSearchSolverTest {
     }
 
     @Test
-    public void testGetsToDestination(){
+    public void testGetsToDestination() {
         Generator generator = new PrimGenerator();
         generator.finish();
         HeuristicDepthFirstSearchSolver heuristicDepthFirstSearchSolver = new HeuristicDepthFirstSearchSolver(generator.getGrid());
@@ -50,7 +51,7 @@ public class HeuristicDepthFirstSearchSolverTest {
     }
 
     @Test
-    public void testManhattanDistance(){
+    public void testManhattanDistance() {
         Generator generator = new PrimGenerator();
         HeuristicDepthFirstSearchSolver solver = new HeuristicDepthFirstSearchSolver(generator.getGrid());
         Cell a1 = new Cell(0, 0);
@@ -83,7 +84,7 @@ public class HeuristicDepthFirstSearchSolverTest {
     }
 
     @Test
-    public void testHeuristicImplicitConstructor(){
+    public void testHeuristicImplicitConstructor() {
         PrimGenerator generator = new PrimGenerator();
         HeuristicDepthFirstSearchSolver heuristicDepthFirstSearchSolver = new HeuristicDepthFirstSearchSolver(generator.getGrid());
         int heuristicValue;
@@ -138,7 +139,7 @@ public class HeuristicDepthFirstSearchSolverTest {
     }
 
     @Test
-    public void testHeuristicWithExplicitConstructor(){
+    public void testHeuristicWithExplicitConstructor() {
         PrimGenerator generator = new PrimGenerator();
         Cell startCell = generator.getGrid().getCell(0, 0);
         ArrayList<Cell> endPoints = new ArrayList<>();
@@ -197,7 +198,7 @@ public class HeuristicDepthFirstSearchSolverTest {
     }
 
     @Test
-    public void testHeuristicComparator(){
+    public void testHeuristicComparator() {
         PrimGenerator primGenerator = new PrimGenerator();
         HeuristicDepthFirstSearchSolver heuristicDepthFirstSearchSolver = new HeuristicDepthFirstSearchSolver(primGenerator.getGrid());
 
@@ -211,14 +212,14 @@ public class HeuristicDepthFirstSearchSolverTest {
         int resultB = heuristicDepthFirstSearchSolver.getHueristicComparator().compare(smallerB, biggerB);
         assertTrue(resultB < 0);
 
-        Cell biggerC = new Cell(4,4);
+        Cell biggerC = new Cell(4, 4);
         Cell smallerC = new Cell(4, 4);
         int resultC = heuristicDepthFirstSearchSolver.getHueristicComparator().compare(smallerC, biggerC);
         assertEquals(0, resultC);
     }
 
     @Test
-    public void testGenerateOrderedStackAppendList(){
+    public void testGenerateOrderedStackAppendList() {
         PrimGenerator primGenerator = new PrimGenerator();
         HeuristicDepthFirstSearchSolver heuristicDepthFirstSearchSolver = new HeuristicDepthFirstSearchSolver(primGenerator.getGrid());
 

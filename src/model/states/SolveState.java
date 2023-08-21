@@ -54,9 +54,9 @@ public class SolveState extends ModelState {
         return this.getSolverAlgo().makeViewUpdatePacket();
     }
 
-    public void clearMaze(){
-        System.out.println("New solver algorithm put in!");
-    }
+//    public void clearMaze(){
+//        System.out.println("New solver algorithm put in!");
+//    }
 
     public void step(){
         this.getSolverAlgo().iterate();

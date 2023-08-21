@@ -17,6 +17,7 @@ public class ClearAction implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.model.clearMaze();
+//        this.model.clearMaze();
+        return;
     }
 }

@@ -18,7 +18,8 @@ public class RegenerateAction implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        this.model.regenerateMaze();
-        this.view.updateView(this.model.updateView());
+//        this.model.regenerateMaze();
+//        this.view.updateView(this.model.updateView());
+        return;
     }
 }

@@ -39,9 +39,9 @@ public class GenerateState extends ModelState {
         return this.getGeneratorAlgo().makeViewUpdatePacket();
     }
 
-    public void clearMaze(){
-        return;
-    }
+//    public void clearMaze(){
+//        return;
+//    }
 
     public void step(){
         this.getGeneratorAlgo().iterate();

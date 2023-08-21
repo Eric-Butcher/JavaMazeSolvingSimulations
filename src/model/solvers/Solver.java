@@ -33,12 +33,20 @@ public abstract class Solver {
 
 
         this.endPoints = ends;
+
+        for (Cell cell : this.endPoints) {
+            cell.setGoal(true);
+        }
     }
 
     public Solver(Grid grid, Cell startPoint, ArrayList<Cell> endPoints) {
         this.grid = grid;
         this.startPoint = startPoint;
         this.endPoints = endPoints;
+
+        for (Cell cell : this.endPoints) {
+            cell.setGoal(true);
+        }
     }
 
     public Grid getGrid() {

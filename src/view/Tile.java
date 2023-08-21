@@ -15,6 +15,8 @@ public class Tile extends JPanel {
     private boolean isTraversed = false;
     private boolean isHighlighted = false;
     private boolean isCurrent = false;
+
+    private boolean isGoal = false;
     private int tileLength = 30;
     private int xPos;
     private int yPos;
@@ -24,11 +26,11 @@ public class Tile extends JPanel {
         this.tileLength = tileLength;
         this.xPos = xPos;
         this.yPos = yPos;
-        String text = "" + xPos + yPos;
-        this.add(new JTextField((text)));
+        // For testing
+//        String text = "" + xPos + yPos;
+//        this.add(new JTextField((text)));
         this.setSize(this.tileLength, this.tileLength);
         this.setBounds(this.xPos * this.tileLength, this.yPos * this.tileLength, this.tileLength, this.tileLength);
-//        this.setBackground(Color.BLACK);
     }
 
     public boolean isCurrent() {
@@ -94,6 +96,14 @@ public class Tile extends JPanel {
         isTraversed = traversed;
     }
 
+    public boolean isGoal() {
+        return isGoal;
+    }
+
+    public void setGoal(boolean goal) {
+        isGoal = goal;
+    }
+
     public int getxPos() {
         return xPos;
     }
@@ -125,7 +135,11 @@ public class Tile extends JPanel {
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
             this.setHighlighted(false);
 
-        } else if (this.isTraversed()){
+        } else if (this.isGoal()){
+            graphics.setColor(Color.PINK);
+            graphics.fillRect(0, 0, this.tileLength, this.tileLength);
+        }
+        else if (this.isTraversed()){
             graphics.setColor(Color.YELLOW);
             graphics.fillRect(0, 0, this.tileLength, this.tileLength);
         } else if (this.isInitialized()){

@@ -115,6 +115,7 @@ public class Grid {
         for (int i = 0; i < Constants.mazeLength; i++) {
             for (int j = 0; j < Constants.mazeLength; j++) {
                 this.cellGrid[i][j].setTraversed(false);
+                this.cellGrid[i][j].setGoal(false);
             }
         }
 

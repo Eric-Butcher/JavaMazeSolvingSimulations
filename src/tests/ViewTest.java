@@ -38,7 +38,7 @@ public class ViewTest {
     public void testUpdateView_singleChange(){
         View view = new View();
 
-        TileUpdate tileUpdateA = new TileUpdate(3, 11, false, true, true, false, false, true, false, false, false);
+        TileUpdate tileUpdateA = new TileUpdate(3, 11, false, true, true, false, false, true, false, false, false, false);
         ViewUpdatePacket packetA = new ViewUpdatePacket(new LinkedList<TileUpdate>());
         packetA.addTileUpdate(tileUpdateA);
         view.updateView(packetA);
@@ -56,7 +56,7 @@ public class ViewTest {
         assertFalse(tile.isHighlighted());
 
 
-        TileUpdate tileUpdateB = new TileUpdate(3, 11, false, false, true, false, true, true, true, false, false);
+        TileUpdate tileUpdateB = new TileUpdate(3, 11, false, false, true, false, true, true, true, false, false, false);
         ViewUpdatePacket packetB = new ViewUpdatePacket(new LinkedList<TileUpdate>());
         packetB.addTileUpdate(tileUpdateB);
         view.updateView(packetB);
@@ -79,7 +79,7 @@ public class ViewTest {
 
         ViewUpdatePacket packetA = new ViewUpdatePacket(new LinkedList<>());
         for (int i = 0; i < 10; i++){
-            TileUpdate tileUpdate = new TileUpdate(i, 2, false, false, true, false, false, true, false, false, false);
+            TileUpdate tileUpdate = new TileUpdate(i, 2, false, false, true, false, false, true, false, false, false, false);
             packetA.addTileUpdate(tileUpdate);
         }
         view.updateView(packetA);
@@ -101,7 +101,7 @@ public class ViewTest {
 
         ViewUpdatePacket packetB = new ViewUpdatePacket(new LinkedList<>());
         for (int i = Constants.minCellIndex; i <= Constants.maxCellIndex; i++){
-            TileUpdate tileUpdate = new TileUpdate(12, i, true, true, false, false, false, false, true, true, false);
+            TileUpdate tileUpdate = new TileUpdate(12, i, true, true, false, false, false, false, true, true, false, false);
             packetB.addTileUpdate(tileUpdate);
         }
         view.updateView(packetB);
@@ -122,7 +122,7 @@ public class ViewTest {
 
         ViewUpdatePacket packetC = new ViewUpdatePacket(new LinkedList<>());
         for (int i = Constants.minCellIndex; i <= Constants.maxCellIndex; i++){
-            TileUpdate tileUpdate = new TileUpdate(12, i, false, true, false, false, true, false, true, false, false);
+            TileUpdate tileUpdate = new TileUpdate(12, i, false, true, false, false, true, false, true, false, false, false);
             packetC.addTileUpdate(tileUpdate);
         }
         view.updateView(packetC);

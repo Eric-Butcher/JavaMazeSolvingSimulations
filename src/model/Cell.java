@@ -15,6 +15,8 @@ public class Cell {
     private boolean leftBorder = true;
     private boolean isTraversed = false;
 
+    private boolean isGoal = false;
+
     public int getxPos() {
         return xPos;
     }
@@ -47,6 +49,14 @@ public class Cell {
         return isTraversed;
     }
 
+    public boolean isGoal() {
+        return isGoal;
+    }
+
+    public void setGoal(boolean goal) {
+        isGoal = goal;
+    }
+
     public Cell(int xPos, int yPos) {
         this.xPos = xPos;
         this.yPos = yPos;
@@ -77,7 +87,7 @@ public class Cell {
     }
 
     public static TileUpdate makeTileUpdateFromCell(Cell cell, boolean isCurrent, boolean toHighlight) {
-        TileUpdate retVal = new TileUpdate(cell.getxPos(), cell.getyPos(), cell.isTopBorder(), cell.isRightBorder(), cell.isBottomBorder(), cell.isLeftBorder(), false, cell.isInitialized(), cell.isTraversed(), toHighlight, isCurrent);
+        TileUpdate retVal = new TileUpdate(cell.getxPos(), cell.getyPos(), cell.isTopBorder(), cell.isRightBorder(), cell.isBottomBorder(), cell.isLeftBorder(), false, cell.isInitialized(), cell.isTraversed(), toHighlight, isCurrent, cell.isGoal());
         return retVal;
     }
 

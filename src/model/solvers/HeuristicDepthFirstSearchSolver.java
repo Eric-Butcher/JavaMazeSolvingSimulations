@@ -10,9 +10,15 @@ import java.util.*;
 
 public class HeuristicDepthFirstSearchSolver extends Solver {
 
+    private final Comparator<Cell> hueristicComparator = new Comparator<Cell>() {
+        @Override
+        public int compare(Cell o1, Cell o2) {
+            return Integer.compare(heuristic(o1), heuristic(o2));
+        }
+    };
     // The child is the key and the parent is the value
-    private HashMap<Cell, Cell> parentCells = new HashMap<>(Constants.mazeLength * Constants.mazeLength);
-    private Stack<Cell> stack = new Stack<>();
+    private final HashMap<Cell, Cell> parentCells = new HashMap<>(Constants.mazeLength * Constants.mazeLength);
+    private final Stack<Cell> stack = new Stack<>();
     private boolean startStepDone = false;
     private Cell currentCell;
     private Cell targetCell;
@@ -68,13 +74,6 @@ public class HeuristicDepthFirstSearchSolver extends Solver {
         return updatePacket;
     }
 
-    private final Comparator<Cell> hueristicComparator = new Comparator<Cell>() {
-        @Override
-        public int compare(Cell o1, Cell o2) {
-            return Integer.compare(heuristic(o1), heuristic(o2));
-        }
-    };
-
     //Used for testing
     public Comparator<Cell> getHueristicComparator() {
         return hueristicComparator;
@@ -105,7 +104,6 @@ public class HeuristicDepthFirstSearchSolver extends Solver {
 
     public void iterate() {
         if (this.isDone()) {
-            return;
         } else if (!startStepDone) {
             this.currentCell = startPoint;
             this.currentCell.setTraversed(true);
@@ -113,11 +111,9 @@ public class HeuristicDepthFirstSearchSolver extends Solver {
             this.stack.addAll(neighbors);
             targetCell = stack.pop();
             this.setStartStepDone(true);
-            return;
         } else if (atDestination(currentCell)) {
             this.targetCell = null;
             this.setDone(true);
-            return;
         } else if (Grid.isTherePathBetweenCells(currentCell, targetCell)) {
             parentCells.put(targetCell, currentCell);
             currentCell = targetCell;
@@ -134,7 +130,6 @@ public class HeuristicDepthFirstSearchSolver extends Solver {
         while (!this.isDone()) {
             this.iterate();
         }
-        return;
     }
 
     /* Heuristic Depth-First Search Explained for Maze Solving

@@ -13,14 +13,6 @@ public class GenerateState extends ModelState {
 
     private Generator generatorAlgo;
 
-    public Generator getGeneratorAlgo() {
-        return generatorAlgo;
-    }
-
-    public void setGeneratorAlgo(Generator generatorAlgo) {
-        this.generatorAlgo = generatorAlgo;
-    }
-
     public GenerateState(Model model) {
         super(model);
         this.selectedGenerationAlgo = GeneratorAlgorithms.Prim.getClazz();
@@ -35,6 +27,14 @@ public class GenerateState extends ModelState {
         this.generate();
     }
 
+    public Generator getGeneratorAlgo() {
+        return generatorAlgo;
+    }
+
+    public void setGeneratorAlgo(Generator generatorAlgo) {
+        this.generatorAlgo = generatorAlgo;
+    }
+
     public ViewUpdatePacket updateView() {
         return this.getGeneratorAlgo().makeViewUpdatePacket();
     }
@@ -45,7 +45,6 @@ public class GenerateState extends ModelState {
 
     public void finish() {
         this.getGeneratorAlgo().finish();
-        return;
     }
 
     public void generate() {
@@ -61,6 +60,5 @@ public class GenerateState extends ModelState {
         if (this.getGeneratorAlgo().getDoneGenerating()) {
             this.model.setState(new SolveState(this.model, this.selectedGenerationAlgo, this.selectedSolvingAlgo, this.getGeneratorAlgo().getGrid()));
         }
-        return;
     }
 }

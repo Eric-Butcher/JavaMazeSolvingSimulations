@@ -10,9 +10,8 @@ import java.util.LinkedList;
 
 public class AldousBroderGenerator extends Generator {
 
-    private int cellsInitialized = 0;
     private final int maxInitialized = Constants.mazeLength * Constants.mazeLength;
-
+    private int cellsInitialized = 0;
     private Cell currentCell;
 
     public AldousBroderGenerator() {
@@ -60,7 +59,6 @@ public class AldousBroderGenerator extends Generator {
         if (this.cellsInitialized >= (maxInitialized)) {
             this.currentCell = null;
             this.setDone();
-            return;
         } else if (cellsInitialized == 0) {
             this.startStep();
         } else {
@@ -73,7 +71,6 @@ public class AldousBroderGenerator extends Generator {
                 cellsInitialized++;
             }
             currentCell = chosen;
-            return;
 
         }
     }
@@ -87,7 +84,6 @@ public class AldousBroderGenerator extends Generator {
         while (!this.getDoneGenerating()) {
             this.iterate();
         }
-        return;
     }
 
     /*

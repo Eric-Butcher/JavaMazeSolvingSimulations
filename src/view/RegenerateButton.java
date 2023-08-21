@@ -4,8 +4,7 @@ import javax.swing.*;
 
 public class RegenerateButton extends JButton {
 
-    public RegenerateButton()
-    {
+    public RegenerateButton() {
         this.setText("Regenerate");
         this.setFocusable(false);
         this.setVisible(true);

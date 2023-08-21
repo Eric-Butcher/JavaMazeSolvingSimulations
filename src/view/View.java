@@ -13,21 +13,10 @@ public class View extends JFrame {
     final static int MAZE_LENGTH = 16; // Number of cells in a row in the square maze
     final static int CELL_LENGTH = MAZE_PANEL_SIZE / MAZE_LENGTH;
 
-    private MenuPanel menuPanel;
-    private MazePanel mazePanel;
+    private final MenuPanel menuPanel;
+    private final MazePanel mazePanel;
 
-    public MenuPanel getMenuPanel() {
-        return menuPanel;
-    }
-
-    public MazePanel getMazePanel() {
-        return mazePanel;
-    }
-
-//    private String currentMazeGeneratorAlgorithm = "A";
-
-    public View()
-    {
+    public View() {
         this.setResizable(false);
         this.setTitle("Maze-Solving Simulations");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,15 +32,25 @@ public class View extends JFrame {
         this.setVisible(true);
     }
 
-    public void updateView(ViewUpdatePacket packet){
-        for (TileUpdate subPacket : packet.tileUpdates()){
+    public MenuPanel getMenuPanel() {
+        return menuPanel;
+    }
+
+//    private String currentMazeGeneratorAlgorithm = "A";
+
+    public MazePanel getMazePanel() {
+        return mazePanel;
+    }
+
+    public void updateView(ViewUpdatePacket packet) {
+        for (TileUpdate subPacket : packet.tileUpdates()) {
             updateTile(subPacket);
         }
         this.getMazePanel().revalidate();
         this.getMazePanel().repaint();
     }
 
-    public void updateTile(TileUpdate update){
+    public void updateTile(TileUpdate update) {
         Tile tile = this.getMazePanel().getTile(update.xPos(), update.yPos());
         tile.setTileBorders(update.hasTopBorder(), update.hasRightBorder(), update.hasBottomBorder(), update.hasLeftBorder());
         tile.setHasMouse(update.hasMouse());
@@ -62,7 +61,6 @@ public class View extends JFrame {
         tile.setGoal(update.goal());
         tile.repaint();
     }
-
 
 
 //    @Override

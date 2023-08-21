@@ -18,8 +18,6 @@ public class PrimGenerator extends Generator {
         super();
     }
 
-    ;
-
     public ArrayList<Cell> getFrontier() {
         return frontier;
     }
@@ -61,10 +59,8 @@ public class PrimGenerator extends Generator {
     public void iterate() {
         if (!this.isStartStepDone()) {
             startStep();
-            return;
         } else if (this.getFrontier().isEmpty()) {
             this.setDone();
-            return;
         } else {
 //            1. Pop a cell from the frontier list randomly.
             Cell chosen = Generator.popRandomCellFromList(this.getFrontier());
@@ -88,7 +84,6 @@ public class PrimGenerator extends Generator {
                     this.getFrontier().add(uninitialized);
                 }
             }
-            return;
         }
     }
 
@@ -99,7 +94,6 @@ public class PrimGenerator extends Generator {
         while (!this.getDoneGenerating()) {
             this.iterate();
         }
-        return;
     }
 
     /*

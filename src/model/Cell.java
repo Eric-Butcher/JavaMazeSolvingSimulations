@@ -17,6 +17,16 @@ public class Cell {
 
     private boolean isGoal = false;
 
+    public Cell(int xPos, int yPos) {
+        this.xPos = xPos;
+        this.yPos = yPos;
+    }
+
+    public static TileUpdate makeTileUpdateFromCell(Cell cell, boolean isCurrent, boolean toHighlight) {
+        TileUpdate retVal = new TileUpdate(cell.getxPos(), cell.getyPos(), cell.isTopBorder(), cell.isRightBorder(), cell.isBottomBorder(), cell.isLeftBorder(), false, cell.isInitialized(), cell.isTraversed(), toHighlight, isCurrent, cell.isGoal());
+        return retVal;
+    }
+
     public int getxPos() {
         return xPos;
     }
@@ -49,17 +59,16 @@ public class Cell {
         return isTraversed;
     }
 
+    public void setTraversed(boolean traversed) {
+        this.isTraversed = traversed;
+    }
+
     public boolean isGoal() {
         return isGoal;
     }
 
     public void setGoal(boolean goal) {
         isGoal = goal;
-    }
-
-    public Cell(int xPos, int yPos) {
-        this.xPos = xPos;
-        this.yPos = yPos;
     }
 
     public void initializeCell() {
@@ -80,15 +89,6 @@ public class Cell {
 
     public void removeLeftBorder() {
         this.leftBorder = false;
-    }
-
-    public void setTraversed(boolean traversed) {
-        this.isTraversed = traversed;
-    }
-
-    public static TileUpdate makeTileUpdateFromCell(Cell cell, boolean isCurrent, boolean toHighlight) {
-        TileUpdate retVal = new TileUpdate(cell.getxPos(), cell.getyPos(), cell.isTopBorder(), cell.isRightBorder(), cell.isBottomBorder(), cell.isLeftBorder(), false, cell.isInitialized(), cell.isTraversed(), toHighlight, isCurrent, cell.isGoal());
-        return retVal;
     }
 
     @Override

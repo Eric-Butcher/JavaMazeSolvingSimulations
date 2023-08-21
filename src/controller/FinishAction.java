@@ -11,10 +11,11 @@ public class FinishAction implements ActionListener {
     private final Model model;
     private final View view;
 
-    public FinishAction(Model model, View view){
+    public FinishAction(Model model, View view) {
         this.model = model;
         this.view = view;
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         this.model.finish();

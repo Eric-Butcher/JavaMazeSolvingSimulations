@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ModelStatePatternTest {
 
     @Test
-    public void ModelState_GenerateState_Step(){
+    public void ModelState_GenerateState_Step() {
         Model model = new Model();
         model.setState(new GenerateState(model));
 
@@ -22,7 +22,7 @@ public class ModelStatePatternTest {
     }
 
     @Test
-    public void ModelState_GenerateState_Finish(){
+    public void ModelState_GenerateState_Finish() {
         Model model = new Model();
         model.setState(new GenerateState(model));
 
@@ -34,7 +34,7 @@ public class ModelStatePatternTest {
     }
 
     @Test
-    public void ModelState_GenerateState_Solve(){
+    public void ModelState_GenerateState_Solve() {
 
         // Maze not done
         Model model = new Model();
@@ -56,7 +56,7 @@ public class ModelStatePatternTest {
     }
 
     @Test
-    public void ModelState_GenerateState_Generate(){
+    public void ModelState_GenerateState_Generate() {
         Model model = new Model();
         model.setState(new GenerateState(model));
 
@@ -69,7 +69,7 @@ public class ModelStatePatternTest {
 
     @SuppressWarnings("deprecation")
     @Test
-    public void ModelState_SolveState_Step(){
+    public void ModelState_SolveState_Step() {
         Model model = new Model();
         model.setState(new SolveState(model));
 
@@ -82,7 +82,7 @@ public class ModelStatePatternTest {
 
     @SuppressWarnings("deprecation")
     @Test
-    public void ModelState_SolveState_Finish(){
+    public void ModelState_SolveState_Finish() {
         Model model = new Model();
         model.setState(new SolveState(model));
 
@@ -95,7 +95,7 @@ public class ModelStatePatternTest {
 
     @SuppressWarnings("deprecation")
     @Test
-    public void ModelState_SolveState_Solve(){
+    public void ModelState_SolveState_Solve() {
         Model model = new Model();
         model.setState(new SolveState(model));
 

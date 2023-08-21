@@ -16,23 +16,7 @@ public class SolveState extends ModelState {
     private Generator generatorAlgo;
     private Solver solverAlgo;
 
-    private Grid blankGeneratedGrid;
-
-    public Generator getGeneratorAlgo() {
-        return generatorAlgo;
-    }
-
-    public void setGeneratorAlgo(Generator generatorAlgo) {
-        this.generatorAlgo = generatorAlgo;
-    }
-
-    public Solver getSolverAlgo() {
-        return solverAlgo;
-    }
-
-    public void setSolverAlgo(Solver solverAlgo) {
-        this.solverAlgo = solverAlgo;
-    }
+    private final Grid blankGeneratedGrid;
 
     /**
      * @deprecated This constructor should only be used for testing.
@@ -58,6 +42,22 @@ public class SolveState extends ModelState {
 
     }
 
+    public Generator getGeneratorAlgo() {
+        return generatorAlgo;
+    }
+
+    public void setGeneratorAlgo(Generator generatorAlgo) {
+        this.generatorAlgo = generatorAlgo;
+    }
+
+    public Solver getSolverAlgo() {
+        return solverAlgo;
+    }
+
+    public void setSolverAlgo(Solver solverAlgo) {
+        this.solverAlgo = solverAlgo;
+    }
+
     public ViewUpdatePacket updateView() {
         return this.getSolverAlgo().makeViewUpdatePacket();
     }
@@ -72,7 +72,6 @@ public class SolveState extends ModelState {
 
     public void generate() {
         this.model.setState(new GenerateState(this.model, this.selectedGenerationAlgo, this.selectedSolvingAlgo));
-        return;
     }
 
     public void solve() {

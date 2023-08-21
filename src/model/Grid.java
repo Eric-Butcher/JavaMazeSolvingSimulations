@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Grid {
-    private Cell[][] cellGrid = new Cell[Constants.mazeLength][Constants.mazeLength];
+    private final Cell[][] cellGrid = new Cell[Constants.mazeLength][Constants.mazeLength];
 
     public Grid() {
         for (int i = 0; i < 16; i++) {
@@ -17,11 +17,26 @@ public class Grid {
         }
     }
 
+    public static boolean isTherePathBetweenCells(Cell from, Cell to) {
+
+        int fromX = from.getxPos();
+        int fromY = from.getyPos();
+        int toX = to.getxPos();
+        int toY = to.getyPos();
+
+        if (((fromY == toY) && (fromX == toX + 1)) && ((!from.isLeftBorder()) && (!to.isRightBorder()))) {
+            return true;
+        } else if (((fromY == toY) && (fromX + 1 == toX)) && ((!from.isRightBorder()) && (!to.isLeftBorder()))) {
+            return true;
+        } else if (((fromX == toX) && (fromY == toY + 1)) && ((!from.isTopBorder()) && (!to.isBottomBorder()))) {
+            return true;
+        } else return ((fromX == toX) && (fromY + 1 == toY)) && ((!from.isBottomBorder()) && (!to.isTopBorder()));
+    }
+
     public Cell getCell(int xLoc, int yLoc) {
         if (((xLoc < 0) || (xLoc > 16)) || ((yLoc < 0) || (yLoc > 16))) {
             throw new IllegalArgumentException("Gave location(s) outside of maze bounds. ");
         }
-        ;
         return this.cellGrid[xLoc][yLoc];
     }
 
@@ -90,25 +105,6 @@ public class Grid {
         }
 
         return adjacentCells;
-    }
-
-    public static boolean isTherePathBetweenCells(Cell from, Cell to) {
-
-        int fromX = from.getxPos();
-        int fromY = from.getyPos();
-        int toX = to.getxPos();
-        int toY = to.getyPos();
-
-        if (((fromY == toY) && (fromX == toX + 1)) && ((!from.isLeftBorder()) && (!to.isRightBorder()))) {
-            return true;
-        } else if (((fromY == toY) && (fromX + 1 == toX)) && ((!from.isRightBorder()) && (!to.isLeftBorder()))) {
-            return true;
-        } else if (((fromX == toX) && (fromY == toY + 1)) && ((!from.isTopBorder()) && (!to.isBottomBorder()))) {
-            return true;
-        } else if (((fromX == toX) && (fromY + 1 == toY)) && ((!from.isBottomBorder()) && (!to.isTopBorder()))) {
-            return true;
-        }
-        return false;
     }
 
     public void unSolveGrid() {

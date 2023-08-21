@@ -4,8 +4,7 @@ import javax.swing.*;
 
 public class ClearButton extends JButton {
 
-    public ClearButton()
-    {
+    public ClearButton() {
 //        this.addActionListener(parent);
         this.setText("Clear");
         this.setFocusable(false);

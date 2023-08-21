@@ -18,7 +18,7 @@ public class GreedyBestFirstSearchSolver extends Solver {
         }
     };
 
-    private Queue<Cell> queue = new PriorityQueue<>(hueristicComparator);
+    private final Queue<Cell> queue = new PriorityQueue<>(hueristicComparator);
     private boolean startStepDone = false;
     private Cell currentCell;
     private Cell targetCell;
@@ -147,7 +147,6 @@ public class GreedyBestFirstSearchSolver extends Solver {
 
     public void iterate() {
         if (this.isDone()) {
-            return;
         } else if (!startStepDone) {
             this.currentCell = startPoint;
             this.currentCell.setTraversed(true);
@@ -155,11 +154,9 @@ public class GreedyBestFirstSearchSolver extends Solver {
             this.queue.addAll(neighbors);
             targetCell = queue.poll();
             this.setStartStepDone(true);
-            return;
         } else if (atDestination(currentCell)) {
             this.targetCell = null;
             this.setDone(true);
-            return;
         } else if (Grid.isTherePathBetweenCells(currentCell, targetCell)) {
 //            parentCells.put(targetCell, currentCell);
             currentCell = targetCell;
@@ -184,7 +181,6 @@ public class GreedyBestFirstSearchSolver extends Solver {
         while (!this.isDone()) {
             this.iterate();
         }
-        return;
     }
 
     /* Greedy Best-First-Search Explained for Maze Solving

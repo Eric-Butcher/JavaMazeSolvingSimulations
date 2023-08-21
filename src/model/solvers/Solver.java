@@ -12,10 +12,10 @@ public abstract class Solver {
 
 //    private Cell[][] grid = new Cell[Constants.mazeLength][Constants.mazeLength];
 
-    private Grid grid;
-    private boolean done = false;
     protected Cell startPoint;
     protected ArrayList<Cell> endPoints;
+    private final Grid grid;
+    private boolean done = false;
 
     public Solver(Grid grid) {
         this.grid = grid;
@@ -49,6 +49,26 @@ public abstract class Solver {
         }
     }
 
+    public static ArrayList<Cell> getUnTraversedCells(List<Cell> list) {
+        ArrayList<Cell> retVal = new ArrayList<>(4);
+        for (Cell cell : list) {
+            if (!cell.isTraversed()) {
+                retVal.add(cell);
+            }
+        }
+        return retVal;
+    }
+
+    public static ArrayList<Cell> getTraversedCells(List<Cell> list) {
+        ArrayList<Cell> retVal = new ArrayList<>(4);
+        for (Cell cell : list) {
+            if (cell.isTraversed()) {
+                retVal.add(cell);
+            }
+        }
+        return retVal;
+    }
+
     public Grid getGrid() {
         return grid;
     }
@@ -75,26 +95,6 @@ public abstract class Solver {
 
     public void setEndPoints(ArrayList<Cell> endPoints) {
         this.endPoints = endPoints;
-    }
-
-    public static ArrayList<Cell> getUnTraversedCells(List<Cell> list) {
-        ArrayList<Cell> retVal = new ArrayList<>(4);
-        for (Cell cell : list) {
-            if (!cell.isTraversed()) {
-                retVal.add(cell);
-            }
-        }
-        return retVal;
-    }
-
-    public static ArrayList<Cell> getTraversedCells(List<Cell> list) {
-        ArrayList<Cell> retVal = new ArrayList<>(4);
-        for (Cell cell : list) {
-            if (cell.isTraversed()) {
-                retVal.add(cell);
-            }
-        }
-        return retVal;
     }
 
     public ArrayList<Cell> getUntraversedReachableNeighbors(Cell center) {

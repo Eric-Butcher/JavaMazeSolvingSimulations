@@ -12,13 +12,9 @@ public abstract class Generator {
 
 //    private Cell[][] grid = new Cell[Constants.mazeLength][Constants.mazeLength];
 
-    private Grid grid;
+    private final Grid grid;
 
     private boolean done = false;
-
-    protected void doneGenerating() {
-        this.done = true;
-    }
 
     public Generator() {
 
@@ -30,18 +26,6 @@ public abstract class Generator {
 //        }
 
         this.grid = new Grid();
-    }
-
-    public Grid getGrid() {
-        return grid;
-    }
-
-    public boolean getDoneGenerating() {
-        return this.done;
-    }
-
-    public void setDone() {
-        this.done = true;
     }
 
     public static Cell popRandomCellFromList(List<Cell> list) {
@@ -68,6 +52,22 @@ public abstract class Generator {
             }
         }
         return retVal;
+    }
+
+    protected void doneGenerating() {
+        this.done = true;
+    }
+
+    public Grid getGrid() {
+        return grid;
+    }
+
+    public boolean getDoneGenerating() {
+        return this.done;
+    }
+
+    public void setDone() {
+        this.done = true;
     }
 
     public abstract ViewUpdatePacket makeViewUpdatePacket();

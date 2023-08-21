@@ -5,16 +5,16 @@ import java.awt.*;
 
 public class MenuPanel extends JPanel {
 
-    private GenerateMazeButton generateMazeButton;
-    private MazeGeneratorComboBox mazeGeneratorComboBox;
+    private final GenerateMazeButton generateMazeButton;
+    private final MazeGeneratorComboBox mazeGeneratorComboBox;
 //    private PlayPauseButton playPauseButton;
 
-    private FinishButton finishButton;
-    private StepButton stepButton;
-//    private ClearButton clearButton;
+    private final FinishButton finishButton;
+    private final StepButton stepButton;
+    //    private ClearButton clearButton;
 //    private RegenerateButton regenerateButton;
-    private SolveMazeButton solveMazeButton;
-    private MazeSolverComboBox mazeSolverComboBox;
+    private final SolveMazeButton solveMazeButton;
+    private final MazeSolverComboBox mazeSolverComboBox;
 
     public MenuPanel(int menuLength, int menuHeight) {
         // Panel setup

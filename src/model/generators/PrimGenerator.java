@@ -6,7 +6,6 @@ import model.Cell;
 import utilities.Constants;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class PrimGenerator extends Generator {
 
@@ -32,7 +31,7 @@ public class PrimGenerator extends Generator {
 
     @Override
     public ViewUpdatePacket makeViewUpdatePacket() {
-        ViewUpdatePacket updatePacket = new ViewUpdatePacket(new LinkedList<>());
+        ViewUpdatePacket updatePacket = new ViewUpdatePacket(new ArrayList<>(300));
         boolean inFrontier;
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {

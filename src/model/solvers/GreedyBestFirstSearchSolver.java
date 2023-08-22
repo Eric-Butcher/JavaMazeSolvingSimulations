@@ -47,7 +47,7 @@ public class GreedyBestFirstSearchSolver extends Solver {
 
     @Override
     public ViewUpdatePacket makeViewUpdatePacket() {
-        ViewUpdatePacket updatePacket = new ViewUpdatePacket(new LinkedList<>());
+        ViewUpdatePacket updatePacket = new ViewUpdatePacket(new ArrayList<>(300));
 
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {

@@ -7,12 +7,10 @@ public class MenuPanel extends JPanel {
 
     private final GenerateMazeButton generateMazeButton;
     private final MazeGeneratorComboBox mazeGeneratorComboBox;
-//    private PlayPauseButton playPauseButton;
+    private PlayPauseButton playPauseButton;
 
     private final FinishButton finishButton;
     private final StepButton stepButton;
-    //    private ClearButton clearButton;
-//    private RegenerateButton regenerateButton;
     private final SolveMazeButton solveMazeButton;
     private final MazeSolverComboBox mazeSolverComboBox;
 
@@ -29,12 +27,9 @@ public class MenuPanel extends JPanel {
         this.mazeGeneratorComboBox = new MazeGeneratorComboBox();
         this.solveMazeButton = new SolveMazeButton();
         this.mazeSolverComboBox = new MazeSolverComboBox();
-//        this.playPauseButton = new PlayPauseButton();
+        this.playPauseButton = new PlayPauseButton();
         this.finishButton = new FinishButton();
         this.stepButton = new StepButton();
-//        this.regenerateButton = new RegenerateButton();
-//        this.clearButton = new ClearButton();
-
 
         // Descriptive variables
         int firstColumn = 0, secondColumn = 1;
@@ -42,7 +37,6 @@ public class MenuPanel extends JPanel {
         int firstRow = 0, secondRow = 1, thirdRow = 2, fourthRow = 3, fifthRow = 4, sixthRow = 5, seventhRow = 6, eighthRow = 7;
 
         // Add components and place them in correct positions with gridBagConstraints
-
         gridBagConstraints.gridwidth = 0;
         gridBagConstraints.gridx = firstColumn;
         gridBagConstraints.gridy = firstRow;
@@ -68,7 +62,6 @@ public class MenuPanel extends JPanel {
         gridBagConstraints.gridwidth = 0;
         gridBagConstraints.gridx = firstColumn;
         gridBagConstraints.gridy = fifthRow;
-//        this.add(this.playPauseButton, gridBagConstraints);
         this.add(this.finishButton, gridBagConstraints);
 
         gridBagConstraints.gridwidth = 0;
@@ -76,17 +69,11 @@ public class MenuPanel extends JPanel {
         gridBagConstraints.gridy = sixthRow;
         this.add(this.stepButton, gridBagConstraints);
 
-//        gridBagConstraints.gridwidth = 0;
-//        gridBagConstraints.gridx = firstColumn;
-//        gridBagConstraints.gridy = seventhRow;
-//        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-//        this.add(this.regenerateButton, gridBagConstraints);
-//
-//
-//        gridBagConstraints.gridx = firstColumn;
-//        gridBagConstraints.gridy = eighthRow;
-//        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-//        this.add(this.clearButton, gridBagConstraints);
+        gridBagConstraints.gridwidth = 0;
+        gridBagConstraints.gridx = firstColumn;
+        gridBagConstraints.gridy = seventhRow;
+        gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
+        this.add(this.playPauseButton, gridBagConstraints);
 
         this.setVisible(true);
 
@@ -100,9 +87,9 @@ public class MenuPanel extends JPanel {
         return mazeGeneratorComboBox;
     }
 
-//    public PlayPauseButton getPlayPauseButton() {
-//        return playPauseButton;
-//    }
+    public PlayPauseButton getPlayPauseButton() {
+        return playPauseButton;
+    }
 
     public FinishButton getFinishButton() {
         return finishButton;
@@ -111,14 +98,6 @@ public class MenuPanel extends JPanel {
     public StepButton getStepButton() {
         return stepButton;
     }
-
-//    public ClearButton getClearButton() {
-//        return clearButton;
-//    }
-//
-//    public RegenerateButton getRegenerateButton() {
-//        return regenerateButton;
-//    }
 
     public SolveMazeButton getSolveMazeButton() {
         return solveMazeButton;

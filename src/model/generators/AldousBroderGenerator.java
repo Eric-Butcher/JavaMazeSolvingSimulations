@@ -6,7 +6,6 @@ import model.Cell;
 import utilities.Constants;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class AldousBroderGenerator extends Generator {
 
@@ -28,7 +27,7 @@ public class AldousBroderGenerator extends Generator {
 
     @Override
     public ViewUpdatePacket makeViewUpdatePacket() {
-        ViewUpdatePacket updatePacket = new ViewUpdatePacket(new LinkedList<>());
+        ViewUpdatePacket updatePacket = new ViewUpdatePacket(new ArrayList<>(300));
 
         for (int x = Constants.minCellIndex; x <= Constants.maxCellIndex; x++) {
             for (int y = Constants.minCellIndex; y <= Constants.maxCellIndex; y++) {
